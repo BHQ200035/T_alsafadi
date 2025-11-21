@@ -1,0 +1,522 @@
+:root {
+    --primary-color: #4b6cb7; /* اللون الأزرق الأساسي */
+    --light-primary: #6c8cdb;
+    --dark-primary: #3a5390;
+    --selected-color: #4b6cb7;
+    --border-color: #eee;
+    --text-color: #333;
+    --header-color: #888;
+    --light-color: #f7f7f7; 
+    --title-color: #333; 
+    --light-gray-background: #f6f7f9; 
+    --main-color: #5d7494; /* اللون الأزرق الداكن للخلفية */
+}
+
+
+/* =========================================
+    التنسيق العام والحاوية الرئيسية
+    ========================================= */
+.booking-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px;
+    direction: rtl; 
+    
+    background: transparent; 
+    
+    gap: 30px;
+    min-height: 100vh;
+    margin-top: 90px;
+    
+    position: relative; 
+    overflow: hidden; 
+}
+
+/* 🌟 طبقة الخلفية Particles.js 🌟 */
+#particles-js-booking {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* الطبقة الأولى */
+    background: var(--main-color, #5d7494); /* الخلفية الزرقاء الموحدة */
+}
+
+.info-panel {
+    flex: 1;
+    max-width: 600px;
+    padding: 40px;
+    position: relative; 
+    z-index: 2; /* فوق النقاط */
+}
+
+.info-icon {
+    display: inline-block;
+    border: 1px solid var(--light-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 1rem;
+    color: var(--light-color);
+    margin-bottom: 20px;
+}
+
+.info-title {
+    font-size: 2.5rem;
+    color: var(--light-color);
+    margin-bottom: 20px;
+}
+
+.info-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--light-color);
+}
+
+
+/* =========================================
+    بطاقة الحجز (Booking Card)
+    ========================================= */
+.booking-card {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px; 
+    height: 500px; 
+    overflow-y: auto; /* تمكين التمرير */
+    overflow-x: hidden; 
+    position: relative;
+    z-index: 2; /* فوق النقاط */
+    direction: ltr; /* اتجاه التقويم */
+}
+
+/* ---------------------------------
+    رأس البطاقة وتفاصيل الاجتماع
+    --------------------------------- */
+.card-header {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+}
+
+.service-name {
+    font-size: 1rem;
+    color: gray;
+    text-align: center; 
+}
+
+.meeting-details {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.meeting-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.duration {
+    display: flex;
+    color: gray;
+    font-size: 0.9rem;
+    justify-content: center;
+}
+
+.duration svg {
+    margin-inline-end: 5px;
+    stroke: gray; 
+}
+
+
+/* ---------------------------------
+    محدد التاريخ (التقويم)
+    --------------------------------- */
+.date-selector {
+    padding: 20px;
+    /* 🌟 التعديل الجوهري: إلغاء حجز المسافة السفلية 🌟 */
+    padding-bottom: 20px; 
+}
+
+.selector-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 15px; 
+    direction: ltr; 
+}
+
+.calendar-header .nav-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 5px 10px;
+}
+
+.calendar-header .current-month {
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center; 
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+    
+    padding: 0 10px; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    direction: ltr; 
+}
+
+.day-label {
+    font-size: 0.9rem; 
+    font-weight: bold;
+    color: var(--header-color); 
+    padding: 5px 0;
+    border: none;
+}
+
+.day-cell {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+    width: 35px;
+    height: 35px;
+    
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s;
+    margin: 2px auto; 
+}
+
+.day-cell.date.available {
+    color: var(--text-color);
+    border: 1px solid #ccc;
+}
+
+.day-cell.date.selected {
+    background-color: var(--selected-color);
+    color: #fff;
+    border: 1px solid var(--selected-color);
+    font-weight: bold;
+}
+
+.day-cell.date.disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+
+/* ---------------------------------
+    تثبيت المنطقة الزمنية (Position Sticky)
+    --------------------------------- */
+.timezone-selection {
+    padding: 10px 20px 20px;
+    border-top: 1px solid var(--border-color);
+    
+    /* 🌟 سيلتصق بالأسفل فقط عندما يمر المحتوى فوقه 🌟 */
+    position: sticky;
+    bottom: 0; 
+    
+    background-color: #fff; 
+    z-index: 10; 
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); /* ظل في الأعلى */
+}
+
+.timezone-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+    text-align: right; 
+    direction: rtl;
+}
+
+.timezone-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-gray-background); 
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-align: right; 
+    direction: rtl; 
+}
+
+
+/* ---------------------------------
+    تنسيقات واجهات الوقت والتفاصيل
+    --------------------------------- */
+.time-selector, .details-form {
+    padding: 20px;
+    /* 🌟 التعديل: تقليل المسافة العلوية لتقليل الفراغ 🌟 */
+    padding-top: 20px; 
+    /* 🌟 التعديل: إلغاء حجز مسافة ثابتة في الأسفل هنا أيضاً 🌟 */
+    padding-bottom: 20px; 
+    direction: rtl; /* العودة للوضع العربي في المحتوى */
+}
+
+.back-link-container {
+    position: relative;
+    text-align: center; 
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    direction: rtl; 
+}
+
+.back-btn {
+    position: absolute; 
+    top: 50%;
+    left: 0; 
+    transform: translateY(-50%); 
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    direction: ltr; 
+}
+
+#selected-date-display, #selected-time-display {
+    display: block; 
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin-right: 40px; 
+}
+
+.duration-text {
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.time-slots-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-height: 250px; 
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+.time-slot-btn {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.time-slot-btn:hover:not(.selected-time) {
+    background-color: var(--light-primary);
+    color: white;
+}
+
+.time-slot-btn.selected-time {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* تنسيقات نموذج التفاصيل */
+.details-form form {
+    padding: 10px 0;
+}
+.details-form input[type="text"],
+.details-form input[type="email"],
+.details-form input[type="tel"],
+.details-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    direction: rtl;
+    text-align: right;
+}
+
+.schedule-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.schedule-btn:hover {
+    background-color: var(--dark-primary);
+}
+
+
+/* ---------------------------------
+    القائمة المنبثقة للمناطق الزمنية
+    --------------------------------- */
+.timezone-dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 1000;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+.timezone-dropdown {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow: hidden;
+    direction: ltr; 
+}
+
+.timezone-search-container {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.timezone-search-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: left;
+    direction: ltr;
+}
+
+.timezone-list-container {
+    max-height: 350px; 
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timezone-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.timezone-list-item:hover, .timezone-list-item.selected {
+    background-color: var(--light-gray-background);
+    font-weight: bold;
+}
+
+.timezone-list-item .time-24h {
+    color: gray;
+    font-weight: normal;
+}
+
+.dropdown-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.dropdown-footer button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* ---------------------------------
+    استجابة التصميم للشاشات الصغيرة
+    --------------------------------- */
+@media (max-width: 992px) {
+    .booking-section-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 15px;
+    }
+    
+    .booking-card {
+        max-width: 100%;
+        margin-bottom: 30px;
+        height: 600px; 
+    }
+    .info-panel {
+        order: -1; 
+        padding: 20px;
+        position: relative; 
+        z-index: 2;
+    }
+    .calendar-grid .day-cell {
+        width: 35px;
+        height: 35px;
+    }
+    .back-btn {
+        left: 15px; /* تم تعديل الاتجاه لـ RTL */
+    }
+}

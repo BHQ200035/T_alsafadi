@@ -162,6 +162,7 @@
 
 
 
+<div id="mouse-cursor"></div>
 
 
 
@@ -414,8 +415,10 @@
 
 
 
-
 <footer class="main-footer">
+
+    <div id="particles-js-footer"></div>
+
     <div class="footer-content-wrapper">
 
         <div class="footer-column company-details">
@@ -447,7 +450,7 @@
         <div class="footer-column service-list-2">
             <h4 class="column-title">خدمات</h4>
             <ul>
-                 <li><a href="#service6">صياغة العقود في السعودية</a></li>
+                <li><a href="#service6">صياغة العقود في السعودية</a></li>
                 <li><a href="#service7">إصدار التراخيص</a></li>
                 <li><a href="#service8">إدارة العقود القانونية للشركات والمؤسسات</a></li>
                 <li><a href="#service9">برامج الإقامة المميزة في السعودية</a></li>
@@ -530,6 +533,100 @@
     <script src="script/scrollnavbar.js"></script>
     <script src="script/togglebuttons.js"></script>
     <script src="script/calender.js"></script> 
+    <script src="script/mousecursor.js"></script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<div id="particles-js"></div> 
+
+    <section class="content-above-particles">
+        </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script src="js/app.js"></script>
+
+<script>
+    // 🌟 استدعاء Particles.js للفوتر 🌟
+    particlesJS('particles-js-footer', {
+        "particles": {
+            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" }, 
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": true },
+            "size": { "value": 2, "random": true }, 
+            "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+            "move": { "enable": true, "speed": 3, "direction": "none", "out_mode": "out" },
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "grab" }, 
+                "onclick": { "enable": true, "mode": "push" }, 
+                "resize": true
+            },
+            "modes": {
+                "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                "push": { "particles_nb": 4 }
+            }
+        },
+        "retina_detect": true
+    });
+
+    // 🌟 استدعاء Particles.js لقسم الحجز 🌟
+    particlesJS('particles-js-booking', {
+        "particles": {
+            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" }, 
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": true },
+            "size": { "value": 2, "random": true }, 
+            "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+            "move": { "enable": true, "speed": 3, "direction": "none", "out_mode": "out" },
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "grab" }, 
+                "onclick": { "enable": true, "mode": "push" }, 
+                "resize": true
+            },
+            "modes": {
+                "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                "push": { "particles_nb": 4 }
+            }
+        },
+        "retina_detect": true
+    });
+</script>
+
 
 
 
