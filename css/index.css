@@ -1,0 +1,2225 @@
+/* ==================================== */
+/* 🎨 1. تعريف متغيرات الألوان (ROOT)   */
+/* ==================================== */
+:root {
+    /* لون الخلفية الأساسي (الأزرق-الرمادي) */
+    --main-color: #6e7c9f;
+    /* لون الخلفية الثانوي (الأبيض) */
+    --light-color: #ffffff;
+    /* لون الخطوط والتفاصيل الثانوية (داكن قليلاً) */
+    --dark-text: #333333; 
+    /* لون النص في الشريط العلوي (أبيض) */
+    --topbar-text: #ffffff;
+    /* لون الزر الرئيسي (Warning) */
+    --btn-warning-color: #ffc107; 
+    --title-color: #49565f;
+    --light-gray-background: #f6f7f9;
+    --dark-blue-hover: #4A607C; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 7. أنماط الأزرار العائمة على اليمين    */
+/* ==================================== */
+
+/* حاوية الأزرار الرئيسية لتثبيتها في الزاوية السفلية اليمنى */
+.pxl-contact-float-wrap {
+    position: fixed;
+    right: 30px; 
+    bottom: 30px; 
+    z-index: 1000; 
+    display: flex; 
+    /* لعرض العناصر عمودياً بترتيب معكوس (زر السهم في الأسفل) */
+    flex-direction: column-reverse; 
+    align-items: flex-end; 
+}
+
+/* الأنماط العامة للزر العائم */
+.pxl-float-btn {
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 1.6rem;
+    color: var(--light-color); 
+    transition: all 0.3s ease;
+    border: none;
+    position: relative; 
+}
+
+/* ---------------------------------------------------- */
+/* التحكم بالمسافات (GAP) للأزرار اليمنى */
+/* ---------------------------------------------------- */
+
+/* مسافة بين حاوية الأزرار الفرعية وزر المراسلة (15px) */
+.pxl-sub-buttons {
+    display: flex;
+    flex-direction: column-reverse; 
+    gap: 10px; 
+    
+    margin-bottom: 15px; 
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* مسافة بين زر المراسلة وزر العودة للأعلى (15px) */
+.main-contact-btn {
+    background-color: var(--main-color); 
+    margin-bottom: 15px; 
+}
+
+/* زر العودة للأعلى لا يحتاج لأي هامش سفلي */
+#backToTopBtn {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; 
+}
+
+/* ---------------------------------------------------- */
+
+/* حالة ظهور الأزرار الفرعية (عند التحويم على الديسكتوب) */
+.pxl-contact-float-wrap:hover .pxl-sub-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* حالة ظهور الأزرار الفرعية (عند الضغط/Click على الجوال - يتم التحكم به بـ JS) */
+.pxl-contact-float-wrap.open .pxl-sub-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* الأنماط الخاصة للأزرار الفرعية */
+.whatsapp-float-btn { background-color: #25d366; } 
+.phone-ahmed-btn,
+.phone-bayan-btn { background-color: #6c757d; } 
+
+
+/* أنماط زر العودة للأعلى (Scroll to Top) */
+.scroll-to-top-btn {
+    background-color: #6c757d; 
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; 
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* حالة ظهور زر العودة للأعلى (يتم التحكم بها بواسطة JavaScript) */
+.scroll-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; 
+}
+
+/* نمط نص التسمية (Label) الذي يظهر بجانب الأزرار عند التحويم */
+.pxl-btn-label {
+    position: absolute;
+    right: 65px; 
+    background-color: var(--light-color);
+    color: var(--dark-text);
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* ظهور التسمية عند التحويم على الزر الفرعي نفسه */
+.pxl-float-btn:hover .pxl-btn-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* إخفاء التسميات على الجوال */
+@media (max-width: 991.98px) {
+    .pxl-btn-label {
+        display: none;
+    }
+}
+
+
+
+
+
+/* ==================================== */
+/* 8. أنماط الأزرار العائمة على اليسار    */
+/* ==================================== */
+
+/* حاوية الأزرار اليسرى لتثبيتها في الزاوية السفلية اليسرى */
+.pxl-left-float-wrap {
+    position: fixed;
+    left: 20px; 
+    bottom: 0px; /* ثبت الحاوية في الأسفل تماماً */
+    z-index: 999; 
+    display: flex;
+    flex-direction: column; 
+    gap: 1px; 
+    align-items: flex-start; 
+    /* 🆕 تفعيل الإخفاء مرة أخرى */
+    overflow: hidden; 
+    /* 🆕 زيادة الارتفاع للسماح بظهور جزء كبير من زر اللغة */
+    height: 120px; /* يمكنك تعديل هذا الرقم (120px) للتحكم في كمية الإخفاء */
+}
+
+/* الأنماط العامة للزر الأيسر */
+.pxl-left-btn {
+    border-radius: 25px; 
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: auto; 
+    cursor: pointer; 
+}
+
+/* 1. زر "حجز استشارة مجانية" (العلوي) */
+.consultation-btn {
+    background-color: rgba(110, 124, 159, 0.85); 
+    color: var(--light-color) !important; 
+    border: none;
+    position: relative; 
+    z-index: 2; 
+    margin-top: 10px;
+}
+
+.consultation-btn:hover {
+    background-color: var(--main-color);
+}
+
+/* 2. زر اللغة (السفلي - الذي يختفي جزئياً) */
+.language-btn {
+    background-color: var(--dark-text); 
+    color: var(--light-color) !important; 
+    border: none;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    
+    /* 🆕 زيادة الهامش الداخلي لزيادة الارتفاع */
+    padding-top: 20px;    
+    padding-bottom: 30px; 
+    
+    /* 🆕 تحريكه لأسفل لإخفاء جزء منه (مثلاً 10px) */
+    transform: translateY(10px); 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* 🆕 عند التحويم، يعود ليظهر بالكامل */
+.language-btn:hover {
+    background-color: #555555; 
+    transform: translateY(0); 
+}
+
+/* نمط أيقونة العلم */
+.language-btn i {
+    font-size: 1.1rem; 
+    margin-left: 10px; 
+    margin-right: 0;
+}
+
+
+
+/* 📱 التجاوب */
+@media (max-width: 767.98px) {
+    .pxl-left-float-wrap {
+        left: 10px; 
+        bottom: 10px; /* ليكون على مسافة مناسبة من الحافة */
+    }
+}
+
+
+
+
+
+
+
+/* ==================================== */
+/* 2. أنماط الشريط العلوي (Top Bar)      */
+/* ==================================== */
+
+/* خلفية الشريط العلوي باللون المطلوب */
+.custom-top-bar-bg {
+    background-color: var(--main-color) !important;
+}
+
+/* تنسيق الروابط والنصوص في الشريط العلوي لتكون بيضاء */
+.top-bar .contact-info a {
+    color: var(--topbar-text) !important;
+    transition: color 0.2s;
+}
+
+.top-bar .contact-info svg,
+.top-bar .contact-info i {
+    color: var(--topbar-text) !important;
+}
+
+.top-bar .contact-info a:hover {
+    color: #cccccc !important; 
+}
+
+/* نمط الأيقونات في دوائر بيضاء */
+.social-icons .social-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    background-color: var(--light-color);
+    color: var(--main-color);
+    margin-left: 5px; 
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.social-icons .social-icon-circle:hover {
+    background-color: #f0f0f0; 
+    color: #5a6681;
+}
+
+
+/* ==================================== */
+/* 4. أنماط النافبار الرئيسي (Main Navbar) */
+/* ==================================== */
+
+.main-navbar {
+padding-top: 25px !important; 
+    padding-bottom: 25px !important;
+    font-size: 1.1rem; 
+}
+
+.navbar-nav .nav-item {
+    padding: 0 10px; 
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.15rem; 
+    padding: 10px 15px !important; 
+}
+
+.navbar-brand {
+    margin-right: 0 !important;
+    margin-left: 0 !important; 
+}
+
+/* أنماط شريط البحث في النافبار الرئيسي */
+.search-desktop-rtl .input-group-text {
+    position: absolute;
+    /* تم عكس اتجاه البحث ليكون الأيقونة على اليسار لـ RTL */
+    right: auto; 
+    left: 10px; 
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.search-desktop-rtl input[type="search"] {
+    height: 45px; 
+    padding-right: 15px !important; /* مساحة للنص في اليمين */
+    padding-left: 35px !important; /* مساحة للأيقونة في اليسار */
+}
+
+/* توسيط القائمة في النافبار الرئيسي على الديسكتوب */
+@media (min-width: 992px) { 
+    .main-navbar .navbar-collapse {
+        justify-content: center;
+        flex-grow: 1; 
+    }
+    .main-navbar .navbar-nav {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* تثبيت النافبار الرئيسي على الجوال فقط */
+@media (max-width: 991.98px) {
+    .main-navbar {
+        position: fixed !important; 
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1030; 
+    }
+}
+
+
+/* ==================================== */
+/* 5. أنماط النافبار الذي يظهر عند التمرير (#scrollRevealNavbar) */
+/* ==================================== */
+
+/* الإخفاء الأولي على الديسكتوب والإخفاء التام على الجوال */
+#scrollRevealNavbar {
+    z-index: 1040; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%); 
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s 0.3s;
+    padding-top: 10px !important; 
+    padding-bottom: 10px !important; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    display: none; 
+}
+
+@media (min-width: 992px) {
+    #scrollRevealNavbar {
+        display: flex !important; /* إظهاره على الديسكتوب ليتم التحكم به بـ JS */
+        padding-top: 15px !important; 
+        padding-bottom: 15px !important;
+    }
+
+    /* حالة الظهور بعد التمرير */
+    #scrollRevealNavbar.navbar-reveal-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); 
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out; 
+    }
+
+    /* تخصيص الروابط في النافبار الثاني (مطابقة للأصلي) */
+    #scrollRevealNavbar .navbar-nav .nav-item {
+        padding: 0 10px; 
+    }
+    #scrollRevealNavbar .navbar-nav .nav-link {
+        font-size: 1.15rem; 
+        padding: 10px 15px !important; 
+    }
+
+    /* أنماط عنصر الاتصال الجديد */
+    .scroll-reveal-contact-info a {
+        color: var(--dark-text) !important;
+    }
+
+    .scroll-reveal-icon-circle {
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50%;
+        border: 1px solid #ccc; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; 
+        background-color: transparent;
+    }
+
+    .scroll-reveal-icon-circle i {
+        font-size: 1rem;
+        color: var(--main-color);
+    }
+    
+    .scroll-reveal-contact-info .text-secondary {
+        color: #6c757d !important;
+        font-weight: normal; 
+    }
+    
+    .scroll-reveal-contact-info .fw-normal {
+        font-weight: normal !important; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 6. أنماط السلايدر (Carousel)          */
+/* ==================================== */
+
+.slider-section {
+    position: relative;
+    overflow: hidden; 
+}
+
+/* 🖼️ أنماط صور Ken Burns 🖼️ */
+.ken-burns-img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover; 
+    position: relative;
+    z-index: 0;
+    /* تطبيق تأثير Ken Burns */
+    animation: kenBurnsZoom 10s ease-in-out infinite alternate;
+}
+
+/* الطبقة الداكنة فوق الصورة/الفيديو لزيادة وضوح النص الأبيض */
+.overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* التدرج اللوني الجديد */
+    background: linear-gradient(to left, 
+                rgba(110, 124, 159, 0.7) 0%, /* 70% شفافية للون الأساسي من اليمين */
+                rgba(110, 124, 159, 0.4) 50%, /* 40% شفافية في المنتصف */
+                rgba(0, 0, 0, 0.2) 75%,    /* 20% شفافية سوداء لدمج أفضل مع الصورة */
+                rgba(0, 0, 0, 0) 100%);  /* شفافية تامة في أقصى اليسار */
+    /* يمكنك استخدام var(--main-color) مباشرة إذا كان المتصفح يدعمها في linear-gradient */
+    /* background: linear-gradient(to left, 
+                var(--main-color) 0%, 
+                rgba(110, 124, 159, 0.4) 50%, 
+                rgba(0,0,0,0.2) 75%, 
+                rgba(0,0,0,0) 100%); */
+}
+
+/* تحديد موضع وحجم النص */
+.carousel-caption {
+    z-index: 2; 
+    bottom: 15%; 
+    top: auto; 
+    right: 5%; 
+    left: auto;
+    width: 50%; 
+    color: white; 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+}
+
+.slider-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+/* 🆕 أنماط زر السلايدر (من Warning إلى أبيض) */
+.carousel-caption .btn-warning {
+    /* الخلفية: أبيض (var(--light-color)) */
+    background-color: var(--light-color) !important;
+    /* النص: داكن (var(--dark-text)) */
+    color: var(--dark-text) !important;
+    /* إزالة أي حدود صفراء قد تظهر */
+    border: 1px solid var(--light-color) !important; 
+    
+    /* زيادة الحجم قليلاً */
+    padding: 10px 30px; 
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    /* 🆕 إلغاء ظل النص */
+    text-shadow: none !important;
+}
+
+/* 🆕 أنماط التحويم (Hover) */
+.carousel-caption .btn-warning:hover {
+    /* عند التحويم، نقلبه إلى لون الخلفية الأساسي أو لون داكن */
+    background-color: var(--main-color) !important;
+    color: var(--light-color) !important;
+    /* إضافة إطار بلون أبيض للحفاظ على المظهر */
+    border-color: var(--light-color) !important; 
+    /* 🆕 إلغاء ظل النص */
+    text-shadow: none !important;
+}
+
+/* ⚙️ تعريف حركة Ken Burns المُحسّنة ⚙️ */
+@keyframes kenBurnsZoom {
+  0% {
+    /* تبدأ الصورة بحجمها الطبيعي وتكون في المنتصف */
+    transform: scale(1) translateX(0%) translateY(0%); 
+    transform-origin: 50% 50%; /* تبدأ الحركة من منتصف الصورة */
+  }
+  100% {
+    /* تكبير 1.15 مرة (15%) وتحريك بسيط لليمين وللأعلى */
+    /* قم بتعديل قيم translateX و translateY بناءً على اتجاه الحركة المرغوب */
+    transform: scale(1.15) translateX(3%) translateY(3%); 
+    transform-origin: 50% 50%; /* تنتهي الحركة في منتصف الصورة تقريباً */
+  }
+}
+
+/* التجاوب: تعديل ارتفاع السلايدر والنص على الشاشات الصغيرة */
+@media (max-width: 991.98px) {
+    .ken-burns-img { 
+        height: 400px; 
+    }
+
+    .carousel-caption {
+        display: block !important; 
+        width: 90%; 
+        right: 5%; 
+        left: 5%;
+        bottom: 10%; 
+        text-align: center !important; 
+    }
+
+    .slider-title {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 9. أنماط قسم عن الشركة (About Section) */
+/* ==================================== */
+
+.pxl-about-section {
+    background-color: var(--light-gray-background); /* لون خلفية القسم (رمادي فاتح جداً) */
+}
+
+.pxl-section-subtitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--main-color); /* لون العنوان الفرعي (الأزرق الرمادي) */
+    position: relative;
+    padding-right: 25px; /* مسافة لخط التأكيد */
+}
+
+.pxl-section-subtitle::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; /* طول الخط */
+    height: 2px; /* سماكة الخط */
+    background-color: var(--main-color); /* لون الخط */
+}
+
+.pxl-section-title {
+    font-size: 2.5rem; /* حجم الخط الرئيسي */
+    font-weight: bold;
+color: var(--title-color);
+    line-height: 1.4;
+}
+
+.pxl-description-text {
+    font-size: 1.1rem;
+    color: var(--gray-text); /* لون النص الوصفي (رمادي أغمق قليلاً) */
+    line-height: 1.8;
+    text-align: right;
+}
+
+/* 🆕 أنماط الزر "من نحن" */
+.pxl-primary-btn {
+    background-color: var(--main-color);
+    color: var(--light-color);
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.pxl-primary-btn:hover {
+    background-color: var(--btn-warning-color); /* لون أغمق عند التحويم */
+}
+/* التجاوب */
+@media (max-width: 991.98px) {
+    .pxl-section-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    .pxl-section-subtitle {
+        text-align: center;
+        padding-right: 0;
+    }
+    .pxl-section-subtitle::before {
+        display: none; /* إخفاء الخط على الشاشات الصغيرة */
+    }
+    
+    /* توسيط العمود الأول (الذي يحتوي على العنوان) */
+    .pxl-about-section .col-lg-6:first-child {
+        text-align: center !important; 
+    }
+    
+    /* 🆕 توسيط العمود الثاني (الذي يحتوي على النص الوصفي وزر "من نحن") */
+    .pxl-about-section .col-lg-6:last-child {
+        text-align: center !important; 
+    }
+    
+    /* 🆕 التأكد من توسيط النص الوصفي نفسه */
+    .pxl-description-text {
+        text-align: center; 
+    }
+}
+
+
+
+
+
+
+
+/* ==================================== */
+/* 10. أنماط قسم الصور المتجاورة        */
+/* ==================================== */
+
+.pxl-image-grid-section {
+    /* للحصول على مساحة كافية بين الأقسام */
+    padding-top: 50px; 
+    padding-bottom: 50px;
+}
+
+/* بطاقة الصورة (الإطار الأبيض المستطيل) */
+.pxl-image-card {
+    background-color: var(--light-color); /* خلفية بيضاء */
+    border-radius: 10px; /* زوايا مستديرة للإطار الأبيض */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ظل خفيف للإطار */
+    overflow: hidden; 
+    
+    /* 🔑 الارتفاع الكبير لجعل المستطيل أكبر */
+    height: 400px; /* تم تعديل الارتفاع إلى 400px */
+    
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* الأنماط المطبقة على الصورة داخل البطاقة */
+.pxl-rounded-img {
+    width: 100%;
+    /* 🔑 الصورة تملأ الارتفاع المتاح لبطاقتها */
+    height: 100%; 
+    display: block;
+    border-radius: 5px; 
+    /* لضمان تغطية الصورة للمستطيل دون تشوه */
+    object-fit: cover; 
+}
+
+/* تأثير التحويم */
+.pxl-image-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* ظل أثقل عند التحويم */
+    transform: translateY(-3px); /* حركة رفع طفيفة */
+}
+
+/* التجاوب (ضبط الارتفاع على الأجهزة الأصغر) */
+@media (max-width: 991.98px) {
+    .pxl-image-grid-section {
+        padding-top: 30px; 
+        padding-bottom: 30px;
+    }
+    .pxl-image-card {
+        /* ارتفاع مناسب على الجوال */
+        height: 300px; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 11. أنماط قسم الخدمات */
+/* ==================================== */
+
+.pxl-services-section {
+    background-color: var(--light-gray-background); 
+    padding: 80px 0;
+}
+
+/* إلغاء الخط الجانبي للعنوان الفرعي المُتوسّط */
+.pxl-services-section .pxl-section-subtitle {
+    padding-right: 0 !important; 
+    position: static;
+}
+.pxl-services-section .pxl-section-subtitle::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* الأنماط العامة لبطاقة الخدمة */
+.pxl-service-card {
+    background-color: var(--light-color); 
+    padding: 30px;
+    border-radius: 15px; /* الحواف الأساسية */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+    text-align: right; 
+    height: 100%; 
+    transition: all 0.3s ease;
+    border: 1px solid transparent; 
+    position: relative;
+    overflow: hidden; /* لإخفاء السهم عند التحرك */
+}
+
+/* 🔑 تأثير التحويم على البطاقة (مُعدّل) */
+.pxl-service-card:hover {
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15); /* ظل أكبر */
+    transform: translateY(-8px); /* رفع البطاقة أكثر */
+    border-color: var(--main-color); 
+    
+    /* 🆕 التعديل المطلوب: جعل الزاوية السفلية اليمنى دائرية أكثر عند التحويم */
+    border-bottom-right-radius: 50px; 
+}
+
+/* تغيير لون خلفية الأيقونة عند التحويم */
+.pxl-service-card:hover .pxl-card-icon {
+    background-color: var(--main-color);
+    color: var(--light-color);
+}
+
+/* نمط الأيقونة داخل البطاقة */
+.pxl-card-icon {
+    font-size: 2.5rem;
+    color: var(--main-color); 
+    width: 65px;
+    height: 65px;
+    background-color: rgba(110, 124, 159, 0.1); 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 0; 
+    margin-left: auto; 
+    transition: all 0.3s ease;
+}
+
+/* نمط العنوان والوصف */
+.pxl-card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--title-color); 
+    margin-bottom: 10px;
+}
+.pxl-card-description {
+    font-size: 1rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+}
+
+/* نمط زر "المزيد من خدماتنا" */
+.pxl-services-section .pxl-primary-btn {
+    margin-top: 20px;
+}
+
+/* 🔑 أنماط أيقونة السهم في أسفل البطاقة (مُعدّلة) */
+.pxl-card-arrow {
+    position: absolute;
+    bottom: 0px; /* 🆕 موضع السهم في الزاوية تماماً */
+    right: 0px; /* 🆕 نقل السهم إلى الزاوية اليمنى السفلية */
+    left: auto; /* التأكد من إلغاء الخاصية اليسرى */
+    width: 50px;
+    height: 50px;
+    background-color: rgba(110, 124, 159, 0.1); 
+    color: var(--main-color); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    
+    /* تحديد شكل السهم ليغطي الزاوية المدورة */
+    border-top-left-radius: 50%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 15px; /* يجب أن يكون مساوياً لتدوير البطاقة الأساسي */
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(10px, 10px); /* تحريكه للخارج في البداية */
+    transition: all 0.3s ease;
+    z-index: 2; /* للتأكد من ظهوره فوق العناصر الأخرى */
+}
+
+/* 🔑 ظهور أيقونة السهم عند التحويم على البطاقة (مُعدّلة) */
+.pxl-service-card:hover .pxl-card-arrow {
+    opacity: 1; 
+    visibility: visible; 
+    transform: translate(0, 0); /* يصعد لمكانه الأصلي */
+    background-color: var(--main-color);
+    color: var(--light-color);
+    
+    /* 🆕 تعديل شكل السهم ليغطي الزاوية المدورة الجديدة للبطاقة (50px) */
+    border-bottom-right-radius: 50px; 
+}
+
+/* تأثير تحويم إضافي على السهم نفسه */
+.pxl-card-arrow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* التجاوب */
+@media (max-width: 767.98px) {
+    .pxl-services-section {
+        padding: 50px 0;
+    }
+    .pxl-service-card {
+        text-align: center;
+    }
+    .pxl-card-icon {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 1. أنماط شريط الاتصال العلوي */
+/* ==================================== */
+
+
+.pxl-contact-bar {
+    background-color: #5d7494; /* اللون الأزرق الرمادي الداكن في الصورة */
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    padding: 50px 30px;
+    margin-bottom: 50px;
+    direction: rtl;
+    gap: 10%;
+    justify-content: center;
+
+    
+}
+
+.pxl-contact-text {
+    color: var(--light-color, #ffffff);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.pxl-phone-link {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 30px 50px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pxl-phone-number {
+    color: var(--light-color, #ffffff);
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+
+.pxl-phone-link .fas {
+    color: var(--light-color, #ffffff);
+    font-size: 1.1rem;
+}
+.pxl-phone-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==================================== */
+/* 2. أنماط قسم الإحصائيات والأرقام */
+/* ==================================== */
+
+.pxl-stats-row {
+    direction: rtl;
+    text-align: center;
+    margin-top: 12%;
+}
+
+.pxl-stat-item {
+    display: flex;
+    justify-content: center;
+    /* لضمان موضع صحيح للدائرة الصغيرة (stat-icon-wrapper) */
+    position: relative; 
+    height: 100%;
+}
+
+/* الدائرة البيضاء الكبيرة (الخلفية) */
+.pxl-stat-circle {
+    width: 280px;
+    height: 280px;
+    background-color: var(--light-color, #ffffff);
+    border-radius: 50%;
+    border: 1px solid var(--light-gray-background, #f6f7f9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* ظل خفيف */
+}
+
+/* محتوى الأرقام والنصوص */
+.pxl-stat-content {
+    text-align: center;
+}
+
+.pxl-stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--main-color, #2c3e50);
+    margin-bottom: 0px;
+    line-height: 1;
+}
+
+.pxl-stat-label {
+    font-size: 1.1rem;
+    color: var(--gray-text, #666666);
+    margin-top: 5px;
+}
+
+/* **الدائرة الأيقونية الصغيرة (تأثير 'فقاعة' الأيقونة)** */
+.pxl-stat-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background-color: var(--light-color, #ffffff);
+    border-radius: 50%;
+    border: 5px solid var(--main-color); /* الحدود الزرقاء/الفيروزية */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -15px; /* موضعها فوق الدائرة الكبيرة */
+    right: 25px; /* موضعها في الزاوية العلوية اليمنى للدائرة */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+.pxl-stat-icon-wrapper .fas {
+    color: var(--main-color);
+    font-size: 1.5rem;
+}
+
+/* التجاوب لشاشات الجوال */
+@media (max-width: 992px) {
+    .pxl-contact-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+            border-radius: 50px;
+    }
+
+    .pxl-stat-circle {
+        width: 250px;
+        height: 250px;
+    }
+    .pxl-stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --primary-color: #4b6cb7; /* اللون الأزرق الأساسي */
+    --light-primary: #6c8cdb;
+    --dark-primary: #3a5390;
+    --selected-color: #4b6cb7;
+    --border-color: #eee;
+    --text-color: #333;
+    --header-color: #888;
+    --light-color: #f7f7f7; 
+    --title-color: #333; 
+    --light-gray-background: #f6f7f9; 
+}
+
+
+/* =========================================
+   التنسيق العام والحاوية الرئيسية
+   ========================================= */
+.booking-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px;
+    direction: rtl; 
+    background: var(--main-color); 
+    gap: 30px;
+    min-height: 100vh;
+    margin-top: 90px;
+}
+
+.info-panel {
+    flex: 1;
+    max-width: 600px;
+    padding: 40px;
+}
+
+.info-icon {
+    display: inline-block;
+    border: 1px solid var(--light-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 1rem;
+    color: var(--light-color);
+    margin-bottom: 20px;
+}
+
+.info-title {
+    font-size: 2.5rem;
+    color: var(--light-color);
+    margin-bottom: 20px;
+}
+
+.info-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--light-color);
+}
+
+
+/* =========================================
+   بطاقة الحجز (Booking Card)
+   ========================================= */
+.booking-card {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    
+    max-width: 600px; 
+    
+    /* الارتفاع المُعدَّل: لعرض كل المحتوى العُلوي وإخفاء شريط المنطقة الزمنية */
+    height: 500px; 
+    
+    overflow-y: auto; /* تفعيل التمرير */
+    overflow-x: hidden; 
+    
+    position: relative;
+    direction: ltr; /* اتجاه التقويم */
+}
+
+/* ---------------------------------
+   رأس البطاقة وتفاصيل الاجتماع
+   --------------------------------- */
+.card-header {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+}
+
+.service-name {
+    font-size: 1rem;
+    color: gray;
+    text-align: center; 
+}
+
+.meeting-details {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.meeting-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.duration {
+    display: flex;
+    color: gray;
+    font-size: 0.9rem;
+    justify-content: center;
+}
+
+.duration svg {
+    margin-inline-end: 5px;
+    stroke: gray; 
+}
+
+
+/* ---------------------------------
+   محدد التاريخ (التقويم)
+   --------------------------------- */
+.date-selector {
+    padding: 20px;
+    /* 💡 لترك مساحة للشريط الثابت حتى لا يغطي المحتوى */
+    padding-bottom: 70px; 
+}
+
+.selector-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    /* 💡 التعديل: إضافة مسافة جانبية لتقليل العرض الداخلي */
+    padding: 0 15px; /* 15px مسافة من اليمين واليسار */
+}
+
+.calendar-header .nav-btn {
+    /* ... لا تغيير في الحجم أو اللون ... */
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 5px 10px;
+}
+
+.calendar-header .current-month {
+    font-weight: bold;
+    color: var(--text-color);
+    /* 💡 ضمان بقاء النص في المنتصف */
+    text-align: center; 
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+    
+    /* 💡 التعديل: تطبيق نفس المسافة الجانبية وضبط العرض */
+    padding: 0 10px; 
+    max-width: 400px; /* تحديد أقصى عرض للشبكة نفسها */
+    margin: 0 auto; /* توسيط الشبكة بالكامل داخل .date-selector */
+}
+
+/* 🚀 تنسيق رؤوس الأيام (day-label) 🚀 */
+.day-label {
+    font-size: 0.9rem; 
+    font-weight: bold;
+    color: var(--header-color); 
+    padding: 5px 0;
+    border: none;
+}
+
+.day-cell {
+    display: flex;
+    justify-content: center; /* توسيط أفقي */
+    align-items: center;     /* توسيط عمودي */
+    
+    /* 💡 تقليل حجم الخلية قليلاً لتوفير مساحة إضافية */
+    width: 35px;
+    height: 35px;
+    
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s;
+    margin: 2px auto; /* لضمان التوسيط التلقائي داخل الخلية في الشبكة */
+}
+
+.day-cell.date.available {
+    color: var(--text-color);
+    border: 1px solid #ccc;
+}
+
+.day-cell.date.selected {
+    background-color: var(--selected-color);
+    color: #fff;
+    border: 1px solid var(--selected-color);
+    font-weight: bold;
+}
+
+.day-cell.date.disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+
+/* ---------------------------------
+   تثبيت المنطقة الزمنية (Position Sticky) - مُعدَّل
+   --------------------------------- */
+.timezone-selection {
+    padding: 10px 20px 20px;
+    border-top: 1px solid var(--border-color);
+    
+    position: sticky;
+    /* 💡 التعديل: يلتصق بالأعلى */
+    top: 0; 
+    
+    background-color: #fff; 
+    z-index: 10; 
+    /* 💡 التعديل: الظل يكون في الأسفل */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+}
+
+.timezone-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.timezone-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-gray-background); 
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-align: right;
+    direction: rtl; 
+}
+
+
+/* ---------------------------------
+   تنسيقات واجهات الوقت والتفاصيل
+   --------------------------------- */
+.time-selector, .details-form {
+    padding: 20px;
+    /* 💡 إضافة padding-top هنا مهمة إذا كانت هذه الواجهات تبدأ مباشرة */
+    padding-top: 70px; /* لترك مساحة لشريط المنطقة الزمنية عندما يلتصق */
+    padding-bottom: 70px; 
+}
+
+.back-link-container {
+    position: relative;
+    text-align: center; 
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    position: absolute; 
+    top: 50%;
+    right: 0; 
+    transform: translateY(-50%); 
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#selected-date-display, #selected-time-display {
+    display: block; 
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin-right: 40px; 
+}
+
+.duration-text {
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.time-slots-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-height: 250px; 
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+.time-slot-btn {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.time-slot-btn:hover:not(.selected-time) {
+    background-color: var(--light-primary);
+    color: white;
+}
+
+.time-slot-btn.selected-time {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* تنسيقات نموذج التفاصيل */
+.details-form form {
+    padding: 10px 0;
+}
+.details-form input[type="text"],
+.details-form input[type="email"],
+.details-form input[type="tel"],
+.details-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    direction: rtl;
+    text-align: right;
+}
+
+.schedule-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.schedule-btn:hover {
+    background-color: var(--dark-primary);
+}
+
+
+/* ---------------------------------
+   القائمة المنبثقة للمناطق الزمنية
+   --------------------------------- */
+.timezone-dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 1000;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+.timezone-dropdown {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow: hidden;
+    direction: ltr; 
+}
+
+.timezone-search-container {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.timezone-search-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: left;
+    direction: ltr;
+}
+
+.timezone-list-container {
+    max-height: 350px; 
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timezone-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.timezone-list-item:hover, .timezone-list-item.selected {
+    background-color: var(--light-gray-background);
+    font-weight: bold;
+}
+
+.timezone-list-item .time-24h {
+    color: gray;
+    font-weight: normal;
+}
+
+.dropdown-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.dropdown-footer button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* ---------------------------------
+   استجابة التصميم للشاشات الصغيرة
+   --------------------------------- */
+@media (max-width: 992px) {
+    .booking-section-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 15px;
+    }
+    
+    .booking-card {
+        max-width: 100%;
+        margin-bottom: 30px;
+        /* الارتفاع في الجوال */
+        height: 600px; 
+    }
+    .info-panel {
+        order: -1; 
+        padding: 20px;
+    }
+    .calendar-grid .day-cell {
+        width: 35px;
+        height: 35px;
+    }
+    .back-btn {
+        right: 15px; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   تنسيقات قسم المشاريع (Featured Projects)
+   ========================================================= */
+.featured-projects-section {
+    padding: 60px 20px; 
+    direction: rtl; 
+    text-align: center;
+    background-color: var(--gray-color);
+}
+
+
+
+/* حاوية السلايدر */
+.slider-container {
+    position: relative;
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   تنسيقات بطاقات المشاريع
+   ========================================================= */
+.slick-projects-slider .project-card {
+  margin: 0 15px;  
+  box-sizing: border-box; 
+}
+
+.project-card {
+    text-align: right;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+
+.project-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); 
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%; 
+
+}
+
+
+
+
+/* =========================================================
+   التحكم بـ أسهم Slick Slider (إظهار دائم على الشاشات الكبيرة)
+   ========================================================= */
+
+/* تنسيق الأسهم (اللون والحجم) */
+.slick-prev:before, 
+.slick-next:before {
+    font-size: 30px; 
+    color: var(--main-color); 
+    opacity: 1 !important; 
+}
+
+/* تحديد مواقع الأسهم وضمان ظهورها الدائم */
+.slick-prev { 
+    right: 0px; 
+    left: auto; 
+    z-index: 10;
+    opacity: 1 !important; 
+    visibility: visible !important;
+    
+}
+.slick-next { 
+    left: 0px; 
+    right: auto; 
+    z-index: 10;
+    opacity: 1 !important; 
+    visibility: visible !important;
+}
+
+
+
+
+
+/* ----------------------------------------------------
+   التجاوبية (Responsive) - إخفاء الأسهم على الشاشات الصغيرة
+   ---------------------------------------------------- */
+
+@media (max-width: 992px) {
+    /* إخفاء نهائي للأسهم على الأجهزة اللوحية والهواتف */
+    .slick-prev,
+    .slick-next {
+        display: none !important; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.next-level-section {
+    /* خلفية المقطع الخارجي */
+    padding: 50px 20px;
+    direction: rtl; 
+    font-family: 'Arial', sans-serif; 
+    background-color: var(--light-gray-background);
+}
+
+.card-container {
+    /* خلفية البطاقة الكبيرة: تستخدم اللون الأساسي الداكن */
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    max-width: 1000px;
+    margin: 0 auto;
+
+    /* 🟢 أساسي: تحديد البطاقة كمرجع للتموضع المطلق للصورة البارزة */
+    position: relative; 
+    height: 350px; /* ارتفاع ثابت للبطاقة */
+    
+    background-color: var(--main-color); 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    /* 💥 التعديل هنا: إزالة overflow: hidden للسماح بالبروز من الأعلى */
+    /* overflow: hidden; */ 
+
+    /* إضافة الصورة كخلفية هنا (لشاشات الجوال أو في حالة عدم وجود الصورة البارزة) */
+    background-image: url('https://alsafadi.sa/wp-content/uploads/2024/07/banner-Obj-3.png');
+    background-size: auto 70%; 
+    background-repeat: no-repeat;
+    background-position: top -30px left 1px; 
+}
+
+/* قم بإزالة أي كود يتعلق بالخلفية من .text-content::before أو .image-content */
+.text-content::before {
+    /* قم بإزالة هذا القسم إذا كنت قد أضفته */
+    content: none;
+}
+
+/* 1. تنسيق المحتوى النصي */
+.text-content {
+    flex: 0 0 40%; 
+    padding: 120px 40px 120px 40px; 
+    
+    color: var(--light-color); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 11; 
+    margin-right: 40%;
+}
+
+.main-question {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--light-color); 
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.description-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.contact-btn {
+    background-color: var(--light-color); 
+    color: var(--dark-text); 
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: fit-content;
+    transition: opacity 0.3s;
+}
+
+.contact-btn:hover {
+    opacity: 0.85; 
+}
+
+/* 2. تنسيق قسم الصورة (الأبراج) */
+.image-content {
+    flex: 0 0 60%; 
+    
+    /* 💥 التعديل 1: زيادة min-height لجعلها تبرز أكثر */
+    min-height: 450px; /* ارتفاع كلي للصورة، أكبر من ارتفاع البطاقة بـ 100px */
+    
+    background-size: cover; 
+    background-position: center center;
+    
+    position: absolute; 
+    
+    /* 💥 التعديل 2: رفع الصورة لأعلى للسماح بالبروز */
+    top: -140px; /* رفع الصورة 100 بكسل فوق البطاقة */
+    right: 0;
+    
+    width: 49%; /* العرض الفعلي لـ image-content */
+    
+    background-color: transparent; 
+    
+    z-index: 10;
+}
+
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    /* 💥 التعديل 3: استدارة للزوايا العلوية لتتناسب مع بروزها */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    /* لا نحتاج لـ overflow: hidden على البطاقة، بل نعتمد على ارتفاع الصورة وموقعها */
+}
+
+/* تصميم الاستجابة (Responsive Design) */
+/* -------------------------------------- */
+@media (max-width: 992px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        /* إعادة overflow: hidden في الجوال إذا كانت الخلفية ستختفي وتصبح الصورة جزءًا من التدفق */
+        overflow: hidden; 
+        
+        background-image: none !important; 
+        
+        height: auto; 
+        min-height: auto;
+        padding-bottom: 30px; 
+    }
+    .text-content {
+        order: 2; 
+        flex: unset; 
+        
+        /* 💥 التعديل الحاسم 1: توسيط النص بالكامل */
+        text-align: center; 
+        
+        /* ضبط الحشو ليتناسب مع الجوال */
+        padding: 40px 25px 40px 25px; 
+        
+        margin-top: 0; 
+        
+        width: 100%; 
+        margin-left: 40%;
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px;
+    }
+    
+    .main-question {
+        font-size: 1.8rem;
+    }
+
+
+    
+    .contact-btn {
+        /* 💥 التعديل الحاسم 2: توسيط الزر (العنصر من نوع inline-block) */
+        width: fit-content; 
+        margin: 0 auto; /* هامش تلقائي من اليمين واليسار لتوسيطه */
+    }
+    
+
+    
+    /* التأكد من أن قسم الصورة (image-content) يظهر بشكل جيد في الجوال */
+    .image-content {
+        order: 1; 
+        flex: unset;
+        width: 100%;
+        min-height: 250px; 
+        position: relative; 
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: auto; 
+    }
+
+    /* ضمان أن صورة الأبراج (saudi.webp) تظهر داخل image-content في وضع الجوال */
+    .image-content .card-image {
+        display: block;
+        border-radius: 15px 15px 0 0; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-footer {
+    background-color: var(--main-color);
+    color: var(--light-color);
+    padding: 50px 20px 0;
+    direction: rtl; /* اتجاه عربي */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+}
+
+.footer-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-column {
+    flex: 1; 
+    padding: 0 15px;
+    min-width: 200px;
+    /* 🌟 التعديل 1: محاذاة النص لليمين افتراضياً لكل الأعمدة */
+    text-align: right; 
+}
+
+.column-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--light-color);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.column-title::after {
+    content: '';
+    position: absolute;
+    /* 🌟 التأكد من أن الخط يبدأ من اليمين (0) */
+    right: 0; 
+    bottom: -10px;
+    width: 30px;
+    height: 3px;
+    background-color: var(--btn-warning-color);
+}
+
+/* تنسيق القوائم والروابط */
+.contact-list, .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li, .footer-column li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5; 
+}
+
+.footer-column a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block; 
+    /* 🌟 التأكد من محاذاة الروابط التي تحوي display: block لليمين */
+    text-align: right; 
+}
+
+.footer-column a:hover {
+    color: var(--dark-blue-hover);
+}
+
+/* تنسيق أيقونات التواصل داخل الروابط */
+.contact-list a i {
+    margin-inline-end: 10px;
+    color: var(--btn-warning-color);
+    transition: color 0.3s;
+}
+
+/* تنسيق أيقونات التواصل */
+.contact-list i {
+    margin-inline-end: 10px;
+    color: var(--btn-warning-color);
+}
+
+/* تنسيق عمود تفاصيل الشركة (العمود الأخير) */
+.company-details {
+    /* هذه القاعدة صحيحة وتؤكد المحاذاة لليمين */
+    text-align: right; 
+}
+
+.footer-logo {
+    width: 60px; 
+    margin-bottom: 15px;
+}
+
+.company-name {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.company-text {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.company-reg {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--light-color);
+    border-radius: 50%;
+    margin-inline-end: 10px;
+    color: var(--light-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--btn-warning-color);
+    border-color: var(--btn-warning-color);
+    color: var(--dark-text);
+}
+
+/* قسم حقوق النشر السفلي */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    font-size: 0.85rem;
+}
+
+.highlight-text {
+    color: var(--btn-warning-color);
+    font-weight: bold;
+}
+
+/* استجابة التصميم */
+@media (max-width: 992px) {
+    .footer-content-wrapper {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .footer-column {
+        flex-basis: 45%; 
+        margin-bottom: 30px;
+        /* 🌟 تأكيد المحاذاة لليمين هنا */
+        text-align: right;
+    }
+    
+    .company-details {
+        flex-basis: 100%; 
+        /* 🌟 التأكد من أن العمود الأخير يبقى لليمين وليس في المنتصف */
+        text-align: right;
+    }
+    
+    /* ❌ إزالة قاعدة توسيط الخط تحت العنوان في هذا التوقف */
+    /*
+    .column-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    */
+
+    .footer-bottom {
+        flex-direction: column;
+        /* 🌟 تغيير محاذاة الجزء السفلي من المنتصف إلى اليمين */
+        text-align: right; 
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-column {
+        flex-basis: 100%; 
+        padding: 0;
+        /* 🌟 تأكيد المحاذاة لليمين في الشاشات الأصغر */
+        text-align: right;
+    }
+    
+    /* ❌ إزالة قاعدة توسيط الخط تحت العنوان في هذا التوقف */
+    /*
+    .column-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    */
+    
+    /* ❌ إزالة قاعدة توسيط الأعمدة الأخرى (غير عمود الشركة) */
+    /*
+    .footer-column:not(.company-details) {
+        text-align: center;
+    }
+    */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

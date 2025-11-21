@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> مقالات - Bootstrap RTL</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="css/blogs.css"> 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+ 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+
+</head>
+  <body>
+
+
+
+
+<nav id="scrollRevealNavbar" class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top scroll-navbar-initial-hidden">
+    <div class="container-fluid container">
+        
+        
+        <a class="navbar-brand p-0 order-lg-1" href="index.html"> 
+            <img src="image/logo.png" alt="الشعار" height="50"> 
+        </a>
+
+        
+        <div class="collapse navbar-collapse order-lg-2" id="scrollRevealMainNavbarCollapse"> 
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 custom-nav-center"> 
+                <li class="nav-item"><a class="nav-link fw-bold" href="index.html">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold"href="aboutus.html">من نحن</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="service.html"> خدماتنا</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold active" aria-current="page" href="#">المقالات</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="contactus.html">تواصل معنا</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="#">English</a></li>
+            </ul>
+        </div>
+
+<div class="d-none d-lg-flex align-items-center order-lg-3 scroll-reveal-contact-info"> 
+    
+    <a href="tel:+966533346431" class="text-decoration-none d-flex align-items-center text-dark gap-3">
+        
+        <div class="scroll-reveal-icon-circle"> 
+            <i class="fa-solid fa-phone "></i>
+        </div>
+        
+        <div class="text-end"> 
+            <div class="text-secondary" style="line-height: 1.2;">اتصل بنا في اي وقت</div>
+            <div class="fw-normal text-dark" style="line-height: 1.2;">+966533346431</div>
+        </div>
+        
+    </a>
+</div>
+        
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" dir="rtl">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">قائمة التصفح</h5>
+            <button type="button" class="btn-close me-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item"><a class="nav-link fw-bold" href="index.html">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold "href="aboutus.html">من نحن</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="service.html">خدماتنا </a></li>
+                <li class="nav-item"><a class="nav-link fw-bold active" aria-current="page" href="#">المقالات</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="contactus.html">تواصل معنا</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="#">English</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="top-bar d-none d-lg-block border-bottom custom-top-bar-bg">
+        <div class="container d-flex justify-content-between align-items-center py-2">
+            
+            <div class="contact-info d-flex align-items-center">
+                
+                <span class="me-3 text-white">
+                    <i class="fa-solid fa-phone text-white me-1"></i>
+                    <a href="tel:+966533346431" class="text-decoration-none text-white fw-bold me-1">966533346431+</a>
+                </span>
+
+                <span class="me-3 text-white">
+                    <i class="fa-solid fa-envelope text-white me-1"></i>
+                    <a href="mailto:info@alsafadi.sa" class="text-decoration-none text-white fw-bold">info@alsafadi.sa</a>
+                </span>
+            </div>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon-circle">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon-circle">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon-circle">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top main-navbar">
+        <div class="container-fluid container">
+            
+            <button class="navbar-toggler order-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="d-none d-lg-block order-lg-3"> 
+                <form class="d-flex" role="search">
+                    <div class="input-group search-desktop-rtl">
+                        <input class="form-control rounded-pill text-end" type="search" placeholder="ابحث هنا" aria-label="Search" style="width: 200px;">
+                        <span class="input-group-text bg-white border-0 rounded-pill p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.085.122l3.22 3.22a1 1 0 0 0 1.415-1.414l-3.22-3.22a.96.96 0 0 0-.122-.085zm-5.142 1.6a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11"/>
+                            </svg>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+            <a class="navbar-brand p-0 order-lg-1" href="index.html"> 
+                <img src="image/logo.png" alt="الشعار" height="50">
+            </a>
+
+            <div class="collapse navbar-collapse order-lg-2" id="mainNavbar"> 
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 custom-nav-center"> 
+                <li class="nav-item"><a class="nav-link fw-bold" href="index.html">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold "href="aboutus.html">من نحن</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="service.html">خدمانتا </a></li>
+                <li class="nav-item"><a class="nav-link fw-bold active" aria-current="page" href="#">المقالات</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="contactus.html">تواصل معنا</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">English</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+<section class="about-us-hero">
+    <div class="container">
+        <h1 class="hero-title">المقالات </h1>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="articles-section">
+    <div class="container">
+
+        <div class="articles-grid">
+            
+            <a href="article-details-page-1.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog1.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">يناير 9, 2025</span>
+                        <h3 class="article-title">كيفية عمل شركة بنظام الاستثمار الجديد بالشراكة مع شريك أجنبي</h3>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="article-details-page-2.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog2.webp" alt="صورة المقالة" class="card-image"> 
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">فبراير 9, 2025</span>
+                        <h3 class="article-title">كيفية تأسيس شركة أجنبية مملوكة بالكامل في السعودية بنجاح</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="article-details-page-3.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog3.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">فبراير 17, 2025</span>
+                        <h3 class="article-title">دليل شامل لتأسيس الشركات الخليجية في السعودية: الخطوات والمتطلبات</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="article-details-page-4.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog4.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">مارس 1, 2025</span>
+                        <h3 class="article-title">أهمية صياغة العقود القانونية للشركات: دليلك لتجنب النزاعات وحماية الحقوق</h3>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="article-details-page-5.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog5.webp" alt="صورة المقالة" class="card-image"> 
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">أبريل 10, 2025</span>
+                        <h3 class="article-title">حماية المنشآت من المخالفات والغرامات: أفضل النصائح والحلول للشركات في السعودية</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="article-details-page-6.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog6.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">مايو 5, 2025</span>
+                        <h3 class="article-title">فتح فرع جديد لشركتك في السعودية: الإرشادات والخطوات الأساسية</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="article-details-page-7.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog7.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">يونيو 20, 2025</span>
+                        <h3 class="article-title">دور فريق الموارد البشرية المتكامل في تحسين كفاءة الشركات والمؤسسات بالسعودية</h3>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="article-details-page-8.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog8.webp" alt="صورة المقالة" class="card-image"> 
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">يوليو 1, 2025</span>
+                        <h3 class="article-title">إدارة الشؤون القانونية في السعودية: دورها في تعزيز النمو وتقليل المخاطر</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="article-details-page-9.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog9.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">أغسطس 15, 2025</span>
+                        <h3 class="article-title">إصدار التراخيص التجارية في السعودية: المتطلبات والخطوات لتجنب التأخير</h3>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="article-details-page-10.html" class="article-card-link"> 
+                <div class="article-card">
+                    <div class="card-image-wrapper">
+                        <img src="image/blog10.webp" alt="صورة المقالة" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="article-date">سبتمبر 10, 2025</span>
+                        <h3 class="article-title">برنامج الإقامة المميزة: فرص للمستثمرين بالسعودية</h3>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="content-card2">
+                <h2>أطلق العنان لإمكانيات عملك في المملكة العربية السعودية</h2>
+                <p>هل أنت مستعد لترك بصمتك؟ مع خدمات الصفدي للنمو التجاري، يمكنك التركيز على طموحاتك التجارية بينما نتولى نحن التعقيدات المتعلقة بالإعداد والامتثال والنمو.</p>
+                <p>تمنحك خبرتنا من التنقل بثقة في السوق السعودي.</p>
+                <a href="#" class="btn-contact">تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="main-footer">
+    <div class="footer-content-wrapper">
+
+        <div class="footer-column company-details">
+            <img src="image/logowhite.png" alt="شعار SBS" class="footer-logo">
+            <h4 class="company-name">شركة الصفدي لخدمات الأعمال</h4>
+            <p class="company-text">شركة مرخصة من وزارة الإستثمار</p>
+            <p class="company-reg">الرقم الموحد: 920031465</p>
+            <p class="company-reg">الرقم العام: 102074664335587</p>
+            <p class="company-reg">رقم السجل التجاري: 1009131050</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+
+        <div class="footer-column service-list-1">
+            <h4 class="column-title">خدماتنا</h4>
+            <ul>
+                <li><a href="#service1">تأسيس شركة خليجية في السعودية</a></li>
+                <li><a href="#service2">تأسيس الشركات الأجنبية 100%</a></li>
+                <li><a href="#service3">تأسيس الشركات بشريك أجنبي</a></li>
+                <li><a href="#service4">فتح فرع لشركة قائمة</a></li>
+                <li><a href="#service5">خدمة حماية المصنفات من المخالفات والغرامات في السعودية</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column service-list-2">
+            <h4 class="column-title">خدمات</h4>
+            <ul>
+                 <li><a href="#service6">صياغة العقود في السعودية</a></li>
+                <li><a href="#service7">إصدار التراخيص</a></li>
+                <li><a href="#service8">إدارة العقود القانونية للشركات والمؤسسات</a></li>
+                <li><a href="#service9">برامج الإقامة المميزة في السعودية</a></li>
+                <li><a href="#service10">خدمة فريق موارد بشرية متكامل لإدارة الشركات والمؤسسات</a></li>
+            </ul>
+        </div>
+
+
+        <div class="footer-column contact-info">
+            <h4 class="column-title">معلومات التواصل</h4>
+            <ul class="contact-list">
+                <li><a href="mailto:info@alafadi.sa"><i class="fas fa-envelope"></i> info@alafadi.sa</a></li>
+                <li><a href="#map-location"><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</a></li>
+                <li><a href="tel:+966533346431"><i class="fas fa-phone-alt"></i> 966533346431+</a></li>
+                <li><a href="tel:+966533328619"><i class="fas fa-phone-alt"></i> 966533328619+ (الخبر، المملكة العربية السعودية)</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>تم التصميم والتنفيذ بواسطة <span class="highlight-text">إضاءة لـكود</span></p>
+        <p>جميع الحقوق محفوظة &copy; 2025 SBS</p>
+    </div>
+</footer>
+
+
+
+
+
+
+<div class="pxl-contact-float-wrap">
+    
+    <button id="backToTopBtn" class="btn pxl-float-btn scroll-to-top-btn" aria-label="Scroll to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <button class="btn pxl-float-btn main-contact-btn" aria-label="Contact Options">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    
+    <div class="pxl-sub-buttons">
+        
+        <a href="tel:+96650XXXXXXX" class="btn pxl-float-btn phone-bayan-btn" aria-label="Call Bayan">
+            <i class="fas fa-phone-alt"></i>
+            <span class="pxl-btn-label">بيان</span>
+        </a>
+        
+        <a href="tel:+966533346431" class="btn pxl-float-btn phone-ahmed-btn" aria-label="Call Ahmed">
+            <i class="fas fa-phone-alt"></i>
+            <span class="pxl-btn-label">أحمد</span>
+        </a>
+        
+        <a href="https://wa.me/966533346431" class="btn pxl-float-btn whatsapp-float-btn" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="pxl-btn-label">واتساب</span>
+        </a>
+    </div>
+</div>
+
+<div class="pxl-left-float-wrap">
+    
+    <a href="#contact" class="btn pxl-left-btn consultation-btn" aria-label="Book a free consultation">
+        حجز استشارة مجانية
+    </a>
+
+    <a href="/en" class="btn pxl-left-btn language-btn" aria-label="English">
+        English <i class="fas fa-flag-usa"></i> </a>
+</div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="script/clientslider.js"></script>
+    <script src="script/scrollnavbar.js"></script>
+    <script src="script/togglebuttons.js"></script>
+    <script src="script/calender.js"></script> 
+
+</body>
+</html>

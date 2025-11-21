@@ -1,0 +1,1303 @@
+/* ==================================== */
+/* 🎨 1. تعريف متغيرات الألوان (ROOT)  */
+/* ==================================== */
+:root {
+    /* لون الخلفية الأساسي (الأزرق-الرمادي) */
+    --main-color: #6e7c9f;
+    /* لون الخلفية الثانوي (الأبيض) */
+    --light-color: #ffffff;
+    /* لون الخطوط والتفاصيل الثانوية (داكن قليلاً) */
+    --dark-text: #333333; 
+    /* لون النص في الشريط العلوي (أبيض) */
+    --topbar-text: #ffffff;
+    /* لون الزر الرئيسي (Warning) */
+    --btn-warning-color: #ffc107; 
+    --title-color: #49565f;
+    --light-gray-background: #f6f7f9;
+    --dark-blue-hover: #4A607C; 
+    --card-bg:#d6dfe6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 7. أنماط الأزرار العائمة على اليمين  */
+/* ==================================== */
+
+/* حاوية الأزرار الرئيسية لتثبيتها في الزاوية السفلية اليمنى */
+.pxl-contact-float-wrap {
+    position: fixed;
+    right: 30px; 
+    bottom: 30px; 
+    z-index: 1000; 
+    display: flex; 
+    /* لعرض العناصر عمودياً بترتيب معكوس (زر السهم في الأسفل) */
+    flex-direction: column-reverse; 
+    align-items: flex-end; 
+}
+
+/* الأنماط العامة للزر العائم */
+.pxl-float-btn {
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 1.6rem;
+    color: var(--light-color); 
+    transition: all 0.3s ease;
+    border: none;
+    position: relative; 
+}
+
+/* ---------------------------------------------------- */
+/* التحكم بالمسافات (GAP) للأزرار اليمنى */
+/* ---------------------------------------------------- */
+
+/* مسافة بين حاوية الأزرار الفرعية وزر المراسلة (15px) */
+.pxl-sub-buttons {
+    display: flex;
+    flex-direction: column-reverse; 
+    gap: 10px; 
+    
+    margin-bottom: 15px; 
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* مسافة بين زر المراسلة وزر العودة للأعلى (15px) */
+.main-contact-btn {
+    background-color: var(--main-color); 
+    margin-bottom: 15px; 
+}
+
+/* زر العودة للأعلى لا يحتاج لأي هامش سفلي */
+#backToTopBtn {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; 
+}
+
+/* ---------------------------------------------------- */
+
+/* حالة ظهور الأزرار الفرعية (عند التحويم على الديسكتوب) */
+.pxl-contact-float-wrap:hover .pxl-sub-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* حالة ظهور الأزرار الفرعية (عند الضغط/Click على الجوال - يتم التحكم به بـ JS) */
+.pxl-contact-float-wrap.open .pxl-sub-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* الأنماط الخاصة للأزرار الفرعية */
+.whatsapp-float-btn { background-color: #25d366; } 
+.phone-ahmed-btn,
+.phone-bayan-btn { background-color: #6c757d; } 
+
+
+/* أنماط زر العودة للأعلى (Scroll to Top) */
+.scroll-to-top-btn {
+    background-color: #6c757d; 
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; 
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* حالة ظهور زر العودة للأعلى (يتم التحكم بها بواسطة JavaScript) */
+.scroll-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; 
+}
+
+/* نمط نص التسمية (Label) الذي يظهر بجانب الأزرار عند التحويم */
+.pxl-btn-label {
+    position: absolute;
+    right: 65px; 
+    background-color: var(--light-color);
+    color: var(--dark-text);
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* ظهور التسمية عند التحويم على الزر الفرعي نفسه */
+.pxl-float-btn:hover .pxl-btn-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* إخفاء التسميات على الجوال */
+@media (max-width: 991.98px) {
+    .pxl-btn-label {
+        display: none;
+    }
+}
+
+
+
+
+
+/* ==================================== */
+/* 8. أنماط الأزرار العائمة على اليسار  */
+/* ==================================== */
+
+/* حاوية الأزرار اليسرى لتثبيتها في الزاوية السفلية اليسرى */
+.pxl-left-float-wrap {
+    position: fixed;
+    left: 20px; 
+    bottom: 0px; /* ثبت الحاوية في الأسفل تماماً */
+    z-index: 999; 
+    display: flex;
+    flex-direction: column; 
+    gap: 1px; 
+    align-items: flex-start; 
+    /* 🆕 تفعيل الإخفاء مرة أخرى */
+    overflow: hidden; 
+    /* 🆕 زيادة الارتفاع للسماح بظهور جزء كبير من زر اللغة */
+    height: 120px; /* يمكنك تعديل هذا الرقم (120px) للتحكم في كمية الإخفاء */
+}
+
+/* الأنماط العامة للزر الأيسر */
+.pxl-left-btn {
+    border-radius: 25px; 
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: auto; 
+    cursor: pointer; 
+}
+
+/* 1. زر "حجز استشارة مجانية" (العلوي) */
+.consultation-btn {
+    background-color: rgba(110, 124, 159, 0.85); 
+    color: var(--light-color) !important; 
+    border: none;
+    position: relative; 
+    z-index: 2; 
+    margin-top: 10px;
+}
+
+.consultation-btn:hover {
+    background-color: var(--main-color);
+}
+
+/* 2. زر اللغة (السفلي - الذي يختفي جزئياً) */
+.language-btn {
+    background-color: var(--dark-text); 
+    color: var(--light-color) !important; 
+    border: none;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    
+    /* 🆕 زيادة الهامش الداخلي لزيادة الارتفاع */
+    padding-top: 20px;    
+    padding-bottom: 30px; 
+    
+    /* 🆕 تحريكه لأسفل لإخفاء جزء منه (مثلاً 10px) */
+    transform: translateY(10px); 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* 🆕 عند التحويم، يعود ليظهر بالكامل */
+.language-btn:hover {
+    background-color: #555555; 
+    transform: translateY(0); 
+}
+
+/* نمط أيقونة العلم */
+.language-btn i {
+    font-size: 1.1rem; 
+    margin-left: 10px; 
+    margin-right: 0;
+}
+
+
+
+/* 📱 التجاوب */
+@media (max-width: 767.98px) {
+    .pxl-left-float-wrap {
+        left: 10px; 
+        bottom: 10px; /* ليكون على مسافة مناسبة من الحافة */
+    }
+}
+
+
+
+
+
+
+
+/* ==================================== */
+/* 2. أنماط الشريط العلوي (Top Bar)   */
+/* ==================================== */
+
+/* خلفية الشريط العلوي باللون المطلوب */
+.custom-top-bar-bg {
+    background-color: var(--main-color) !important;
+}
+
+/* تنسيق الروابط والنصوص في الشريط العلوي لتكون بيضاء */
+.top-bar .contact-info a {
+    color: var(--topbar-text) !important;
+    transition: color 0.2s;
+}
+
+.top-bar .contact-info svg,
+.top-bar .contact-info i {
+    color: var(--topbar-text) !important;
+}
+
+.top-bar .contact-info a:hover {
+    color: #cccccc !important; 
+}
+
+/* نمط الأيقونات في دوائر بيضاء */
+.social-icons .social-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    background-color: var(--light-color);
+    color: var(--main-color);
+    margin-left: 5px; 
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.social-icons .social-icon-circle:hover {
+    background-color: #f0f0f0; 
+    color: #5a6681;
+}
+
+
+/* ==================================== */
+/* 4. أنماط النافبار الرئيسي (Main Navbar) */
+/* ==================================== */
+
+.main-navbar {
+padding-top: 25px !important; 
+    padding-bottom: 25px !important;
+    font-size: 1.1rem; 
+}
+
+.navbar-nav .nav-item {
+    padding: 0 10px; 
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.15rem; 
+    padding: 10px 15px !important; 
+}
+
+.navbar-brand {
+    margin-right: 0 !important;
+    margin-left: 0 !important; 
+}
+
+/* أنماط شريط البحث في النافبار الرئيسي */
+.search-desktop-rtl .input-group-text {
+    position: absolute;
+    /* تم عكس اتجاه البحث ليكون الأيقونة على اليسار لـ RTL */
+    right: auto; 
+    left: 10px; 
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.search-desktop-rtl input[type="search"] {
+    height: 45px; 
+    padding-right: 15px !important; /* مساحة للنص في اليمين */
+    padding-left: 35px !important; /* مساحة للأيقونة في اليسار */
+}
+
+/* توسيط القائمة في النافبار الرئيسي على الديسكتوب */
+@media (min-width: 992px) { 
+    .main-navbar .navbar-collapse {
+        justify-content: center;
+        flex-grow: 1; 
+    }
+    .main-navbar .navbar-nav {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* تثبيت النافبار الرئيسي على الجوال فقط */
+@media (max-width: 991.98px) {
+    .main-navbar {
+        position: fixed !important; 
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1030; 
+    }
+}
+
+
+/* ==================================== */
+/* 5. أنماط النافبار الذي يظهر عند التمرير (#scrollRevealNavbar) */
+/* ==================================== */
+
+/* الإخفاء الأولي على الديسكتوب والإخفاء التام على الجوال */
+#scrollRevealNavbar {
+    z-index: 1040; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%); 
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s 0.3s;
+    padding-top: 10px !important; 
+    padding-bottom: 10px !important; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    display: none; 
+}
+
+@media (min-width: 992px) {
+    #scrollRevealNavbar {
+        display: flex !important; /* إظهاره على الديسكتوب ليتم التحكم به بـ JS */
+        padding-top: 15px !important; 
+        padding-bottom: 15px !important;
+    }
+
+    /* حالة الظهور بعد التمرير */
+    #scrollRevealNavbar.navbar-reveal-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); 
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out; 
+    }
+
+    /* تخصيص الروابط في النافبار الثاني (مطابقة للأصلي) */
+    #scrollRevealNavbar .navbar-nav .nav-item {
+        padding: 0 10px; 
+    }
+    #scrollRevealNavbar .navbar-nav .nav-link {
+        font-size: 1.15rem; 
+        padding: 10px 15px !important; 
+    }
+
+    /* أنماط عنصر الاتصال الجديد */
+    .scroll-reveal-contact-info a {
+        color: var(--dark-text) !important;
+    }
+
+    .scroll-reveal-icon-circle {
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50%;
+        border: 1px solid #ccc; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; 
+        background-color: transparent;
+    }
+
+    .scroll-reveal-icon-circle i {
+        font-size: 1rem;
+        color: var(--main-color);
+    }
+    
+    .scroll-reveal-contact-info .text-secondary {
+        color: #6c757d !important;
+        font-weight: normal; 
+    }
+    
+    .scroll-reveal-contact-info .fw-normal {
+        font-weight: normal !important; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =======================================
+   3. تنسيقات قسم "من نحن" (Hero Section)
+   ======================================= */
+.about-us-hero {
+    height: 60vh; /* ارتفاع الشاشة (يمكنك تغييره) */
+    min-height: 350px;
+    width: 100%;
+    position: relative;
+    
+    /* توسيط المحتوى */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* إعداد صورة الخلفية */
+    /* ⚠️ هام: استبدل هذا المسار بمسار صورتك ⚠️ */
+    background-image: url('../image/banner-Obj-3.webp'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* تأثير التعتيم (Overlay) */
+.about-us-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* استخدام لون رئيسي (main-color) مع تعتيم */
+    background-color: var(--main-color);
+    opacity: 0.7; /* يمكنك تعديل درجة التعتيم هنا */
+    z-index: 1;
+}
+
+/* تنسيق الحاوية والنص فوق التعتيم */
+.about-us-hero .container {
+    position: relative;
+    z-index: 2; 
+    text-align: center;
+}
+
+/* تنسيق العنوان "من نحن" */
+.about-us-hero .hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--light-color); /* اللون الأبيض */
+    margin: 0;
+    text-align: right;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+   1. تعريف متغيرات الألوان
+   ======================================= */
+:root {
+    /* لون الخلفية الأساسي (الأزرق-الرمادي) */
+    --main-color: #6e7c9f;
+    /* لون الخلفية الثانوي (الأبيض) */
+    --light-color: #ffffff;
+    /* لون الخطوط والتفاصيل الثانوية (داكن قليلاً) */
+    --dark-text: #333333; 
+    /* لون النص في الشريط العلوي (أبيض) */
+    --topbar-text: #ffffff;
+    /* لون الزر الرئيسي (Warning) */
+    --btn-warning-color: #ffc107; 
+    --title-color: #49565f;
+    --light-gray-background: #f6f7f9;
+    --dark-blue-hover: #4A607C; 
+}
+
+/* =======================================
+   2. التنسيقات العامة والأساسية
+   ======================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Arial', Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--dark-text);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+  قسم: حلول شاملة لاحتياجات عملك (services-solutions-section)
+  ======================================= */
+.services-solutions-section {
+  padding: 80px 0;
+  background-color: var(--light-gray-background); 
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: auto;
+  gap: 25px;
+  direction: rtl;
+}
+
+/* التنسيقات العامة للبطاقات */
+.solution-card {
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 🚀 تنسيقات بطاقة العنوان (البطاقة الأولى) 🚀 */
+.solution-card.title-card {
+  background: none; 
+}
+/* ... (باقي تنسيقات .solution-card.title-card) ... */
+.solution-card.title-card .card-section-title {
+  color: var(--title-color); 
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.solution-card.title-card .card-section-subtitle {
+  color: var(--title-color);
+  font-size: 1rem;
+  font-weight: bold;
+}
+/* ------------------------------------------- */
+
+
+/* ✅ تنسيقات بطاقات المحتوى الفعلية ✅ */
+.solution-card.content-card {
+  background-color: var(--card-bg); /* اللون الأزرق */
+  box-shadow: none; 
+  
+  /* ❗ التعديل: تحديد نصف قطر الزوايا الأربع يدويًا */
+  /* أعلى-يسار | أعلى-يمين (0) | أسفل-يمين | أسفل-يسار */
+  border-radius: 40px 
+         40px 
+         40px 
+         40px ; 
+
+  padding: 30px; 
+  position: relative;
+
+}
+
+/* ❌ تم إلغاء/حذف العنصر الزائف ::before السابق الذي كان يقوم بالقص */
+ .solution-card.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0; 
+  right: 0; 
+  width: 60px; 
+  height: 60px;
+  background-color: var(--light-gray-background); 
+  border-bottom-left-radius: 100%; 
+  z-index: 10; 
+} 
+
+
+/* 🆕 تنسيق دائرة الرقم الجديدة 🆕 */
+.solution-card.content-card .card-number-circle {
+  position: absolute;
+  top: -15px; /* لرفعها فوق الحافة العلوية */
+  right: -15px; /* لدفعها للخارج من الحافة اليمنى */
+  
+  /* حجم الدائرة */
+  width: 60px; 
+  height: 60px;
+  
+  /* خصائص الشكل الدائري */
+  background-color: var(--main-color); /* لون خلفية الدائرة (أبيض) */
+  border-radius: 50%; /* لجعلها دائرة كاملة */
+  
+  /* تنسيق محتوى الرقم */
+  color: var(--light-color); /* لون نص الرقم (يفترض أنه اللون الأساسي/الأزرق) */
+  font-size: 1.5rem;
+  font-weight: 700;
+  
+  /* توسيط الرقم داخل الدائرة */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  z-index: 20; /* تأكد من أنها فوق كل شيء */
+  direction: ltr; /* لضمان عرض الرقم بشكل صحيح */
+}
+
+
+/* 3. تنسيق العنوان والفاصل */
+.solution-card.content-card .card-title {
+  font-size: 1.3rem;
+  color: var(--title-color); /* النص أبيض */
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2; /* تأكد من أن النص فوق القص */
+  padding-bottom: 10px; 
+  text-align: center;
+  /* لون الخط الفاصل أبيض شفاف */
+  border-bottom: 1px solid rgba(83, 104, 133, 0.788); 
+}
+
+/* 4. تنسيق الفقرة */
+.solution-card.content-card .card-description {
+  line-height: 1.6;
+  color: var(--title-color); /* النص أبيض */
+  font-size: 0.95rem;
+  margin-bottom: 15px; 
+}
+
+/* 5. تنسيق الأيقونة (أسفل اليسار) */
+.solution-card.content-card .card-icon {
+  position: absolute; 
+  bottom: 20px; 
+  left: 20px; 
+  right: auto;
+  
+  font-size: 2.5rem;
+  color: var(--title-color);
+  opacity: 0.5;
+  margin-bottom: 0; 
+}
+
+/* =======================================
+  تنسيق زر "المزيد من خدماتنا"
+  ======================================= */
+.more-services-button-wrapper {
+  text-align: center;
+  margin-top: 50px; 
+}
+/* ... (باقي تنسيقات الزر كما هي) ... */
+.btn-more-services {
+  display: inline-block;
+  background-color: var(--main-color); 
+  color: var(--light-color); 
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-more-services:hover {
+  background-color: var(--dark-blue-hover); 
+  transform: translateY(-2px); 
+}
+
+/* ---------------------------------
+  استجابة التصميم للشاشات الصغيرة
+  --------------------------------- */
+@media (max-width: 992px) {
+  .solutions-grid {
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
+  /* ❗ لضمان ظهور الدائرة بشكل جيد على الشاشات الصغيرة */
+  .solution-card.content-card .card-number-circle {
+    top: -15px;
+    right: -15px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+}
+
+/* =======================================
+  تنسيقات العنوان المركزي الجديد 
+  ======================================= */
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 50px; /* مسافة تفصل العنوان عن شبكة البطاقات */
+  direction: rtl;
+}
+
+/* تنسيق العنوان الفرعي (خدماتنا) */
+.section-header-centered .card-section-subtitle {
+  display: inline-block;
+  color: var(--main-color); /* اللون الأساسي للخط */
+  font-size: 1rem;
+  font-weight: bold;
+  /* تنسيق الدائرة/الإطار حول العنوان الفرعي */
+  border: 1px solid var(--main-color); 
+  border-radius: 50px;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+}
+
+/* تنسيق العنوان الرئيسي */
+.section-header-centered .card-section-title {
+  color: var(--title-color); /* استخدم لون غامق مناسب */
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  max-width: 800px; /* للتحكم في عرض العنوان الطويل */
+  margin: 0 auto;
+}
+
+/* ---------------------------------
+  استجابة العنوان للشاشات الصغيرة
+  --------------------------------- */
+@media (max-width: 992px) {
+  .section-header-centered .card-section-title {
+    font-size: 1.8rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+    تعريفات الألوان (Variables) - (للافتراض، بما أنها غير متوفرة في الكود)
+    ======================================= */
+:root {
+    --main-color: #6e7c9f;
+    --light-color: #ffffff;
+    --dark-text: #333333; 
+    --title-color: #49565f;
+    --light-gray-background: #f6f7f9;
+    --dark-blue-hover: #4A607C; 
+}
+
+/* 1. تنسيق القسم الرئيسي (Hero Section) */
+.hero-section {
+    background: url('https://static.arrajol.com/styles/800x533_webp/public/2021-07/%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%20%D8%A3%D8%A8%D8%B1%D8%A7%D8%AC.jpg.webp') no-repeat center center;
+    background-size: cover;
+    
+    position: relative;
+    background-color: var(--title-color); 
+    
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 80vh; 
+    padding: 20px 0;
+    box-sizing: border-box;
+    
+    /* 🚀 تفعيل خاصية البارالاكس 🚀 */
+    background-attachment: fixed; 
+}
+
+/* 2. التراكب اللوني (Overlay) لزيادة وضوح النص */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(73, 86, 95, 0.5); 
+    z-index: 1; 
+}
+
+/* 3. تنسيق البطاقة البيضاء (Content Card) */
+.content-card2 {
+    z-index: 2; 
+    position: relative; 
+    background-color: var(--light-color); 
+    border-radius: 15px; 
+    padding: 40px; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    text-align: center; 
+}
+
+.content-card2 h2 {
+    font-size: 36px;
+    color: var(--title-color);
+    margin-bottom: 20px;
+}
+
+.content-card2 p {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.btn-contact {
+    display: inline-block;
+    background-color: var(--main-color); 
+    color: var(--light-color); 
+    padding: 12px 30px;
+    text-decoration: none; 
+    border-radius: 8px;
+    font-size: 18px;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(110, 124, 159, 0.4); 
+}
+
+.btn-contact:hover {
+    background-color: var(--dark-blue-hover); 
+}
+
+/* قسم المحتوى الإضافي لتمكين التمرير */
+.page-content {
+    padding: 50px 15%;
+    min-height: 120vh; 
+    background-color: var(--light-gray-background);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-footer {
+    background-color: var(--main-color);
+    color: var(--light-color);
+    padding: 50px 20px 0;
+    direction: rtl; /* اتجاه عربي */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+}
+
+.footer-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-column {
+    flex: 1; 
+    padding: 0 15px;
+    min-width: 200px;
+    /* 🌟 التعديل 1: محاذاة النص لليمين افتراضياً لكل الأعمدة */
+    text-align: right; 
+}
+
+.column-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--light-color);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.column-title::after {
+    content: '';
+    position: absolute;
+    /* 🌟 التأكد من أن الخط يبدأ من اليمين (0) */
+    right: 0; 
+    bottom: -10px;
+    width: 30px;
+    height: 3px;
+    background-color: var(--btn-warning-color);
+}
+
+/* تنسيق القوائم والروابط */
+.contact-list, .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li, .footer-column li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5; 
+}
+
+.footer-column a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block; 
+    /* 🌟 التأكد من محاذاة الروابط التي تحوي display: block لليمين */
+    text-align: right; 
+}
+
+.footer-column a:hover {
+    color: var(--dark-blue-hover);
+}
+
+/* تنسيق أيقونات التواصل داخل الروابط */
+.contact-list a i {
+    margin-inline-end: 10px;
+    color: var(--btn-warning-color);
+    transition: color 0.3s;
+}
+
+/* تنسيق أيقونات التواصل */
+.contact-list i {
+    margin-inline-end: 10px;
+    color: var(--btn-warning-color);
+}
+
+/* تنسيق عمود تفاصيل الشركة (العمود الأخير) */
+.company-details {
+    /* هذه القاعدة صحيحة وتؤكد المحاذاة لليمين */
+    text-align: right; 
+}
+
+.footer-logo {
+    width: 60px; 
+    margin-bottom: 15px;
+}
+
+.company-name {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.company-text {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.company-reg {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--light-color);
+    border-radius: 50%;
+    margin-inline-end: 10px;
+    color: var(--light-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--btn-warning-color);
+    border-color: var(--btn-warning-color);
+    color: var(--dark-text);
+}
+
+/* قسم حقوق النشر السفلي */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    font-size: 0.85rem;
+}
+
+.highlight-text {
+    color: var(--btn-warning-color);
+    font-weight: bold;
+}
+
+/* استجابة التصميم */
+@media (max-width: 992px) {
+    .footer-content-wrapper {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .footer-column {
+        flex-basis: 45%; 
+        margin-bottom: 30px;
+        /* 🌟 تأكيد المحاذاة لليمين هنا */
+        text-align: right;
+    }
+    
+    .company-details {
+        flex-basis: 100%; 
+        /* 🌟 التأكد من أن العمود الأخير يبقى لليمين وليس في المنتصف */
+        text-align: right;
+    }
+    
+    /* ❌ إزالة قاعدة توسيط الخط تحت العنوان في هذا التوقف */
+    /*
+    .column-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    */
+
+    .footer-bottom {
+        flex-direction: column;
+        /* 🌟 تغيير محاذاة الجزء السفلي من المنتصف إلى اليمين */
+        text-align: right; 
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-column {
+        flex-basis: 100%; 
+        padding: 0;
+        /* 🌟 تأكيد المحاذاة لليمين في الشاشات الأصغر */
+        text-align: right;
+    }
+    
+    /* ❌ إزالة قاعدة توسيط الخط تحت العنوان في هذا التوقف */
+    /*
+    .column-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    */
+    
+    /* ❌ إزالة قاعدة توسيط الأعمدة الأخرى (غير عمود الشركة) */
+    /*
+    .footer-column:not(.company-details) {
+        text-align: center;
+    }
+    */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
