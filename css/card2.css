@@ -1,0 +1,2891 @@
+/* ==================================== */
+/* 🎨 1. تعريف متغيرات الألوان (ROOT)  */
+/* ==================================== */
+:root {
+    /* لون الخلفية الأساسي (الأزرق-الرمادي) */
+    --main-color: #6e7c9f;
+    /* لون الخلفية الثانوي (الأبيض) */
+    --light-color: #ffffff;
+    /* لون الخطوط والتفاصيل الثانوية (داكن قليلاً) */
+    --dark-text: #333333; 
+    /* لون النص في الشريط العلوي (أبيض) */
+    --topbar-text: #ffffff;
+    /* لون الزر الرئيسي (Warning) */
+    --btn-warning-color: #ffc107; 
+    --title-color: #49565f;
+    --light-gray-background: #f6f7f9;
+    --dark-blue-hover: #4A607C; 
+    --card-bg:#d6dfe6;
+}
+
+
+
+
+
+
+
+
+
+/* =======================================
+ * تنسيق دائرة مؤشر الماوس
+ * ======================================= */
+#mouse-cursor {
+    /* 1. الشكل والحجم واللون */
+    width: 25px; /* حجم الدائرة */
+    height: 25px; 
+    background-color: rgba(48, 107, 154, 0.304); /* رمادي شفاف */
+    border-radius: 50%; /* لجعلها دائرة */
+    
+    /* 2. التموضع والمحاذاة */
+    position: fixed; /* لتتبع شاشة العرض وليس المحتوى */
+    z-index: 9999; /* للتأكد من أنها فوق باقي العناصر */
+    top: 0;
+    left: 0;
+    
+    /* 3. إلغاء التفاعل والانتقال السلس */
+    pointer-events: none; /* مهم جداً: لتمرير نقرات الماوس من خلالها إلى العناصر التي تحتها */
+    transition: transform 0.1s ease-out; /* حركة سلسة للدائرة (أضف هذا لتقليل الـ "Jitter") */
+    
+    /* 4. إخفاء الدائرة مؤقتاً عند التحميل */
+    opacity: 0; 
+    transform: translate(-50%, -50%); /* لتوسيط الدائرة حول نقطة الماوس (انظر JavaScript) */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 7. أنماط الأزرار العائمة على اليمين  */
+/* ==================================== */
+
+/* حاوية الأزرار الرئيسية لتثبيتها في الزاوية السفلية اليمنى */
+.pxl-contact-float-wrap {
+    position: fixed;
+    right: 30px; 
+    bottom: 30px; 
+    z-index: 1000; 
+    display: flex; 
+    /* لعرض العناصر عمودياً بترتيب معكوس (زر السهم في الأسفل) */
+    flex-direction: column-reverse; 
+    align-items: flex-end; 
+}
+
+/* الأنماط العامة للزر العائم */
+.pxl-float-btn {
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 1.6rem;
+    color: var(--light-color); 
+    transition: all 0.3s ease;
+    border: none;
+    position: relative; 
+}
+
+/* ---------------------------------------------------- */
+/* التحكم بالمسافات (GAP) للأزرار اليمنى */
+/* ---------------------------------------------------- */
+
+/* مسافة بين حاوية الأزرار الفرعية وزر المراسلة (15px) */
+.pxl-sub-buttons {
+    display: flex;
+    flex-direction: column-reverse; 
+    gap: 10px; 
+    
+    margin-bottom: 15px; 
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* مسافة بين زر المراسلة وزر العودة للأعلى (15px) */
+.main-contact-btn {
+    background-color: var(--main-color); 
+    margin-bottom: 15px; 
+}
+
+/* زر العودة للأعلى لا يحتاج لأي هامش سفلي */
+#backToTopBtn {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; 
+}
+
+/* ---------------------------------------------------- */
+
+/* حالة ظهور الأزرار الفرعية (عند التحويم على الديسكتوب) */
+.pxl-contact-float-wrap:hover .pxl-sub-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* حالة ظهور الأزرار الفرعية (عند الضغط/Click على الجوال - يتم التحكم به بـ JS) */
+.pxl-contact-float-wrap.open .pxl-sub-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* الأنماط الخاصة للأزرار الفرعية */
+.whatsapp-float-btn { background-color: #25d366; } 
+.phone-ahmed-btn,
+.phone-bayan-btn { background-color: #6c757d; } 
+
+
+/* أنماط زر العودة للأعلى (Scroll to Top) */
+.scroll-to-top-btn {
+    background-color: #6c757d; 
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; 
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* حالة ظهور زر العودة للأعلى (يتم التحكم بها بواسطة JavaScript) */
+.scroll-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; 
+}
+
+/* نمط نص التسمية (Label) الذي يظهر بجانب الأزرار عند التحويم */
+.pxl-btn-label {
+    position: absolute;
+    right: 65px; 
+    background-color: var(--light-color);
+    color: var(--dark-text);
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* ظهور التسمية عند التحويم على الزر الفرعي نفسه */
+.pxl-float-btn:hover .pxl-btn-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* إخفاء التسميات على الجوال */
+@media (max-width: 991.98px) {
+    .pxl-btn-label {
+        display: none;
+    }
+}
+
+
+
+
+
+/* ==================================== */
+/* 8. أنماط الأزرار العائمة على اليسار  */
+/* ==================================== */
+
+/* حاوية الأزرار اليسرى لتثبيتها في الزاوية السفلية اليسرى */
+.pxl-left-float-wrap {
+    position: fixed;
+    left: 20px; 
+    bottom: 0px; /* ثبت الحاوية في الأسفل تماماً */
+    z-index: 999; 
+    display: flex;
+    flex-direction: column; 
+    gap: 1px; 
+    align-items: flex-start; 
+    /* 🆕 تفعيل الإخفاء مرة أخرى */
+    overflow: hidden; 
+    /* 🆕 زيادة الارتفاع للسماح بظهور جزء كبير من زر اللغة */
+    height: 120px; /* يمكنك تعديل هذا الرقم (120px) للتحكم في كمية الإخفاء */
+}
+
+/* الأنماط العامة للزر الأيسر */
+.pxl-left-btn {
+    border-radius: 25px; 
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: auto; 
+    cursor: pointer; 
+}
+
+/* 1. زر "حجز استشارة مجانية" (العلوي) */
+.consultation-btn {
+    background-color: rgba(110, 124, 159, 0.85); 
+    color: var(--light-color) !important; 
+    border: none;
+    position: relative; 
+    z-index: 2; 
+    margin-top: 10px;
+}
+
+.consultation-btn:hover {
+    background-color: var(--main-color);
+}
+
+/* 2. زر اللغة (السفلي - الذي يختفي جزئياً) */
+.language-btn {
+    background-color: var(--dark-text); 
+    color: var(--light-color) !important; 
+    border: none;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    
+    /* 🆕 زيادة الهامش الداخلي لزيادة الارتفاع */
+    padding-top: 20px;    
+    padding-bottom: 30px; 
+    
+    /* 🆕 تحريكه لأسفل لإخفاء جزء منه (مثلاً 10px) */
+    transform: translateY(10px); 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* 🆕 عند التحويم، يعود ليظهر بالكامل */
+.language-btn:hover {
+    background-color: #555555; 
+    transform: translateY(0); 
+}
+
+/* نمط أيقونة العلم */
+.language-btn i {
+    font-size: 1.1rem; 
+    margin-left: 10px; 
+    margin-right: 0;
+}
+
+
+
+/* 📱 التجاوب */
+@media (max-width: 767.98px) {
+    .pxl-left-float-wrap {
+        left: 10px; 
+        bottom: 10px; /* ليكون على مسافة مناسبة من الحافة */
+    }
+}
+
+
+
+
+
+
+
+/* ==================================== */
+/* 2. أنماط الشريط العلوي (Top Bar)   */
+/* ==================================== */
+
+/* خلفية الشريط العلوي باللون المطلوب */
+.custom-top-bar-bg {
+    background-color: var(--main-color) !important;
+}
+
+/* تنسيق الروابط والنصوص في الشريط العلوي لتكون بيضاء */
+.top-bar .contact-info a {
+    color: var(--topbar-text) !important;
+    transition: color 0.2s;
+}
+
+.top-bar .contact-info svg,
+.top-bar .contact-info i {
+    color: var(--topbar-text) !important;
+}
+
+.top-bar .contact-info a:hover {
+    color: #cccccc !important; 
+}
+
+/* نمط الأيقونات في دوائر بيضاء */
+.social-icons .social-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    background-color: var(--light-color);
+    color: var(--main-color);
+    margin-left: 5px; 
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.social-icons .social-icon-circle:hover {
+    background-color: #f0f0f0; 
+    color: #5a6681;
+}
+
+
+/* ==================================== */
+/* 4. أنماط النافبار الرئيسي (Main Navbar) */
+/* ==================================== */
+
+.main-navbar {
+padding-top: 25px !important; 
+    padding-bottom: 25px !important;
+    font-size: 1.1rem; 
+}
+
+.navbar-nav .nav-item {
+    padding: 0 10px; 
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.15rem; 
+    padding: 10px 15px !important; 
+}
+
+.navbar-brand {
+    margin-right: 0 !important;
+    margin-left: 0 !important; 
+}
+
+/* أنماط شريط البحث في النافبار الرئيسي */
+.search-desktop-rtl .input-group-text {
+    position: absolute;
+    /* تم عكس اتجاه البحث ليكون الأيقونة على اليسار لـ RTL */
+    right: auto; 
+    left: 10px; 
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.search-desktop-rtl input[type="search"] {
+    height: 45px; 
+    padding-right: 15px !important; /* مساحة للنص في اليمين */
+    padding-left: 35px !important; /* مساحة للأيقونة في اليسار */
+}
+
+/* توسيط القائمة في النافبار الرئيسي على الديسكتوب */
+@media (min-width: 992px) { 
+    .main-navbar .navbar-collapse {
+        justify-content: center;
+        flex-grow: 1; 
+    }
+    .main-navbar .navbar-nav {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* تثبيت النافبار الرئيسي على الجوال فقط */
+@media (max-width: 991.98px) {
+    .main-navbar {
+        position: fixed !important; 
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1030; 
+    }
+}
+
+
+/* ==================================== */
+/* 5. أنماط النافبار الذي يظهر عند التمرير (#scrollRevealNavbar) */
+/* ==================================== */
+
+/* الإخفاء الأولي على الديسكتوب والإخفاء التام على الجوال */
+#scrollRevealNavbar {
+    z-index: 1040; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%); 
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s 0.3s;
+    padding-top: 10px !important; 
+    padding-bottom: 10px !important; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    display: none; 
+}
+
+@media (min-width: 992px) {
+    #scrollRevealNavbar {
+        display: flex !important; /* إظهاره على الديسكتوب ليتم التحكم به بـ JS */
+        padding-top: 15px !important; 
+        padding-bottom: 15px !important;
+    }
+
+    /* حالة الظهور بعد التمرير */
+    #scrollRevealNavbar.navbar-reveal-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); 
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out; 
+    }
+
+    /* تخصيص الروابط في النافبار الثاني (مطابقة للأصلي) */
+    #scrollRevealNavbar .navbar-nav .nav-item {
+        padding: 0 10px; 
+    }
+    #scrollRevealNavbar .navbar-nav .nav-link {
+        font-size: 1.15rem; 
+        padding: 10px 15px !important; 
+    }
+
+    /* أنماط عنصر الاتصال الجديد */
+    .scroll-reveal-contact-info a {
+        color: var(--dark-text) !important;
+    }
+
+    .scroll-reveal-icon-circle {
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50%;
+        border: 1px solid #ccc; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; 
+        background-color: transparent;
+    }
+
+    .scroll-reveal-icon-circle i {
+        font-size: 1rem;
+        color: var(--main-color);
+    }
+    
+    .scroll-reveal-contact-info .text-secondary {
+        color: #6c757d !important;
+        font-weight: normal; 
+    }
+    
+    .scroll-reveal-contact-info .fw-normal {
+        font-weight: normal !important; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =======================================
+   3. تنسيقات قسم "من نحن" (Hero Section)
+   ======================================= */
+.about-us-hero {
+    height: 60vh; /* ارتفاع الشاشة (يمكنك تغييره) */
+    min-height: 350px;
+    width: 100%;
+    position: relative;
+    
+    /* توسيط المحتوى */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* إعداد صورة الخلفية */
+    /* ⚠️ هام: استبدل هذا المسار بمسار صورتك ⚠️ */
+    background-image: url('../image/banner-Obj-3.webp'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* تأثير التعتيم (Overlay) */
+.about-us-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* استخدام لون رئيسي (main-color) مع تعتيم */
+    background-color: var(--main-color);
+    opacity: 0.7; /* يمكنك تعديل درجة التعتيم هنا */
+    z-index: 1;
+}
+
+/* تنسيق الحاوية والنص فوق التعتيم */
+.about-us-hero .container {
+    position: relative;
+    z-index: 2; 
+    text-align: center;
+}
+
+/* تنسيق العنوان "من نحن" */
+.about-us-hero .hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--light-color); /* اللون الأبيض */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+   1. تعريف متغيرات الألوان
+   ======================================= */
+:root {
+    /* لون الخلفية الأساسي (الأزرق-الرمادي) */
+    --main-color: #6e7c9f;
+    /* لون الخلفية الثانوي (الأبيض) */
+    --light-color: #ffffff;
+    /* لون الخطوط والتفاصيل الثانوية (داكن قليلاً) */
+    --dark-text: #333333; 
+    /* لون النص في الشريط العلوي (أبيض) */
+    --topbar-text: #ffffff;
+    /* لون الزر الرئيسي (Warning) */
+    --btn-warning-color: #ffc107; 
+    --title-color: #49565f;
+    --light-gray-background: #f6f7f9;
+    --dark-blue-hover: #4A607C; 
+}
+
+/* =======================================
+   2. التنسيقات العامة والأساسية
+   ======================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Arial', Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--dark-text);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* =======================================
+   3. تنسيقات القائمة العلوية (محاكاة)
+   ======================================= */
+.main-header {
+    background-color: var(--main-color);
+    padding: 15px 0;
+    color: var(--topbar-text);
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+.main-nav a {
+    color: var(--topbar-text);
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+.main-nav a:hover {
+    color: var(--btn-warning-color);
+}
+.lang-link {
+    border: 1px solid var(--topbar-text);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+   4. القسم الأول: من نحن (Hero Section)
+   ======================================= */
+.about-us-hero {
+    height: 60vh;
+    min-height: 350px;
+    width: 100%;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* إعداد صورة الخلفية (يجب استبدال المسار) */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* تأثير التعتيم (Overlay) */
+.about-us-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* استخدام لون رئيسي (main-color) مع تعتيم */
+    background-color: var(--main-color);
+
+    opacity: 0.7; 
+    z-index: 1;
+}
+
+/* تنسيق الحاوية والنص فوق التعتيم */
+.about-us-hero .container {
+    position: relative;
+    z-index: 2; 
+    text-align: center;
+}
+
+/* تنسيق العنوان "من نحن" */
+.about-us-hero .hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--light-color); /* اللون الأبيض */
+    margin: 0;
+    text-align: right;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================= */
+/* 🎨 المتغيرات الأساسية (للتسهيل في تعديل الألوان) */
+/* ======================================================= */
+:root {
+    --main-color: #6e7c9f; /* اللون الأزرق-الرمادي الرئيسي */
+    --accent-color: #4a607c; /* لون التمييز للعناوين والنصوص */
+    --text-color: #333333;
+    --light-gray: #e9ecef;
+    --card-bg: #d6dfe6; /* لون خلفية بطاقة الشعار */
+    --step-bg: #f0f3f6; /* لون خلفية الخطوات */
+    --button-yellow: #ffc107; /* لون الزر الأصفر/البرتقالي */
+}
+
+
+
+.main-content-section {
+    padding-bottom: 3rem; 
+    margin-top: -110px;
+}
+
+/* ======================================================= */
+/* 2. تنسيق العناوين والمحتوى */
+/* ======================================================= */
+.page-title {
+    color: var(--main-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    color: var(--accent-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.intro-text, .content-paragraph {
+    line-height: 1.8;
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+/* ======================================================= */
+/* 3. تنسيق الخطوات (المحتوى على اليسار - الحدود والأيقونات على اليسار) */
+/* ======================================================= */
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.step-item {
+    background-color: var(--step-bg);
+    padding: 15px 20px;
+    /* الحدود الآن على اليسار */
+    border-right: none;
+    border-left: 5px solid var(--main-color); 
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.step-title {
+    color: var(--accent-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    /* المسافة الآن على اليسار */
+    padding-left: 35px; 
+    padding-right: 0;
+}
+
+.step-icon {
+    color: #4CAF50; 
+    font-size: 1rem;
+    position: absolute; 
+    /* الأيقونة الآن على اليسار */
+    right: auto;
+    left: 15px; 
+    top: 20px;
+}
+
+.step-item p {
+    margin: 0;
+    line-height: 1.7;
+    /* المسافة الآن على اليسار */
+    padding-left: 35px;
+    padding-right: 0;
+}
+
+
+
+/* ملاحظة: تم الإبقاء على لون خلفية عناصر القائمة (menu-item) بيضاء كما هو في الكود الأصلي */
+.menu-item {
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    border-radius: 10px; /* جعل حواف العناصر الداخلية منحنية أيضاً */
+    transition: color 0.3s;
+    background-color: white; /* الإبقاء على خلفية العنصر بيضاء */
+    position: relative;
+    overflow: hidden; 
+}
+
+/* طبقة التأثير الزرقاء التي ستظهر عند التمرير (من اليسار لليمين) */
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* يبدأ بعرض صفر */
+    width: 0; 
+    background-color: var(--main-color); 
+    transition: width 0.3s ease-in-out;
+    z-index: 1; 
+}
+
+/* 🌟 عند التمرير (Hover Effect) 🌟 */
+.menu-item:hover {
+    color: white; 
+}
+
+.menu-item:hover::before {
+    /* يكتمل العرض عند التمرير */
+    width: 100%; 
+}
+
+.menu-item span {
+    position: relative;
+    z-index: 2; 
+    flex-grow: 1; 
+}
+
+/* 🌟 تنسيق الأيقونة (السهم) - سهم متجه لليسار 🌟 */
+.menu-item i {
+    font-size: 0.8rem;
+    color: var(--main-color);
+    /* 🌟 التعديل: وضع الأيقونة في الترتيب الثاني (على اليسار) 🌟 */
+    order: 2; 
+    margin-left: 0;
+    margin-right: 15px; 
+    transition: opacity 0.3s, color 0.3s;
+    position: relative;
+    z-index: 2; 
+}
+
+/* 🌟 عند التمرير: إخفاء السهم 🌟 */
+.menu-item:hover i {
+    opacity: 0; 
+    color: white; 
+    margin-right: 0;
+}
+
+/* تنسيق العنصر النشط (Active Item) */
+.active-sidebar-item {
+    background-color: var(--main-color);
+    color: white !important;
+    font-weight: bold;
+}
+
+.active-sidebar-item i {
+    color: white;
+    opacity: 1 !important; 
+}
+/* إزالة تأثير التمرير من الـ ::before للعنصر النشط لضمان بقائه أزرق */
+.active-sidebar-item:hover::before {
+    width: 0 !important;
+}
+
+
+/* ======================================================= */
+/* 5. تنسيق بطاقة التواصل (Contact Card) */
+/* ======================================================= */
+.contact-card {
+    background-color: white;
+    border: 1px solid var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.image-placeholder-container {
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.card-title-text {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.meeting-btn {
+    background-color: var(--button-yellow); 
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.meeting-btn:hover {
+    background-color: #e0a800;
+    color: var(--accent-color);
+}
+
+
+/* ======================================================= */
+/* 7. تنسيق القوائم المخصصة (Custom Lists) - مُعدَّل */
+/* ======================================================= */
+.custom-list {
+    list-style: none; 
+    padding-right: 0;
+    margin-bottom: 25px;
+}
+
+.custom-list li {
+    position: relative;
+    padding-right: 25px; 
+    line-height: 1.8;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+    color: var(--text-color);
+}
+
+.custom-list li small {
+    display: block; 
+    font-size: 0.9rem;
+    color: #6c757d !important;
+    margin-top: 2px;
+}
+
+/* 🌟 التعديل: استخدام أيقونة الدائرة التي تحتوي على صح \f058 🌟 */
+.custom-list li::before {
+    content: "\f058"; /* كود أيقونة fas fa-check-circle (دائرة بها صح) */
+    font-family: "Font Awesome 5 Free";
+    /* 🌟 التعديل: سنغير اللون إلى الأزرق فقط، تاركين الخلفية بيضاء أو شفافة 🌟
+    في Font Awesome، إذا أردنا الدائرة مفرغة (far)، نستخدم وزن 400.
+    إذا كنا لا نريد الدائرة الملونة، أفضل طريقة هي استخدام أيقونة تحقق (Check Mark) بلون أزرق.
+    
+    لتحقيق (الدائرة لا يوجد لها لون والصح لونه ازرق) سنحاول استخدام الأيقونة العادية (المصمتة) \f058 ونعيد تلوينها. 
+    لكن الطريقة الوحيدة لضمان تلوين الصح فقط هي استخدام أيقونة مفرغة مثل \f05a أو \f05d.
+    دعنا نستخدم أيقونة (علامة تعجب داخل دائرة) \f05a مؤقتاً لتظهر الدائرة، ثم نعدل لونها:
+    
+    سنعود لاستخدام \f058 ونغير اللون لتلوين الأيقونة ككل.
+    */
+    font-weight: 900; 
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--main-color); /* تلوين الأيقونة ككل باللون الأزرق */
+    font-size: 1rem;
+}
+
+
+
+
+/* ======================================================= */
+/* 6. استعلامات الوسائط للتوافق مع الشاشات (Responsive) */
+/* ======================================================= */
+
+/* 📱 شاشات صغيرة (الجوال) - أقل من 992px */
+@media (max-width: 991.98px) {
+    
+    .main-content-section {
+        padding-top: 3rem; 
+    }
+    
+    .col-lg-4 {
+        margin-bottom: 2rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .section-heading {
+        font-size: 1.4rem;
+    }
+
+    .step-title {
+        font-size: 1.15rem;
+    }
+    
+    .step-item p {
+        font-size: 1rem;
+    }
+    
+    .step-item .step-icon {
+        top: 18px;
+    }
+
+    .menu-item {
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================= */
+/* 🎨 المتغيرات الأساسية (للتسهيل في تعديل الألوان) */
+/* ======================================================= */
+:root {
+  --main-color: #6e7c9f; /* اللون الأزرق-الرمادي الرئيسي */
+  --accent-color: #4a607c; /* لون التمييز للعناوين والنصوص */
+  --text-color: #333333;
+  --light-gray: #e9ecef;
+  --card-bg: #d6dfe6; /* لون خلفية بطاقة الشعار */
+  --step-bg: #f0f3f6; /* لون خلفية الخطوات */
+  --button-yellow: #ffc107; /* لون الزر الأصفر/البرتقالي */
+
+    /* متغيرات بطاقة الحجز */
+  --primary-color: #4b6cb7; /* اللون الأزرق الأساسي */
+  --light-primary: #6c8cdb;
+  --dark-primary: #3a5390;
+  --selected-color: #4b6cb7;
+  --border-color: #eee;
+  --header-color: #888;
+  --light-color: #f7f7f7; 
+  --title-color: #333; 
+  --light-gray-background: #f6f7f9; 
+}
+
+
+.main-content-section {
+  padding-bottom: 3rem; 
+  margin-top: -110px;
+}
+
+/* 💡 مهم لعمل sticky: التأكد من أن الـ row الرئيسي يمتد */
+/* يجب تطبيق هذا على الحاوية الأبوية التي تحتوي على الأعمدة */
+.main-content-section.container > .row {
+    align-items: flex-start;
+    min-height: 1500px; /* لضمان أن الشريط الجانبي يجد مساحة للتمرير داخل عموده */
+}
+
+/* ======================================================= */
+/* 2. تنسيق العناوين والمحتوى */
+/* ======================================================= */
+.page-title {
+  color: var(--main-color);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+.intro-text, .content-paragraph {
+  line-height: 1.8;
+  color: var(--text-color);
+  font-size: 1.05rem;
+}
+
+/* ======================================================= */
+/* 3. تنسيق الخطوات (المحتوى على اليسار - الحدود والأيقونات على اليسار) */
+/* ======================================================= */
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.step-item {
+  background-color: var(--step-bg);
+  padding: 15px 20px;
+  border-right: none;
+  border-left: 5px solid var(--main-color); 
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.step-title {
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  padding-left: 35px; 
+  padding-right: 0;
+}
+
+.step-icon {
+  color: #4CAF50; 
+  font-size: 1rem;
+  position: absolute; 
+  right: auto;
+  left: 15px; 
+  top: 20px;
+}
+
+.step-item p {
+  margin: 0;
+  line-height: 1.7;
+  padding-left: 35px;
+  padding-right: 0;
+}
+
+
+/* ======================================================= */
+/* 4. تنسيق القائمة الجانبية (Sidebar) - على اليمين */
+/* ======================================================= */
+.sidebar-menu {
+    /* 🌟 التعديل: الخلفية الحمراء والحواف المنحنية 🌟 */
+    background-color: rgba(129, 171, 198, 0.177); /* أحمر */
+    border-radius: 15px; 
+    
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    /* 🌟 التعديل الأساسي: خاصية الثبات 🌟 */
+    position: sticky; 
+    top: 20px; 
+    z-index: 10; 
+}
+
+.menu-item {
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  border-radius: 10px; /* جعل حواف العناصر الداخلية منحنية أيضاً */
+  transition: color 0.3s;
+  background-color: white; /* الإبقاء على خلفية العنصر بيضاء */
+  position: relative;
+  overflow: hidden; 
+}
+
+/* طبقة التأثير الزرقاء التي ستظهر عند التمرير (من اليسار لليمين) */
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0; 
+  background-color: var(--main-color); /* الإبقاء على الأزرق كتأثير hover */
+  transition: width 0.3s ease-in-out;
+  z-index: 1; 
+}
+
+/* 🌟 عند التمرير (Hover Effect) 🌟 */
+.menu-item:hover {
+  color: white; 
+}
+
+.menu-item:hover::before {
+  width: 100%; 
+}
+
+.menu-item span {
+  position: relative;
+  z-index: 2; 
+  flex-grow: 1; 
+}
+
+/* 🌟 تنسيق الأيقونة (السهم) 🌟 */
+.menu-item i {
+  font-size: 0.8rem;
+  color: var(--main-color);
+  order: 2; 
+  margin-left: 0;
+  margin-right: 15px; 
+  transition: opacity 0.3s, color 0.3s;
+  position: relative;
+  z-index: 2; 
+}
+
+/* 🌟 عند التمرير: إخفاء السهم 🌟 */
+.menu-item:hover i {
+  opacity: 0; 
+  color: white; 
+  margin-right: 0;
+}
+
+/* 🌟 التعديل: تنسيق العنصر النشط (Active Item) ليظهر على الخلفية الحمراء 🌟 */
+.active-sidebar-item {
+    background-color: white; /* خلفية بيضاء للعنصر النشط */
+    color: #dc3545 !important; /* نص أحمر */
+    border: 2px solid #dc3545; /* حدود حمراء */
+  font-weight: bold;
+}
+
+.active-sidebar-item i {
+    color: #dc3545; /* أيقونة حمراء */
+  opacity: 1 !important; 
+}
+/* إزالة تأثير التمرير من الـ ::before للعنصر النشط */
+.active-sidebar-item:hover::before {
+  width: 0 !important;
+}
+
+
+/* ======================================================= */
+/* 5. تنسيق بطاقة التواصل (Contact Card) */
+/* ======================================================= */
+.contact-card {
+  background-color: white;
+  border: 1px solid var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.image-placeholder-container {
+  background-color: var(--card-bg);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.card-title-text {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.meeting-btn {
+  background-color: var(--button-yellow); 
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.meeting-btn:hover {
+  background-color: #e0a800;
+  color: var(--accent-color);
+}
+
+
+/* ======================================================= */
+/* 7. تنسيق القوائم المخصصة (Custom Lists) - مُعدَّل */
+/* ======================================================= */
+.custom-list {
+  list-style: none; 
+  padding-right: 0;
+  margin-bottom: 25px;
+}
+
+.custom-list li {
+  position: relative;
+  padding-right: 25px; 
+  line-height: 1.8;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+.custom-list li small {
+  display: block; 
+  font-size: 0.9rem;
+  color: #6c757d !important;
+  margin-top: 2px;
+}
+
+.custom-list li::before {
+  content: "\f058"; 
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; 
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--main-color); /* تلوين الأيقونة ككل باللون الأزرق */
+  font-size: 1rem;
+}
+
+
+/* ======================================================= */
+/* 6. استعلامات الوسائط للتوافق مع الشاشات (Responsive) */
+/* ======================================================= */
+
+/* 📱 شاشات صغيرة (الجوال) - أقل من 992px */
+@media (max-width: 991.98px) {
+  
+  .main-content-section {
+    padding-top: 3rem; 
+  }
+  
+  .col-lg-4 {
+    margin-bottom: 2rem;
+  }
+
+    /* إلغاء خاصية الثبات على الجوال لضمان عرض المحتوى بشكل صحيح */
+    .sidebar-menu {
+        position: static; 
+        top: auto;
+    }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.4rem;
+  }
+
+  .step-title {
+    font-size: 1.15rem;
+  }
+  
+  .step-item p {
+    font-size: 1rem;
+  }
+  
+  .step-item .step-icon {
+    top: 18px;
+  }
+
+  .menu-item {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* =========================================
+ التنسيق العام والحاوية الرئيسية
+ ========================================= */
+.booking-section-container {
+    /* 💡 التعديل: تنسيق الحاوية لتكون جزءًا من الشريط الجانبي الثابت */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    direction: rtl; 
+    background: transparent;
+    padding: 0;
+    margin-top: 20px; 
+}
+
+
+/* =========================================
+ بطاقة الحجز (Booking Card)
+ ========================================= */
+.booking-card {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px; 
+  height: 500px; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  position: relative;
+  direction: ltr; 
+  margin-top: 0; /* إزالة الـ margin-top: 40px لتكون قريبة من القائمة */
+}
+
+/* ---------------------------------
+ رأس البطاقة وتفاصيل الاجتماع
+ --------------------------------- */
+.card-header {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 5px;
+}
+
+.service-name {
+  font-size: 1rem;
+  color: gray;
+  text-align: center; 
+}
+
+.meeting-details {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.meeting-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.duration {
+  display: flex;
+  color: gray;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+
+.duration svg {
+  margin-inline-end: 5px;
+  stroke: gray; 
+}
+
+
+/* ---------------------------------
+ محدد التاريخ (التقويم)
+ --------------------------------- */
+.date-selector {
+  padding: 20px;
+  padding-bottom: 70px; 
+}
+
+.selector-title {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 15px; 
+}
+
+.calendar-header .nav-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--primary-color);
+  padding: 5px 10px;
+}
+
+.calendar-header .current-month {
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: center; 
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  gap: 5px;
+  padding: 0 10px; 
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+
+.day-label {
+  font-size: 0.9rem; 
+  font-weight: bold;
+  color: var(--header-color); 
+  padding: 5px 0;
+  border: none;
+}
+
+.day-cell {
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  transition: all 0.2s;
+  margin: 2px auto; 
+}
+
+.day-cell.date.available {
+  color: var(--text-color);
+  border: 1px solid #ccc;
+}
+
+.day-cell.date.selected {
+  background-color: var(--selected-color);
+  color: #fff;
+  border: 1px solid var(--selected-color);
+  font-weight: bold;
+}
+
+.day-cell.date.disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+
+/* ---------------------------------
+ تثبيت المنطقة الزمنية (Position Sticky) - مُعدَّل
+ --------------------------------- */
+.timezone-selection {
+  padding: 10px 20px 20px;
+  border-top: 1px solid var(--border-color);
+  position: sticky;
+  top: 0; 
+  background-color: #fff; 
+  z-index: 10; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+}
+
+.timezone-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.timezone-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--light-gray-background); 
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: right;
+  direction: rtl; 
+}
+
+
+/* ---------------------------------
+ تنسيقات واجهات الوقت والتفاصيل
+ --------------------------------- */
+.time-selector, .details-form {
+  padding: 20px;
+  padding-top: 70px; 
+  padding-bottom: 70px; 
+}
+
+.back-link-container {
+  position: relative;
+  text-align: center; 
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  position: absolute; 
+  top: 50%;
+  right: 0; 
+  transform: translateY(-50%); 
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0;
+  height: 100%; 
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#selected-date-display, #selected-time-display {
+  display: block; 
+  font-size: 1rem;
+  color: #555;
+  font-weight: bold;
+  margin-right: 40px; 
+}
+
+.duration-text {
+  font-size: 0.9rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.time-slots-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-height: 250px; 
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+
+.time-slot-btn {
+  width: 80%;
+  padding: 12px;
+  border: 1px solid var(--primary-color);
+  background-color: #fff;
+  color: var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.time-slot-btn:hover:not(.selected-time) {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.time-slot-btn.selected-time {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* تنسيقات نموذج التفاصيل */
+.details-form form {
+  padding: 10px 0;
+}
+.details-form input[type="text"],
+.details-form input[type="email"],
+.details-form input[type="tel"],
+.details-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.schedule-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.schedule-btn:hover {
+  background-color: var(--dark-primary);
+}
+
+
+/* ---------------------------------
+ القائمة المنبثقة للمناطق الزمنية
+ --------------------------------- */
+.timezone-dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 1000;
+  display: none; 
+  justify-content: center;
+  align-items: center;
+}
+
+.timezone-dropdown {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow: hidden;
+  direction: ltr; 
+}
+
+.timezone-search-container {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.timezone-search-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  text-align: left;
+  direction: ltr;
+}
+
+.timezone-list-container {
+  max-height: 350px; 
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timezone-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.timezone-list-item:hover, .timezone-list-item.selected {
+  background-color: var(--light-gray-background);
+  font-weight: bold;
+}
+
+.timezone-list-item .time-24h {
+  color: gray;
+  font-weight: normal;
+}
+
+.dropdown-footer {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.dropdown-footer button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* ---------------------------------
+ استجابة التصميم للشاشات الصغيرة
+ --------------------------------- */
+@media (max-width: 992px) {
+  .booking-section-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+  }
+  
+  .booking-card {
+    max-width: 100%;
+    margin-bottom: 30px;
+    height: 600px; 
+  }
+  .info-panel {
+    order: -1; 
+    padding: 20px;
+  }
+  .calendar-grid .day-cell {
+    width: 35px;
+    height: 35px;
+  }
+  .back-btn {
+    right: 15px; 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================= */
+/* 5. تنسيق قسم الفوائد (Benefits Section) */
+/* ======================================================= */
+.benefits-section {
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 30px 20px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* 🌟 التعديل: تقليل الهامش العمودي لدمج القسم 🌟 */
+    margin-top: 15px !important; 
+    margin-bottom: 15px !important;
+}
+
+/* 🌟 التعديل: إعادة تنسيق العنوان داخل البانر ليصبح أبيض 🌟 */
+.benefits-section .section-heading {
+    color: white !important; 
+    /* ليتناسب مع h3 الجديد: */
+    font-size: 1.4rem; 
+    margin-top: 0 !important;
+}
+
+.benefit-card {
+    background-color: #5d7494; /* لون البطاقة */
+    border-radius: 8px;
+    /* 🌟 التعديل: زيادة المسافة العلوية لتجنب تداخل الرقم مع المحتوى 🌟 */
+    padding: 25px 20px 20px 20px; /* أعلى: 25px، يمين: 20px، أسفل: 20px، يسار: 20px */
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    text-align: right;
+    transition: transform 0.3s ease;
+}
+
+.benefit-number {
+    position: absolute;
+    /* 🌟 التعديل: وضعه في الزاوية اليمنى العليا (right: 15px) 🌟 */
+    right: 15px; 
+    left: auto; /* إلغاء التنسيق السابق لـ left */
+    top: 15px;
+    font-size: 1.1rem; /* تصغير الخط ليتناسب مع الدائرة */
+    font-weight: 700;
+    line-height: 25px; /* ضبط ارتفاع الخط ليكون في منتصف الدائرة */
+    z-index: 3; /* تأكيد ظهوره فوق كل شيء */
+    
+    /* 🌟 التعديل: إنشاء الدائرة البيضاء 🌟 */
+    background-color: white;
+    color: var(--accent-color); /* لون النص داخل الدائرة هو لون التمييز الداكن */
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; /* لجعلها دائرة */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-title {
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 700;
+    
+    /* 🌟 التعديل: إضافة مسافة علوية لدفع العنوان بعيدًا عن الدائرة 🌟 */
+    /* الدائرة تبدأ من top: 15px. نضع العنوان بعد 40px تقريباً */
+    margin-top: 25px; 
+    
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    
+    /* إزالة الإزاحة الأفقية التي تسببت في المشكلة */
+    padding-right: 0; 
+}
+
+.benefit-text {
+    font-size: 0.95rem;
+    color: #e0e6ed; 
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    
+    /* إزالة الإزاحة الأفقية التي تسببت في المشكلة */
+    padding-right: 0;
+}
+
+/* ======================================================= */
+/* 6. تنسيق قسم الاستشارة المجانية (Consultation Banner) */
+/* ======================================================= */
+.consultation-banner {
+    background-size: cover;
+    background-position: center;
+    background-color: #333; 
+    border-radius: 10px;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+/* ======================================================= */
+/* 6. تنسيق قسم الاستشارة المجانية (Consultation Banner) */
+/* ======================================================= */
+.consultation-banner {
+    /* هذه الخواص تضمن عرض الصورة وتغطيتها للمساحة */
+    background-size: cover; 
+    background-position: center;
+    background-color: #333; 
+    border-radius: 10px;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* هذه الطبقة تضيف التعتيم الداكن فوق الصورة */
+.consultation-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(57, 96, 119, 0.65); /* تعتيم 65% أسود */
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1; 
+    color: white;
+}
+
+.banner-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.banner-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.contact-btn {
+    background-color: white; /* الزر أبيض كما في الصورة */
+    color: var(--accent-color); 
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: var(--light-gray); 
+    color: var(--accent-color);
+}
+
+/* ======================================================= */
+/* 7. استعلامات الوسائط للتوافق مع الشاشات (Responsive) */
+/* ======================================================= */
+
+@media (max-width: 991.98px) {
+    .main-content-section {
+        padding-top: 3rem; 
+    }
+    .col-lg-4 {
+        margin-bottom: 2rem;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .section-heading {
+        font-size: 1.4rem;
+    }
+    .menu-item {
+        font-size: 0.95rem;
+    }
+    .benefit-number {
+        font-size: 2rem;
+    }
+    .consultation-banner {
+        padding: 40px 15px;
+    }
+    .banner-title {
+        font-size: 1.7rem;
+    }
+}
+
+
+/* ======================================================= */
+/* 8. تنسيق بطاقات خطوات المؤسسة الفردية (Step Cards) - مُعدَّل */
+/* ======================================================= */
+.step-card {
+    /* 🌟 التعديل: تقليل المسافة البادئة الداخلية */
+    padding: 15px  !important; 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s;
+    height: 100%;
+}
+
+.step-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(171, 204, 208, 0.13);
+}
+
+.step-title {
+    color: var(--accent-color);
+    /* 🌟 التعديل: تصغير حجم عنوان الخطوة */
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px; /* تقليل المسافة بعد العنوان */
+}
+
+/* تنسيق القائمة داخل البطاقة */
+.step-card .custom-list {
+    margin-bottom: 0; /* إزالة المسافة في نهاية القائمة */
+    padding-right: 15px; /* إزاحة القائمة إلى الداخل قليلاً */
+}
+
+/* 🌟 التعديل: تصغير حجم خط عناصر القائمة */
+.step-card .custom-list li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+/* ======================================================= */
+/* 0. تعريف الحركة (Keyframes) لتأثير الموجة على النقطة الصغيرة */
+/* ======================================================= */
+@keyframes pulse-wave-small {
+    0% {
+        /* الظل الثابت + بداية الموجة */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 
+                    0 0 0 0px rgba(110, 124, 159, 0.7); 
+    }
+    100% {
+        /* الموجة تتسع وتصبح شفافة */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 
+                    0 0 0 15px rgba(110, 124, 159, 0); 
+    }
+}
+
+
+/* ======================================================= */
+/* 🎨 المتغيرات الأساسية (Variables) */
+/* ======================================================= */
+:root {
+    --main-color: #6e7c9f; /* اللون الأزرق-الرمادي الرئيسي */
+    --accent-color: #4a607c; /* لون التمييز للعناوين والخلفيات الداكنة */
+    --card-bg: #d6dfe6; /* لون خلفية بطاقة الشعار */
+    --text-color: #333333;
+    --light-gray: #f8f9fa;
+    --white: #ffffff;
+}
+
+/* ======================================================= */
+/* 1. التنسيق العام لـ "مميزات فتح مؤسسة فردية" */
+/* ======================================================= */
+
+.individual-benefits-header {
+    text-align: right; 
+    font-size: 2em;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+    padding-top: 20px;
+    margin-top: 60px;
+}
+
+.individual-benefits-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: center;
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+.benefit-item {
+    flex-basis: 30%;
+    max-width: 300px;
+}
+
+
+/* ======================================================= */
+/* 2. الدائرة الرئيسية (.benefit-circle) */
+/* ======================================================= */
+
+.benefit-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background-color: var(--card-bg); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* *** مفتاح ظهور النقطة العائمة خارج الحدود *** */
+    overflow: visible; 
+    transition: box-shadow 0.3s ease; 
+    cursor: pointer;
+}
+
+/* تعطيل العنصر الزائف ::before (تأثير الموجة القديم للدائرة الكبيرة) */
+.benefit-circle::before {
+    content: none;
+}
+
+.benefit-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+    position: absolute;
+    z-index: 1; 
+    border-radius: 50%;
+}
+
+
+/* ======================================================= */
+/* 3. النقطة العائمة (::after) - التصميم والحركة */
+/* ======================================================= */
+
+.benefit-circle::after {
+    content: '';
+    position: absolute;
+    /* قيمة سالبة لإظهارها فوق حدود الدائرة الأم */
+    bottom: -15px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    
+    /* تصميم (دائرة زرقاء وداخلها دائرة بيضاء صغيرة) باستخدام التدرج */
+    background: radial-gradient(circle at center, 
+        var(--white) 0%,      /* النقطة البيضاء الداخلية */
+        var(--white) 35%,     
+        var(--main-color) 38%,/* اللون الأزرق المحيط */
+        var(--main-color) 100%
+    );
+    
+    /* ظل ثابت (أساسي) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    border: 4px solid var(--white); /* الحدود الخارجية البيضاء */
+    z-index: 3;
+    transition: all 0.3s ease-in-out;
+}
+
+/* تشغيل الحركة التوسعية (الموجة) على الدائرة الزرقاء عند التمرير عليها */
+.benefit-circle:hover::after {
+    /* تطبيق الحركة الجديدة التي تعتمد على توسع الظل */
+    animation: pulse-wave-small 1.5s infinite ease-out; 
+    bottom: -10px; /* ترفع قليلاً عند التمرير */
+}
+
+
+/* ======================================================= */
+/* 4. تنسيق الرقم التراكبي والعناوين */
+/* ======================================================= */
+
+.benefit-number-overlay {
+    position: relative;
+    z-index: 2;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); 
+}
+
+.benefit-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.benefit-description {
+    color: #666;
+    min-height: 40px; 
+}
+
+
+/* ======================================================= */
+/* 5. استجابة الهواتف (Mobile Responsiveness) */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+    .individual-benefits-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .benefit-item {
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================= */
+/* 5. تنسيقات القسم الجديد: الشروط والنصائح (Conditions & Tips Section) */
+/* ======================================================= */
+
+
+
+/* توجيه الأعمدة لليسار (الصورة) واليمين (المحتوى) في ترتيب القراءة من اليمين لليسار */
+.conditions3-rtl {
+    flex-direction: row-reverse;
+
+}
+
+.conditions-tips-section .image-wrapper {
+    position: relative;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    /* ⭐️ التعديل (1): تحديد ارتفاع ثابت لحاوية الصورة */
+    height: 500px; /* يمكن تغيير هذه القيمة لتكبير أو تصغير الصورة */
+}
+
+.conditions-tips-section .image-wrapper img {
+    /* ⭐️ التعديل هنا: زيادة أقصى ارتفاع للصورة */
+    max-height: 1000px; 
+    width: 100%; 
+    object-fit: cover; 
+    border-radius: 8px; 
+}
+
+.conditions-tips-section .section-subtitle {
+    font-size: 20px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    /* إلغاء المسافة اليمنى للعناوين */
+    padding-right: 0; 
+    position: relative;
+    display: inline-block;
+}
+
+/* خلفية زرقاء مميزة للعناوين الفرعية */
+.conditions-tips-section .highlight-bg {
+    color: var(--main-color);
+    margin-bottom: 25px; 
+    display: inline-block; 
+    text-align: right; 
+}
+
+.conditions-tips-section .custom-checkmark-list {
+    list-style: none; /* إزالة النمط الافتراضي للقائمة */
+    padding: 0;
+    /* إلغاء الهامش الأيمن */
+    margin-right: 0; 
+}
+
+.conditions-tips-section .custom-checkmark-list li {
+    position: relative;
+    /* ⭐️ التعديل (1): زيادة المسافة بين النص والأيقونة (padding-right) */
+    padding-right: 25px; /* تم زيادتها من 15px إلى 25px لزيادة المسافة */
+    margin-bottom: 15px; 
+    /* ⭐️ التعديل (2): تصغير حجم الخط (font-size) */
+    font-size: 1em; /* تم تصغيرها من 1.1em إلى 1em */
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.conditions-tips-section .custom-checkmark-list li::before {
+    content: '✓'; /* رمز علامة الصح */
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    /* ⭐️ التعديلات الجديدة للشكل الدائري والإطار */
+    width: 20px; /* تحديد عرض */
+    height: 20px; /* تحديد ارتفاع */
+    line-height: 20px; /* لجعل علامة الصح في المنتصف عمودياً */
+    text-align: center; /* لتوسيط علامة الصح أفقياً */
+    border: 2px solid var(--main-color); /* الإطار الأزرق */
+    border-radius: 50%; /* لجعلها دائرة */
+
+    /* الحفاظ على لون علامة الصح الأزرق وحجمها */
+    font-size: 1em; /* تصغير حجم الرمز ليناسب الدائرة */
+    color: var(--main-color); /* لون علامة الصح */
+    font-weight: bold;
+}
+
+/* ======================================================= */
+/* 6. استجابة الهواتف (Mobile Responsiveness) */
+/* ======================================================= */
+
+@media (max-width: 991.98px) { /* للأجهزة اللوحية والصغيرة */
+    /* ملاحظة: تم إرجاع الكلاس هنا إلى .conditions-rtl لافتراض أنه هو المستخدم في media query */
+    .conditions-rtl {
+        flex-direction: column; /* إلغاء row-reverse في الأجهزة الصغيرة */
+    }
+    .conditions-tips-section .image-wrapper {
+        text-align: center;
+        height: auto;
+    }
+    .conditions-tips-section .image-wrapper img {
+        margin: 0 auto;
+        max-height: 300px;
+    }
+    .conditions-tips-section .content-wrapper {
+        text-align: right; 
+    }
+    .conditions-tips-section .section-subtitle {
+        text-align: right;
+        width: 100%;
+        padding-right: 0;
+    }
+    .conditions-tips-section .custom-checkmark-list li {
+        /* ⭐️ تطبيق نفس التعديل لـ padding-right في وضع الاستجابة */
+        padding-right: 25px; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================== */
+/* 🌟 أنماط Particles.js داخل الفوتر 🌟 */
+/* ==================================== */
+
+/* ملاحظة: قد تحتاج لتعريف المتغيرات التالية: 
+:root {
+    --main-color: #5d7494; // اللون الداكن للفوتر
+    --stats-end-color: #4b6180; // لون أغمق للتدرج 
+    --light-color: #ffffff;
+    --btn-warning-color: #37b7c2; // اللون الفيروزي 
+}
+*/
+
+#particles-js-footer {
+    /* يغطي كامل مساحة الفوتر */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* لضمان ظهورها كخلفية (الطبقة 1) */
+    z-index: 1; 
+    /* تطبيق التدرج اللوني كما في الموقع */
+/* 🌟 التعديل هنا: استخدام لون موحد بدلاً من التدرج 🌟 */
+    background: var(--main-color, #5d7494);}
+
+.main-footer {
+    /* يجب أن يكون العنصر الأب في وضعية نسبية لاحتواء الـ particles */
+    position: relative; 
+    /* نجعل الخلفية شفافة لأننا وضعنا التدرج في طبقة الـ Particles */
+    background-color: transparent; 
+    color: var(--light-color);
+    padding: 50px 20px 0;
+    direction: rtl; /* اتجاه عربي */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+}
+
+.footer-content-wrapper {
+    /* رفع المحتوى فوق طبقة الـ particles (الطبقة 2) */
+    position: relative; 
+    z-index: 2; 
+    
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-column {
+    /* ... لا تغيير ... */
+    flex: 1; 
+    padding: 0 15px;
+    min-width: 200px;
+    text-align: right; 
+}
+
+.column-title {
+    /* ... لا تغيير ... */
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--light-color);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.column-title::after {
+    /* ... لا تغيير ... */
+    content: '';
+    position: absolute;
+    right: 0; 
+    bottom: -10px;
+    width: 30px;
+    height: 3px;
+    background-color: var(--btn-warning-color);
+}
+
+/* تنسيق القوائم والروابط */
+.contact-list, .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li, .footer-column li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5; 
+}
+
+.footer-column a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block; 
+    text-align: right; 
+}
+
+.footer-column a:hover {
+    color: var(--dark-blue-hover);
+}
+
+/* تنسيق أيقونات التواصل داخل الروابط */
+.contact-list a i {
+    margin-inline-end: 10px;
+    color: var(--btn-warning-color);
+    transition: color 0.3s;
+}
+
+/* تنسيق أيقونات التواصل */
+.contact-list i {
+    margin-inline-end: 10px;
+    color: var(--btn-warning-color);
+}
+
+/* تنسيق عمود تفاصيل الشركة (العمود الأخير) */
+.company-details {
+    text-align: right; 
+}
+
+.footer-logo {
+    width: 60px; 
+    margin-bottom: 15px;
+}
+
+.company-name {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.company-text {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.company-reg {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--light-color);
+    border-radius: 50%;
+    margin-inline-end: 10px;
+    color: var(--light-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--btn-warning-color);
+    border-color: var(--btn-warning-color);
+    color: var(--dark-text);
+}
+
+/* قسم حقوق النشر السفلي */
+.footer-bottom {
+    /* رفع المحتوى فوق طبقة الـ particles (الطبقة 2) */
+    position: relative; 
+    z-index: 2; 
+
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    font-size: 0.85rem;
+}
+
+.highlight-text {
+    color: var(--btn-warning-color);
+    font-weight: bold;
+}
+
+/* استجابة التصميم */
+@media (max-width: 992px) {
+    .footer-content-wrapper {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .footer-column {
+        flex-basis: 45%; 
+        margin-bottom: 30px;
+        text-align: right;
+    }
+    
+    .company-details {
+        flex-basis: 100%; 
+        text-align: right;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: right; 
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-column {
+        flex-basis: 100%; 
+        padding: 0;
+        text-align: right;
+    }
+}
+
+

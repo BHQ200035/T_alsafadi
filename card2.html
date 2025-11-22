@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>صفحة رئيسية - Bootstrap RTL</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="css/card2.css"> 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+ 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+
+</head>
+  <body>
+
+
+
+
+<nav id="scrollRevealNavbar" class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top scroll-navbar-initial-hidden">
+    <div class="container-fluid container">
+        
+        
+        <a class="navbar-brand p-0 order-lg-1" href="index.html"> 
+            <img src="image/logo.png" alt="الشعار" height="50"> 
+        </a>
+
+        
+        <div class="collapse navbar-collapse order-lg-2" id="scrollRevealMainNavbarCollapse"> 
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 custom-nav-center"> 
+                <li class="nav-item"><a class="nav-link fw-bold" href="index.html">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold active" aria-current="page" href="aboutus.html">من نحن</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="service.html"> خدماتنا</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="blogs.html">المقالات</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="contactus.html">تواصل معنا</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="#">English</a></li>
+            </ul>
+        </div>
+
+<div class="d-none d-lg-flex align-items-center order-lg-3 scroll-reveal-contact-info"> 
+    
+    <a href="tel:+966533346431" class="text-decoration-none d-flex align-items-center text-dark gap-3">
+        
+        <div class="scroll-reveal-icon-circle"> 
+            <i class="fa-solid fa-phone "></i>
+        </div>
+        
+        <div class="text-end"> 
+            <div class="text-secondary" style="line-height: 1.2;">اتصل بنا في اي وقت</div>
+            <div class="fw-normal text-dark" style="line-height: 1.2;">+966533346431</div>
+        </div>
+        
+    </a>
+</div>
+        
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" dir="rtl">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">قائمة التصفح</h5>
+            <button type="button" class="btn-close me-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item"><a class="nav-link fw-bold" href="index.html">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold active" aria-current="page" href="aboutus.html">من نحن</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="service.html">خدماتنا </a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="blogs.html">المقالات</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="contactus.html">تواصل معنا</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="#">English</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="top-bar d-none d-lg-block border-bottom custom-top-bar-bg">
+        <div class="container d-flex justify-content-between align-items-center py-2">
+            
+            <div class="contact-info d-flex align-items-center">
+                
+                <span class="me-3 text-white">
+                    <i class="fa-solid fa-phone text-white me-1"></i>
+                    <a href="tel:+966533346431" class="text-decoration-none text-white fw-bold me-1">966533346431+</a>
+                </span>
+
+                <span class="me-3 text-white">
+                    <i class="fa-solid fa-envelope text-white me-1"></i>
+                    <a href="mailto:info@alsafadi.sa" class="text-decoration-none text-white fw-bold">info@alsafadi.sa</a>
+                </span>
+            </div>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon-circle">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon-circle">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon-circle">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top main-navbar">
+        <div class="container-fluid container">
+            
+            <button class="navbar-toggler order-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="d-none d-lg-block order-lg-3"> 
+                <form class="d-flex" role="search">
+                    <div class="input-group search-desktop-rtl">
+                        <input class="form-control rounded-pill text-end" type="search" placeholder="ابحث هنا" aria-label="Search" style="width: 200px;">
+                        <span class="input-group-text bg-white border-0 rounded-pill p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.085.122l3.22 3.22a1 1 0 0 0 1.415-1.414l-3.22-3.22a.96.96 0 0 0-.122-.085zm-5.142 1.6a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11"/>
+                            </svg>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+            <a class="navbar-brand p-0 order-lg-1" href="index.html"> 
+                <img src="image/logo.png" alt="الشعار" height="50">
+            </a>
+
+            <div class="collapse navbar-collapse order-lg-2" id="mainNavbar"> 
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 custom-nav-center"> 
+                <li class="nav-item"><a class="nav-link fw-bold" href="index.html">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold active" aria-current="page" href="aboutus.html">من نحن</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="service.html">خدمانتا </a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="blogs.html">المقالات</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="contactus.html">تواصل معنا</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">English</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div id="mouse-cursor"></div>
+
+
+
+<section class="about-us-hero">
+    <div class="container">
+        <h1 class="hero-title"> تأسيس شركة خليجية في السعودية</h1>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="main-content-section container my-5 pt-5">
+  <div class="row">
+
+        <div class="col-lg-4 order-lg-1">
+      <aside class="sidebar-menu" >
+        <div class="menu-item">
+          <i class="fas fa-angle-right"></i>
+          <span>خدمة فريق موارد بشرية متكامل لإدارة الشركات والمؤسسات</span>
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-angle-right"></i>
+          <span>إصدار التراخيص</span>
+        </div>
+        <div class="menu-item active-sidebar-item">
+          <i class="fas fa-angle-right"></i>
+          <span>إدارة الشؤون القانونية للشركات والمؤسسات</span>
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-angle-right"></i>
+          <span>برامج الإقامة المميزة في السعودية</span>
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-angle-right"></i>
+          <span>فتح فرع لشركة قائمة</span>
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-angle-right"></i>
+          <span>خدمة حماية المصنفات من المخالفات والغرامات في السعودية</span>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+ <div class="booking-section-container">
+
+        <div class="booking-card">
+            <div class="card-header">
+                <img src="image/logo.png" alt="AlAfadi Business Services Logo" class="logo"> 
+              <br>
+                <span class="service-name">AlAfadi Business Services</span>
+            </div>
+            <div class="meeting-details">
+                <h2 class="meeting-title">Meeting</h2>
+                <div class="duration">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    30 min
+                </div>
+            </div>
+
+            <div class="date-selector" id="date-selector-view">
+                <h3 class="selector-title">Select a Day</h3>
+                <div class="calendar-header">
+                    <button class="nav-btn" onclick="prevMonth()">&lt;</button>
+                    <span class="current-month" id="current-month-display"></span>
+                    <button class="nav-btn" onclick="nextMonth()">&gt;</button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                    </div>
+                
+                <div class="timezone-selection">
+                    <span class="timezone-label">Time Zone</span>
+                    <button class="timezone-button" id="timezone-display-btn" onclick="openTimezoneDropdown()">
+                        <span id="current-timezone-name"></span> 
+                        <span id="current-timezone-time"></span> 
+                    </button>
+                </div>
+                
+            </div>
+            
+            <div class="time-selector" id="time-selector-view" style="display: none;">
+                <div class="back-link-container">
+                    <button class="back-btn" onclick="showDateView()"><i class="fa-solid fa-arrow-right"></i> رجوع</button> 
+                    <span id="selected-date-display"></span>
+                </div>
+                <h3 class="selector-title">Select a Time</h3>
+                <p class="duration-text">Duration: 30 min</p>
+                <div class="time-slots-container" id="time-slots-container">
+                    </div>
+            </div>
+
+            <div class="details-form" id="details-form-view" style="display: none;">
+                <div class="back-link-container">
+                    <button class="back-btn" onclick="showDateView()"><i class="fa-solid fa-arrow-right"></i> رجوع</button> 
+                    <span id="selected-time-display"></span>
+                </div>
+                <h3 class="selector-title">Enter Details</h3>
+                <form>
+                    <input type="text" placeholder="الاسم *" required>
+                    <input type="email" placeholder="البريد الإلكتروني *" required>
+                    <input type="tel" placeholder="رقم الهاتف" required>
+                    <textarea placeholder="النشاط المراد ممارسته في KSA *"></textarea>
+                    
+                    <button type="submit" class="schedule-btn">Schedule Event</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="timezone-dropdown-overlay" id="timezone-overlay">
+        <div class="timezone-dropdown">
+            
+            <div class="timezone-search-container">
+                <input type="text" placeholder="Search..." id="timezone-search-input" onkeyup="filterTimezones()">
+            </div>
+
+            <ul class="timezone-list-container" id="timezone-list">
+                </ul>
+            
+            <div class="dropdown-footer">
+                <button onclick="closeTimezoneDropdown()">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+
+      </aside>
+
+    </div>
+
+
+
+
+
+<div class="col-lg-8 order-lg-2">
+
+    
+    <section class="main-content-section mb-4">
+        <h2 class="section-heading">تأسيس شركة خليجية في السعودية</h2>
+        <p class="mb-4 content-paragraph">تأسيس شركة خليجية في المملكة العربية السعودية تتطلب الالتزام بمجموعة من الإجراءات القانونية والإدارية التي تهدف إلى ضمان الامتثال التام للأنظمة المعمول بها. فيما يلي تفاصيل المستندات والشروط المطلوبة:</p>
+        
+        <h3>المستندات المطلوبة لتأسيس شركة خليجية في السعودية</h3>
+        <ul class="custom-list">
+            <li>نسخة مصدقة من السجل التجاري للشركة الأم <br><small class="text-muted">(توضح تفاصيل الشركة الأم مثل اسمها القانوني، نشاطها التجاري، ومكان التسجيل)</small></li>
+            <li>نسخة من عقد التأسيس <br><small class="text-muted">(يجب أن يكون موقعًا ومصدقًا ويتضمن أسماء الشركاء وحصصهم)</small></li>
+            <li>قرار من مجلس الإدارة <br><small class="text-muted">(ينص على الموافقة على تأسيس فرع في السعودية مع تعيين مدير مسؤول)</small></li>
+            <li>توكيل قانوني للمدير المفوض <small class="text-muted">(موثق من السلطات الرسمية، يخول المدير إدارة الفرع في المملكة)</small></li>
+            <li>إثبات الهوية للمدير المفوض <small class="text-muted">(نسخة من جواز السفر أو الهوية الوطنية مع ترجمة معتمدة إذا لزم الأمر)</small></li>
+            <li>إثبات رأس المال <small class="text-muted">(شهادة بنكية تؤكد إيداع رأس المال المطلوب)</small></li>
+            <li>وثائق الترخيص <small class="text-muted">(تتضمن تراخيص النشاط المحدد إذا كان يتطلب موافقات خاصة)</small></li>
+            <li>إثبات العنوان <small class="text-muted">(عقد إيجار أو ملكية لمقر الشركة في السعودية)</small></li>
+        </ul>
+        
+        <h3 class="mt-4">شروط تأسيس شركة خليجية في السعودية</h3>
+        <div class="row">
+            
+            <div class="col-md-6">
+                <ul class="custom-list">
+                    <li>التسجيل والترخيص <small class="text-muted">(يشمل الحصول على سجل تجاري وتراخيص من وزارة التجارة)</small></li>
+                    <li>اختيار نوع الشركة <small class="text-muted">(مثل: شركة ذات مسؤولية محدودة أو شركة مساهمة)</small></li>
+                    <li>الامتثال للقوانين المحلية <small class="text-muted">(الالتزام بلوائح وقوانين الضرائب، البيئة، وحماية المستهلك)</small></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-6">
+                <ul class="custom-list">
+                    <li>تحديد الهيكل القانوني والإداري <small class="text-muted">(يشمل تحديد الشركاء والمسؤوليات)</small></li>
+                    <li>التراخيص الخاصة <small class="text-muted">(الحصول على موافقات إضافية إذا كان النشاط التجاري يتطلب ذلك)</small></li>
+                    <li></li> 
+                </ul>
+            </div>
+        </div>
+
+
+        <h3 class="mt-4">فوائد تأسيس شركة خليجية في السعودية </h3>
+
+        <div class="row g-3 benefits-container justify-content-center">
+            
+            <div class="col-md-4">
+                <div class="benefit-card">
+                    <div class="benefit-number">01</div>
+                    <h4 class="benefit-title">الوصول إلى سوق متنام</h4>
+                    <p class="benefit-text">تتيح السعودية فرصًا استثمارية ضخمة كونها أكبر سوق في الخليج</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="benefit-card">
+                    <div class="benefit-number">02</div>
+                    <h4 class="benefit-title">إطار قانوني مستقر</h4>
+                    <p class="benefit-text">تمنح السعودية فرصًا استثمارية ضخمة كونها أكبر سوق في الخليج</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="benefit-card">
+                    <div class="benefit-number">03</div>
+                    <h4 class="benefit-title">التسهيلات الحكومية</h4>
+                    <p class="benefit-text">تشمل إعفاءات ضريبية وبرامج دعم للمستثمرين</p>
+                </div>
+            </div>
+            
+        </div>
+
+
+<section class="consultation-banner my-5" 
+         style="background-image: url('image/slider2.jpg');"> 
+    <div class="banner-content">
+        <h2 class="banner-title">حدد موعدًا لاستشارتك المجانية اليوم</h2>
+        <p class="banner-text">في الصفدي لخدمات الأعمال، نحن ملتزمون بجعل رحلتك التجارية سلسة ومجزية. دعنا نناقش أهدافك وتحدياتك وكيف يمكننا مساعدتك على النجاح</p>
+        <button class="btn contact-btn">إتصل بنا</button>
+    </div>
+</section>
+
+
+
+
+
+<h3 class="mt-4">فتح مؤسسة فردية في السعودية</h3>
+<p class="content-paragraph mb-4">يُعد فتح مؤسسة فردية في السعودية من الخطوات الشائعة لبدء النشاط التجاري بشكل قانوني، وقد سهلت وزارة التجارة والاستثمار الإجراءات عبر منصاتها الإلكترونية، مما يسمح للأفراد بتأسيس أعمالهم بسهولة.</p>
+
+                    <div class="steps-container">
+                        <div class="row"> 
+    <div class="col-md-6">
+        <div class="step-card p-4 rounded-3" >
+            <h4 class="step-title">1. الدخول إلى منصة وزارة التجارة</h4>
+            <ul class="custom-list">
+                <li>قم بزيارة الموقع الإلكتروني لوزارة التجارة والاستثمار (mci.gov.sa).</li>
+                <li>اختر خدمة "إصدار سجل تجاري" وابدأ تعبئة الطلب إلكترونياً.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="step-card p-4 rounded-3" >
+            <h4 class="step-title">2. تحديد اسم المؤسسة</h4>
+            <ul class="custom-list">
+                <li>اختر اسمًا تجاريًا مناسبًا يعكس طبيعة النشاط التجاري.</li>
+                <li>تحقق من توفر الاسم عبر منصة وزارة التجارة.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="step-card p-4 rounded-3" style="margin-top: 20px;">
+            <h4 class="step-title">3. اختيار النشاط التجاري</h4>
+            <ul class="custom-list">
+                <li>حدد النشاط التجاري الرئيسي والفرعي الذي ترغب في ممارسته.</li>
+                <li>احرص على توافق النشاط مع التراخيص المطلوبة.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="step-card p-4 rounded-3" style="margin-top: 20px;">
+            <h4 class="step-title">4. إعداد رأس المال</h4>
+            <ul class="custom-list">
+                <li>تحديد رأس المال المخصص للمؤسسة.</li>
+                <li>يجب ألا يقل عن الحد الأدنى المحدد قانونياً لبعض الأنشطة.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="step-card p-4 rounded-3" style="margin-top: 40px;">
+            <h4 class="step-title">5. توفير المستندات المطلوبة</h4>
+            <ul class="custom-list">
+                <li>صورة من الهوية الوطنية.</li>
+                <li>إثبات العنوان الوطني.</li>
+                <li>في حالة وجود محل: تقديم عقد إيجار أو ملكية.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="step-card p-4 rounded-3" style="margin-top: 40px;">
+            <h4 class="step-title">6. الحصول على التصاريح اللازمة</h4>
+            <ul class="custom-list">
+                <li>بعض الأنشطة تتطلب تصاريح إضافية من جهات تنظيمية متخصصة.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-12"> 
+        <div class="step-card p-4 rounded-3" style="margin-top: 60px;">
+            <h4 class="step-title">7. الدفع الإلكتروني للرسوم</h4>
+            <ul class="custom-list">
+                <li>سداد رسوم السجل التجاري والعضوية في الغرفة التجارية عبر الوسائل المتاحة إلكترونياً.</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+</div>
+                    
+
+
+
+
+
+<h3 class="individual-benefits-header">مميزات فتح مؤسسة فردية</h3>
+
+<div class="individual-benefits-container">
+    
+    <div class="benefit-item">
+        <div class="benefit-circle">
+            <img src="image/b1.webp" alt="آلية عمل التروس">
+            </div>
+        <h4 class="benefit-name">سهولة الإدارة</h4>
+        <p class="benefit-description">لا تحتاج إلى هيكل تنظيمي معقد</p>
+    </div>
+
+    <div class="benefit-item">
+        <div class="benefit-circle">
+            <img src="image/b1.webp" alt="رجل أعمال واثق">
+            </div>
+        <h4 class="benefit-name">التحكم الكامل</h4>
+        <p class="benefit-description">المالك يدير كافة القرارات التشغيلية والمالية</p>
+    </div>
+
+    <div class="benefit-item">
+        <div class="benefit-circle">
+            <img src="image/b1.webp" alt="مصافحة وصفقات مالية">
+            </div>
+        <h4 class="benefit-name">بساطة الإجراءات</h4>
+        <p class="benefit-description">تأسيس المؤسسة لا يتطلب شركاء أو تعقيدات قانونية</p>
+    </div>
+
+</div>
+
+
+
+<section class="conditions-tips-section my-5">
+    <div class="container3">
+        <div class="row align-items-center conditions3-rtl">
+            <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+                <div class="image-wrapper">
+                    <img src="image/b3.webp" 
+                        alt="رجل أعمال يسير في المدينة" class="img-fluid rounded-3 shadow-sm">
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12">
+                <div class="content-wrapper">
+                    <h3 class="section-subtitle highlight-bg">الشروط الخاصة بفتح مؤسسة فردية بدون محل:</h3>
+                    <ul class="custom-checkmark-list mb-4">
+                        <li>تقديم عنوان واضح كعنوان المقر الافتراضي</li>
+                        <li>توضيح النشاط التجاري الذي لا يتطلب مقرًا ثابتًا مثل الأنشطة الرقمية</li>
+                    </ul>
+
+                    <h3 class="section-subtitle highlight-bg">نصائح إضافية:</h3>
+                    <ul class="custom-checkmark-list">
+                        <li>تحقق من الامتثال الضريبي وتسجيل المؤسسة في هيئة الزكاة والضريبة والجمارك</li>
+                        <li>احتفظ بنسخ إلكترونية ومطبوعة من جميع المستندات المقدمة</li>
+                        <li>احرص على تحديث بيانات المؤسسة دوريًا لتجنب العقوبات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+    
+</div>
+
+
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="main-footer">
+
+    <div id="particles-js-footer"></div>
+
+    <div class="footer-content-wrapper">
+
+        <div class="footer-column company-details">
+            <img src="image/logowhite.png" alt="شعار SBS" class="footer-logo">
+            <h4 class="company-name">شركة الصفدي لخدمات الأعمال</h4>
+            <p class="company-text">شركة مرخصة من وزارة الإستثمار</p>
+            <p class="company-reg">الرقم الموحد: 920031465</p>
+            <p class="company-reg">الرقم العام: 102074664335587</p>
+            <p class="company-reg">رقم السجل التجاري: 1009131050</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+
+        <div class="footer-column service-list-1">
+            <h4 class="column-title">خدماتنا</h4>
+            <ul>
+                <li><a href="#service1">تأسيس شركة خليجية في السعودية</a></li>
+                <li><a href="#service2">تأسيس الشركات الأجنبية 100%</a></li>
+                <li><a href="#service3">تأسيس الشركات بشريك أجنبي</a></li>
+                <li><a href="#service4">فتح فرع لشركة قائمة</a></li>
+                <li><a href="#service5">خدمة حماية المصنفات من المخالفات والغرامات في السعودية</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column service-list-2">
+            <h4 class="column-title">خدمات</h4>
+            <ul>
+                <li><a href="#service6">صياغة العقود في السعودية</a></li>
+                <li><a href="#service7">إصدار التراخيص</a></li>
+                <li><a href="#service8">إدارة العقود القانونية للشركات والمؤسسات</a></li>
+                <li><a href="#service9">برامج الإقامة المميزة في السعودية</a></li>
+                <li><a href="#service10">خدمة فريق موارد بشرية متكامل لإدارة الشركات والمؤسسات</a></li>
+            </ul>
+        </div>
+
+
+        <div class="footer-column contact-info">
+            <h4 class="column-title">معلومات التواصل</h4>
+            <ul class="contact-list">
+                <li><a href="mailto:info@alafadi.sa"><i class="fas fa-envelope"></i> info@alafadi.sa</a></li>
+                <li><a href="#map-location"><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</a></li>
+                <li><a href="tel:+966533346431"><i class="fas fa-phone-alt"></i> 966533346431+</a></li>
+                <li><a href="tel:+966533328619"><i class="fas fa-phone-alt"></i> 966533328619+ (الخبر، المملكة العربية السعودية)</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>تم التصميم والتنفيذ بواسطة <span class="highlight-text">إضاءة لـكود</span></p>
+        <p>جميع الحقوق محفوظة &copy; 2025 SBS</p>
+    </div>
+</footer>
+
+
+
+
+
+
+<div class="pxl-contact-float-wrap">
+    
+    <button id="backToTopBtn" class="btn pxl-float-btn scroll-to-top-btn" aria-label="Scroll to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <button class="btn pxl-float-btn main-contact-btn" aria-label="Contact Options">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    
+    <div class="pxl-sub-buttons">
+        
+        <a href="tel:+96650XXXXXXX" class="btn pxl-float-btn phone-bayan-btn" aria-label="Call Bayan">
+            <i class="fas fa-phone-alt"></i>
+            <span class="pxl-btn-label">بيان</span>
+        </a>
+        
+        <a href="tel:+966533346431" class="btn pxl-float-btn phone-ahmed-btn" aria-label="Call Ahmed">
+            <i class="fas fa-phone-alt"></i>
+            <span class="pxl-btn-label">أحمد</span>
+        </a>
+        
+        <a href="https://wa.me/966533346431" class="btn pxl-float-btn whatsapp-float-btn" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="pxl-btn-label">واتساب</span>
+        </a>
+    </div>
+</div>
+
+<div class="pxl-left-float-wrap">
+    
+    <a href="#contact" class="btn pxl-left-btn consultation-btn" aria-label="Book a free consultation">
+        حجز استشارة مجانية
+    </a>
+
+    <a href="/en" class="btn pxl-left-btn language-btn" aria-label="English">
+        English <i class="fas fa-flag-usa"></i> </a>
+</div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="script/clientslider.js"></script>
+    <script src="script/scrollnavbar.js"></script>
+    <script src="script/togglebuttons.js"></script>
+    <script src="script/calender.js"></script> 
+    <script src="script/mousecursor.js"></script> 
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    /**
+     * دالة لتشغيل تأثير العد التزايدي (كودك الأصلي)
+     */
+    function animateCount(element, endValue, duration) {
+        let startTimestamp = null;
+        const startValue = 0;
+
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = timestamp - startTimestamp;
+            // يجب أن تستخدم القيمة التي سحبتها من data-num
+            const currentValue = Math.min(endValue, Math.floor(startValue + (endValue - startValue) * progress / duration));
+
+            // إضافة الفواصل وإضافة علامة + إذا كان العداد الأول
+            let displayText = currentValue.toLocaleString('en-US');
+            if (element.id === 'counter1') {
+                displayText += '+';
+            }
+            
+            element.textContent = displayText; 
+
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
+            }
+        };
+
+        window.requestAnimationFrame(step);
+    }
+
+    // الانتظار حتى يتم تحميل الصفحة بالكامل
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // 🌟 التعديل: تغيير المُحدّد لاستهداف فئة العدادات الجديدة 🌟
+        const statNumbers = document.querySelectorAll('.counter-number');
+        
+        // إعداد Intersection Observer
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numberElement = entry.target;
+                    
+                    // منطق تشغيل العداد
+                    // 1. سحب القيمة النهائية من خاصية data-num
+                    const endValue = parseInt(numberElement.getAttribute('data-num'), 10); 
+                    
+                    if (!isNaN(endValue)) {
+                        numberElement.textContent = '0'; // إعادة تعيين القيمة المبدئية إلى صفر
+                        animateCount(numberElement, endValue, 2000); // بدء العد
+                    }
+                    
+                    // 2. التوقف عن المراقبة
+                    observer.unobserve(numberElement);
+                }
+            });
+        }, observerOptions);
+
+        // جعل الـ Observer يراقب عناصر الأرقام لبدء الحركة
+        statNumbers.forEach(numberElement => {
+            observer.observe(numberElement);
+        });
+
+
+        // ===========================================
+        // 🌟 4. تفعيل خلفية النقاط (Particles.js) لقسم العدادات 🌟
+        // ===========================================
+        particlesJS('particles-js-counters', {
+            "particles": {
+                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 2, "random": true }, 
+                "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 3, "direction": "none", "out_mode": "out" },
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": false }, // إيقاف التفاعل لتركيز المستخدم على العدادات
+                    "onclick": { "enable": false }, 
+                    "resize": true
+                },
+                "modes": {}
+            },
+            "retina_detect": true
+        });
+
+    });
+</script>
+
+
+
+
+
+
+
+<div id="particles-js"></div> 
+
+    <section class="content-above-particles">
+        </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script src="js/app.js"></script>
+
+<script>
+    // 🌟 استدعاء Particles.js للفوتر 🌟
+    particlesJS('particles-js-footer', {
+        "particles": {
+            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" }, 
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": true },
+            "size": { "value": 2, "random": true }, 
+            "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+            "move": { "enable": true, "speed": 3, "direction": "none", "out_mode": "out" },
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "grab" }, 
+                "onclick": { "enable": true, "mode": "push" }, 
+                "resize": true
+            },
+            "modes": {
+                "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                "push": { "particles_nb": 4 }
+            }
+        },
+        "retina_detect": true
+    });
+
+    // 🌟 استدعاء Particles.js لقسم الحجز 🌟
+    particlesJS('particles-js-booking', {
+        "particles": {
+            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" }, 
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": true },
+            "size": { "value": 2, "random": true }, 
+            "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+            "move": { "enable": true, "speed": 3, "direction": "none", "out_mode": "out" },
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "grab" }, 
+                "onclick": { "enable": true, "mode": "push" }, 
+                "resize": true
+            },
+            "modes": {
+                "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                "push": { "particles_nb": 4 }
+            }
+        },
+        "retina_detect": true
+    });
+</script>
+
+
+
+
+
+</body>
+</html>
