@@ -18,6 +18,18 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;700;800&display=swap" rel="stylesheet">
+
+
+
+
+
 </head>
   <body>
 
@@ -335,6 +347,256 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="bookingMainContainer" class="main-dialog-wrapper">
+    <div class="main-dialog-content">
+        <span class="close-btn-main" onclick="closeMainModal()">&times;</span>
+        
+        <div class="dialog-layout-columns">
+            
+            <div class="dialog-column-left">
+                <div class="header-info-card">
+                    <img src="image/logo.png" alt="AlAfadi Business Services Logo" class="business-logo-image"> 
+                    <br>
+                    <span class="service-title-text">AlAfadi Business Services</span>
+                </div>
+                <div class="event-time-details">
+                    <h2 class="event-heading-title">Meeting</h2>
+                    <div class="meeting-duration-display">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-clock-feather">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        30 min
+                    </div>
+                </div>
+                <div class="dialog-link-privacy">
+                    <a href="#" id="privacyCookieLink">Cookie settings</a>
+                </div>
+            </div>
+
+            <div class="dialog-column-right">
+
+                <div class="date-time-picker" id="datePickerView">
+                    <h3 class="picker-section-title">Select a Date & Time</h3>
+                    <div class="calendar-navigation-header">
+                        <button class="nav-button-cal" onclick="prevMonth()">&lt;</button>
+                        <span class="month-year-label" id="currentMonthLabel">November 2025</span> 
+                        <button class="nav-button-cal" onclick="nextMonth()">&gt;</button>
+                    </div>
+                    <div class="calendar-display-grid" id="calendarGrid">
+                        <div class="day-label-name">SUN</div><div class="day-label-name">MON</div><div class="day-label-name">TUE</div><div class="day-label-name">WED</div><div class="day-label-name">THU</div><div class="day-label-name">FRI</div><div class="day-label-name">SAT</div>
+                        <div class="grid-empty-cell"></div><div class="grid-empty-cell"></div><div class="grid-empty-cell"></div><div class="grid-empty-cell"></div><div class="grid-empty-cell"></div><div class="calendar-date-cell">1</div>
+                        <div class="calendar-date-cell">2</div><div class="calendar-date-cell">3</div><div class="calendar-date-cell">4</div><div class="calendar-date-cell">5</div><div class="calendar-date-cell">6</div><div class="calendar-date-cell">7</div><div class="calendar-date-cell">8</div>
+                        <div class="calendar-date-cell">9</div><div class="calendar-date-cell">10</div><div class="calendar-date-cell">11</div><div class="calendar-date-cell">12</div><div class="calendar-date-cell">13</div><div class="calendar-date-cell">14</div><div class="calendar-date-cell">15</div>
+                        <div class="calendar-date-cell">16</div><div class="calendar-date-cell">17</div><div class="calendar-date-cell">18</div><div class="calendar-date-cell">19</div><div class="calendar-date-cell">20</div><div class="calendar-date-cell">21</div><div class="calendar-date-cell">22</div>
+                        <div class="calendar-date-cell">23</div><div class="calendar-date-cell">24</div><div class="calendar-date-cell">25</div><div class="calendar-date-cell">26</div><div class="calendar-date-cell">27</div><div class="calendar-date-cell">28</div><div class="calendar-date-cell active-selection">29</div>
+                        <div class="calendar-date-cell today-highlight">30</div>
+                    </div>
+                    
+                    <div class="timezone-selection-area">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-globe-feather">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span class="timezone-display-label">Time zone</span>
+                        <button class="timezone-select-button" id="timezoneDisplayBtn" onclick="openTimezoneDropdown()">
+                            <span id="currentTzName">Asia/Gaza</span> 
+                            <span id="currentTzTime">(10:54)</span> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="time-slots-view" id="timeSlotsView" style="display: none;">
+                    <div class="back-navigation-header">
+                        <button class="back-to-date-btn" onclick="showDateView()"><i class="fa-solid fa-arrow-right"></i> رجوع</button> 
+                        <span id="selectedDateLabel"></span>
+                    </div>
+                    <h5 class="picker-section-title">Select a Time</h5>
+                    <p class="duration-small-text">Duration: 30 min</p>
+                    <div class="available-slots-wrapper" id="timeSlotsWrapper">
+                        </div>
+                </div>
+
+                <div class="customer-details-form" id="detailsFormView" style="display: none;">
+                    <div class="back-navigation-header">
+                        <button class="back-to-time-btn" onclick="showDateView()"><i class="fa-solid fa-arrow-right"></i> رجوع</button> 
+                        <span id="selectedTimeLabel"></span>
+                    </div>
+                    <h5 class="picker-section-title">Enter Details</h5>
+                    <form>
+                        <input type="text" placeholder="الاسم *" required>
+                        <input type="email" placeholder="البريد الإلكتروني *" required>
+                        <input type="tel" placeholder="رقم الهاتف" required>
+                        <textarea placeholder="النشاط المراد ممارسته في KSA *"></textarea>
+                        
+                        <button type="submit" class="confirm-schedule-button">Schedule Event</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="timezone-popup-overlay" id="timezoneOverlay">
+    <div class="timezone-popup-content">
+        <div class="timezone-search-field">
+            <input type="text" placeholder="Search..." id="timezoneSearchInput" onkeyup="filterTimezones()">
+        </div>
+        <ul class="timezone-list-scroll" id="timezoneList">
+            </ul>
+        <div class="popup-footer-actions">
+            <button onclick="closeTimezoneDropdown()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="cookieSettingsModal" class="privacy-modal-overlay cookie-modal-bg">
+    <div class="cookie-modal-box">
+        <span class="cookie-close-btn" onclick="closeCookieModal()">&times;</span>
+
+        <div class="preferences-content-area">
+            <h2 class="privacy-pref-title">Privacy Preference Center</h2>
+
+            <div class="cookie-text-description">
+                <p>When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.</p>
+            </div>
+
+            <h3 class="consent-management-heading">Manage Consent Preferences</h3>
+
+            <div class="cookie-category-groups">
+                <div class="cookie-group-item">
+                    <div class="category-header-row">
+                        <span>+ Strictly Necessary Cookies</span>
+                        <span class="always-active-badge">Always Active</span>
+                    </div>
+                    </div>
+
+                <div class="cookie-group-item collapsible-group">
+                    <div class="category-header-row">
+                        <span>+ Functional Cookies</span>
+                        <label class="toggle-switch-control">
+                            <input type="checkbox" checked>
+                            <span class="slider-toggle round-shape"></span>
+                        </label>
+                    </div>
+                    </div>
+
+                <div class="cookie-group-item collapsible-group">
+                    <div class="category-header-row">
+                        <span>+ Performance Cookies</span>
+                        <label class="toggle-switch-control">
+                            <input type="checkbox" checked>
+                            <span class="slider-toggle round-shape"></span>
+                        </label>
+                    </div>
+                    </div>
+
+                <div class="cookie-group-item collapsible-group">
+                    <div class="category-header-row">
+                        <span>+ Targeting Cookies</span>
+                        <label class="toggle-switch-control">
+                            <input type="checkbox" checked>
+                            <span class="slider-toggle round-shape"></span>
+                        </label>
+                    </div>
+                    </div>
+            </div>
+
+            <div class="modal-action-buttons">
+                <button class="action-btn-reject" onclick="closeCookieModal()">Reject All</button>
+                <button class="action-btn-confirm" onclick="closeCookieModal()">Confirm My Choices</button>
+            </div>
+            
+            <p class="branding-footer-text">Powered by <strong>onetrust</strong></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <footer class="main-footer">
 
     <div id="particles-js-footer"></div>
@@ -359,22 +621,22 @@
         <div class="footer-column service-list-1">
             <h4 class="column-title">خدماتنا</h4>
             <ul>
-                <li><a href="#service1">تأسيس شركة خليجية في السعودية</a></li>
-                <li><a href="#service2">تأسيس الشركات الأجنبية 100%</a></li>
-                <li><a href="#service3">تأسيس الشركات بشريك أجنبي</a></li>
-                <li><a href="#service4">فتح فرع لشركة قائمة</a></li>
-                <li><a href="#service5">خدمة حماية المصنفات من المخالفات والغرامات في السعودية</a></li>
+                <li><a href="card1.html">تأسيس شركة خليجية في السعودية</a></li>
+                <li><a href="card2.html">تأسيس الشركات الأجنبية 100%</a></li>
+                <li><a href="card3.html">تأسيس الشركات بشريك أجنبي</a></li>
+                <li><a href="card4.html">فتح فرع لشركة قائمة</a></li>
+                <li><a href="card5.html">خدمة حماية المصنفات من المخالفات والغرامات في السعودية</a></li>
             </ul>
         </div>
 
         <div class="footer-column service-list-2">
             <h4 class="column-title">خدمات</h4>
             <ul>
-                <li><a href="#service6">صياغة العقود في السعودية</a></li>
-                <li><a href="#service7">إصدار التراخيص</a></li>
-                <li><a href="#service8">إدارة العقود القانونية للشركات والمؤسسات</a></li>
-                <li><a href="#service9">برامج الإقامة المميزة في السعودية</a></li>
-                <li><a href="#service10">خدمة فريق موارد بشرية متكامل لإدارة الشركات والمؤسسات</a></li>
+                <li><a href="card6.html">صياغة العقود في السعودية</a></li>
+                <li><a href="card7.html">إصدار التراخيص</a></li>
+                <li><a href="card8.html">إدارة العقود القانونية للشركات والمؤسسات</a></li>
+                <li><a href="card9.html">برامج الإقامة المميزة في السعودية</a></li>
+                <li><a href="card10.html">خدمة فريق موارد بشرية متكامل لإدارة الشركات والمؤسسات</a></li>
             </ul>
         </div>
 
@@ -397,10 +659,6 @@
         <p>جميع الحقوق محفوظة &copy; 2025 SBS</p>
     </div>
 </footer>
-
-
-
-
 
 
 <div class="pxl-contact-float-wrap">
@@ -432,15 +690,33 @@
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
 <div class="pxl-left-float-wrap">
-    
-    <a href="#contact" class="btn pxl-left-btn consultation-btn" aria-label="Book a free consultation">
+    <a href="#" class="btn pxl-left-btn consultation-btn" aria-label="Book a free consultation" id="openConsultationModal">
         حجز استشارة مجانية
     </a>
-
     <a href="/en" class="btn pxl-left-btn language-btn" aria-label="English">
-        English <i class="fas fa-flag-usa"></i> </a>
+        English <i class="fas fa-flag-usa"></i> 
+    </a>
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -451,8 +727,13 @@
     <script src="script/clientslider.js"></script>
     <script src="script/scrollnavbar.js"></script>
     <script src="script/togglebuttons.js"></script>
-    <script src="script/calender.js"></script> 
     <script src="script/mousecursor.js"></script> 
+
+
+    
+    <script src="script/model2.js"></script> 
+    <script src="script/calender2.js"></script>
+
 
 
 

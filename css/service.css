@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;700;800&display=swap');
+
 /* ==================================== */
 /* 🎨 1. تعريف متغيرات الألوان (ROOT)  */
 /* ==================================== */
@@ -19,7 +22,16 @@
 }
 
 
+/* =======================================
+* 2. التنسيقات العامة والأساسية
+* ======================================= */
 
+/* 🌟 المُحدد العام: لضمان تطبيق الخط على كل عنصر 🌟 */
+/* 🌟 المُحدد العام: لضمان تطبيق الخط على كل عنصر 🌟 */
+* {
+ box-sizing: border-box;
+font-family: 'Baloo Bhaijaan 2', sans-serif !important;
+}
 
 
 
@@ -1334,3 +1346,900 @@ body {
 
 
 
+/* Custom Modal Styles */
+
+/* ---------------------------------
+    تعريف متغيرات CSS
+    --------------------------------- */
+:root {
+    --primary-color: #007bff; /* مثال: الأزرق الأساسي */
+    --dark-primary: #0056b3; /* مثال: أزرق غامق للـ hover */
+    --light-primary: #007bff; /* تم استخدام نفس الأساسي لعدم توفر قيمة في الكود المُرسَل */
+    --text-color: #333;  /* مثال: لون النص العام */
+    --header-color: #555;  /* مثال: لون لرؤوس الأيام */
+    --border-color: #eee;  /* مثال: لون الحدود */
+    --selected-color: #007bff; /* مثال: لون العنصر المحدد */
+    --light-gray-background: #f8f8f8; /* مثال: خلفية رمادية فاتحة */
+}
+
+/* الخلفية المظلمة للنافذة المنبثقة - (كانت .pxl-modal) */
+.main-dialog-wrapper {
+    display: none; 
+    position: fixed;
+    z-index: 9991;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* محتوى النافذة المنبثقة الرئيسي - (كانت .pxl-modal-content) */
+.main-dialog-content {
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; 
+    max-width: 900px; 
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    padding: 0;
+    overflow: hidden; 
+    min-height: 500px;
+}
+
+/* عند إظهار النافذة - (كانت .pxl-modal.active) */
+.main-dialog-wrapper.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* عند إظهار النافذة - (كانت .pxl-modal.active .pxl-modal-content) */
+.main-dialog-wrapper.active .main-dialog-content {
+    transform: translateY(0);
+}
+
+/* زر الإغلاق - (كانت .pxl-close-button) */
+.close-btn-main {
+    color: #888;
+    position: absolute;
+    top: 15px;
+    left: 15px; 
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.close-btn-main:hover,
+.close-btn-main:focus {
+    color: #555;
+    text-decoration: none;
+}
+
+/* أنماط تقسيم النافذة إلى عمودين - (كانت .pxl-modal-two-columns) */
+.dialog-layout-columns {
+    display: flex;
+    height: 100%;
+    min-height: 500px;
+    flex-direction: row-reverse; 
+}
+
+/* الجزء الأيسر (تفاصيل الاجتماع) - (كانت .pxl-modal-left-pane) */
+.dialog-column-left {
+    width: 35%; 
+    background-color: #f8f9fa;
+    padding: 90px 30px 30px 30px; 
+    border-left: 1px solid #eee; 
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    text-align: center; 
+}
+
+/* الجزء الأيمن (المنتقي) - (كانت .pxl-modal-right-pane) */
+.dialog-column-right {
+    width: 65%; 
+    padding: 0; 
+    position: relative;
+    overflow-y: auto;
+    height: 500px; 
+}
+
+/* أنماط الشعار وتفاصيل الاجتماع (على اليمين) - (كانت .card-header) */
+.dialog-column-left .header-info-card {
+    text-align: center;
+    margin-bottom: 30px; 
+}
+/* (كانت .card-header .logo) */
+.dialog-column-left .header-info-card .business-logo-image {
+    width: 80px; 
+    height: auto;
+    margin-bottom: 10px;
+}
+/* (كانت .service-name) */
+.dialog-column-left .service-title-text {
+    font-size: 1.1rem;
+    color: #555;
+    display: block; 
+}
+
+/* (كانت .meeting-details) */
+.dialog-column-left .event-time-details {
+    margin-bottom: auto; 
+    text-align: center; 
+    width: 100%;
+}
+/* (كانت .meeting-title) */
+.dialog-column-left .event-heading-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+/* (كانت .duration) */
+.dialog-column-left .meeting-duration-display {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 1rem;
+    justify-content: center; 
+}
+/* (كانت .duration svg) */
+.dialog-column-left .meeting-duration-display svg {
+    margin-right: 8px;
+    margin-left: 0; 
+    transform: none; 
+}
+/* (كانت .pxl-modal-cookie-settings) */
+.dialog-link-privacy {
+    margin-top: 20px;
+    text-align: center; 
+    width: 100%;
+}
+.dialog-link-privacy a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.dialog-link-privacy a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ---------------------------------
+    محدد التاريخ (التقويم) - التنسيقات الجديدة
+    (كانت .date-selector)
+    --------------------------------- */
+.date-time-picker {
+    padding: 20px;
+    /* لترك مساحة للشريط الثابت حتى لا يغطي المحتوى */
+    padding-bottom: 70px; 
+}
+
+
+/* (كانت .selector-title) */
+.picker-section-title{
+    text-align: center;
+
+}
+
+
+/* (كانت .date-selector .selector-title) */
+.date-time-picker .picker-section-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* (كانت .date-selector .calendar-header) */
+.date-time-picker .calendar-navigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    /* إضافة مسافة جانبية لتقليل العرض الداخلي */
+    padding: 0 15px; 
+    direction: ltr; 
+}
+
+/* (كانت .date-selector .calendar-header .nav-btn) */
+.date-time-picker .calendar-navigation-header .nav-button-cal {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--primary-color); 
+    padding: 5px 10px;
+}
+
+/* (كانت .date-selector .calendar-header .current-month) */
+.date-time-picker .calendar-navigation-header .month-year-label {
+    font-weight: bold;
+    color: var(--text-color); 
+    text-align: center; 
+}
+
+/* (كانت .date-selector .calendar-grid) */
+.date-time-picker .calendar-display-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+    
+    /* تطبيق نفس المسافة الجانبية وضبط العرض */
+    padding: 0 10px; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    direction: rtl; 
+}
+
+/* تنسيق رؤوس الأيام (كانت .day-name) */
+.date-time-picker .calendar-display-grid .day-label-name {
+    font-size: 0.9rem; 
+    font-weight: bold;
+    color: var(--header-color); 
+    padding: 5px 0;
+    border: none;
+    direction: ltr; 
+}
+
+/* تنسيق خلايا الأيام (كانت .day) */
+.date-time-picker .calendar-display-grid .calendar-date-cell {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+    width: 35px;
+    height: 35px;
+    
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s;
+    margin: 2px auto; 
+}
+
+/* (كانت .empty-day) */
+.date-time-picker .calendar-display-grid .grid-empty-cell {
+    /* نفس أنماط .calendar-date-cell ولكن بدون المؤثرات أو اللون */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 35px;
+    height: 35px;
+    visibility: hidden; /* إخفاء العنصر */
+}
+
+/* ملاحظة: التنسيقات التالية تفترض أنك ستضيف كلاسات مثل .available, .selected, .disabled بواسطة JS */
+
+/* (كانت .date-selector .calendar-grid .day-cell.date.available) */
+.date-time-picker .calendar-display-grid .calendar-date-cell.date.available {
+    color: var(--text-color);
+    border: 1px solid #ccc;
+}
+
+/* (كانت .date-selector .calendar-grid .day-cell.date.selected) */
+.date-time-picker .calendar-display-grid .calendar-date-cell.date.selected,
+.date-time-picker .calendar-display-grid .active-selection { /* ليتطابق مع الكود المُرسَل */
+    background-color: var(--selected-color);
+    color: #fff;
+    border: 1px solid var(--selected-color);
+    font-weight: bold;
+}
+
+/* (كانت .date-selector .calendar-grid .day-cell.date.disabled) */
+.date-time-picker .calendar-display-grid .calendar-date-cell.date.disabled {
+    color: #ccc;
+    cursor: default;
+    border: none !important; 
+    background-color: transparent !important;
+}
+
+/* ---------------------------------
+    تثبيت المنطقة الزمنية (Position Sticky)
+    (كانت .date-selector .timezone-selection)
+    --------------------------------- */
+.date-time-picker .timezone-selection-area {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: flex-end; 
+    
+    padding: 10px 20px 20px;
+    border-top: 1px solid var(--border-color);
+    
+    position: sticky;
+    top: 0; 
+    
+    background-color: #fff; 
+    z-index: 9995; 
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+}
+
+/* (كانت .date-selector .timezone-label) */
+.date-time-picker .timezone-display-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: auto; 
+    font-weight: normal;
+}
+
+/* (كانت .date-selector .timezone-button) */
+.date-time-picker .timezone-select-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-gray-background); 
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-align: right;
+    direction: rtl; 
+}
+/* (كانت .date-selector .timezone-selection svg) */
+.date-time-picker .timezone-selection-area svg { 
+    color: #666;
+    margin: 0;
+}
+
+
+/* ---------------------------------
+    تنسيقات واجهات الوقت والتفاصيل
+    (كانت .time-selector, .details-form)
+    --------------------------------- */
+.time-slots-view, .customer-details-form {
+    padding: 20px;
+    padding-top: 70px; 
+    padding-bottom: 70px; 
+}
+
+/* (كانت .back-link-container) */
+.back-navigation-header {
+    position: relative;
+    text-align: center; 
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+/* (كانت .back-btn) */
+.back-to-date-btn, .back-to-time-btn {
+    position: absolute; 
+    top: 50%;
+    right: 0; 
+    transform: translateY(-50%); 
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* (كانت #selected-date-display, #selected-time-display) */
+#selectedDateLabel, #selectedTimeLabel {
+    display: block; 
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin-right: 40px; 
+}
+
+/* (كانت .duration-text) */
+.duration-small-text {
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* (كانت .time-slots-container) */
+.available-slots-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-height: 250px; 
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+/* (كانت .time-slot-btn) */
+.time-slot-button {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+/* (كانت .time-slot-btn:hover:not(.selected-time)) */
+.time-slot-button:hover:not(.selected-slot) {
+    background-color: var(--light-primary);
+    color: white;
+}
+
+/* (كانت .time-slot-btn.selected-time) */
+.time-slot-button.selected-slot {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* تنسيقات نموذج التفاصيل - (كانت .details-form) */
+.customer-details-form form {
+    padding: 10px 0;
+}
+/* (كانت .details-form input[type="text"], ...) */
+.customer-details-form input[type="text"],
+.customer-details-form input[type="email"],
+.customer-details-form input[type="tel"],
+.customer-details-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    direction: rtl;
+    text-align: right;
+}
+
+/* (كانت .schedule-btn) */
+.confirm-schedule-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+/* (كانت .schedule-btn:hover) */
+.confirm-schedule-button:hover {
+    background-color: var(--dark-primary);
+}
+
+
+/* ---------------------------------
+    القائمة المنبثقة للمناطق الزمنية
+    (كانت .timezone-dropdown-overlay)
+    --------------------------------- */
+.timezone-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 10000; 
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* (كانت .timezone-dropdown) */
+.timezone-popup-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow: hidden;
+    direction: ltr; 
+}
+
+/* (كانت .timezone-search-container) */
+.timezone-search-field {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* (كانت .timezone-search-container input) */
+.timezone-search-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: left;
+    direction: ltr;
+}
+
+/* (كانت .timezone-list-container) */
+.timezone-list-scroll {
+    max-height: 350px; 
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* (كانت .timezone-list-item) - هذا الكلاس غير موجود في HTML لكن يُضاف عبر JS، تم الاحتفاظ به كـ 'مثال' */
+.timezone-list-item { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* (كانت .timezone-list-item:hover, .timezone-list-item.selected) */
+.timezone-list-item:hover, .timezone-list-item.selected {
+    background-color: var(--light-gray-background);
+    font-weight: bold;
+}
+
+/* (كانت .timezone-list-item .time-24h) */
+.timezone-list-item .time-24h {
+    color: gray;
+    font-weight: normal;
+}
+
+/* (كانت .dropdown-footer) */
+.popup-footer-actions {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+/* (كانت .dropdown-footer button) */
+.popup-footer-actions button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* ----------------------------------------------------
+    🔥 تنسيقات نافذة إعدادات الكوكيز (Cookie Modal) 🔥
+    (كانت .pxl-modal-overlay.cookie-modal-overlay)
+    ---------------------------------------------------- */
+.privacy-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: none; 
+    z-index: 10001; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+/* (كانت .cookie-modal-overlay.active) */
+.privacy-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* (كانت .cookie-modal-content) */
+.cookie-modal-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 900px; 
+    height: 90%;
+    max-height: 600px; 
+    position: relative;
+    display: flex;
+    overflow: hidden; 
+    direction: ltr; 
+}
+
+/* (كانت .cookie-close-button) */
+.cookie-close-btn {
+    color: #000;
+    position: absolute;
+    top: 10px;
+    right: 15px; 
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* (كانت .cookie-preferences-container) */
+.preferences-content-area {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* (كانت .cookie-title) */
+.privacy-pref-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* (كانت .cookie-description) */
+.cookie-text-description {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    padding-right: 20px;
+}
+
+/* (كانت .cookie-management-title) */
+.consent-management-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/* (كانت .cookie-groups-list) */
+.cookie-category-groups {
+    margin-bottom: 30px;
+}
+
+/* (كانت .cookie-group) */
+.cookie-group-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* (كانت .cookie-group .group-header) */
+.cookie-group-item .category-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+}
+
+/* (كانت .cookie-group .group-header span:first-child) */
+.cookie-group-item .category-header-row span:first-child {
+    font-weight: bold;
+}
+
+/* (كانت .always-active-label) */
+.always-active-badge {
+    background-color: #008000; 
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+/* تنسيقات الـ Switch (Toggle) - (كانت .switch) */
+.toggle-switch-control {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 24px;
+}
+
+/* (كانت .switch input) */
+.toggle-switch-control input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* (كانت .slider) */
+.slider-toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+/* (كانت .slider:before) */
+.slider-toggle:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+/* (كانت input:checked + .slider) */
+.toggle-switch-control input:checked + .slider-toggle {
+    background-color: #008000;
+}
+
+/* (كانت input:checked + .slider:before) */
+.toggle-switch-control input:checked + .slider-toggle:before {
+    transform: translateX(20px);
+}
+
+/* (كانت .slider.round) */
+.slider-toggle.round-shape {
+    border-radius: 24px;
+}
+
+/* (كانت .slider.round:before) */
+.slider-toggle.round-shape:before {
+    border-radius: 50%;
+}
+
+/* الأزرار في الأسفل - (كانت .cookie-actions) */
+.modal-action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* (كانت .reject-all-btn, .confirm-choices-btn) */
+.action-btn-reject, .action-btn-confirm {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* (كانت .reject-all-btn) */
+.action-btn-reject {
+    background-color: #007bff; 
+    color: white;
+    width: 48%;
+}
+
+/* (كانت .confirm-choices-btn) */
+.action-btn-confirm {
+    background-color: #0056b3; 
+    color: white;
+    width: 48%;
+}
+
+/* (كانت .powered-by-footer) */
+.branding-footer-text {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 20px;
+}
+/* ---------------------------------
+    استجابة التصميم للشاشات الصغيرة
+    (كانت @media (max-width: 767.98px))
+    --------------------------------- */
+@media (max-width: 767.98px) {
+    /* (كانت .pxl-modal-content) */
+    .main-dialog-content {
+        width: 90%;
+        height: 90%;
+        overflow-y: auto; 
+        max-width: unset; 
+        min-height: auto;
+    }
+    /* (كانت .pxl-modal-two-columns) */
+    .dialog-layout-columns {
+        flex-direction: column; 
+        min-height: auto;
+    }
+    /* (كانت .pxl-modal-left-pane, .pxl-modal-right-pane) */
+    .dialog-column-left,
+    .dialog-column-right {
+        width: 100%; 
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #eee; 
+        padding: 20px;
+    }
+    /* (كانت .pxl-modal-right-pane) */
+    .dialog-column-right {
+        height: auto; 
+        overflow-y: visible; 
+        padding: 20px 0; 
+    }
+    /* (كانت .pxl-close-button) */
+    .close-btn-main {
+        top: 10px;
+        right: 10px;
+        left: auto;
+    }
+    
+    /* (كانت .pxl-modal-left-pane .card-header, ...) */
+    .dialog-column-left .header-info-card,
+    .dialog-column-left .event-time-details,
+    .dialog-link-privacy {
+        text-align: center;
+    }
+    /* (كانت .pxl-modal-left-pane .duration) */
+    .dialog-column-left .meeting-duration-display {
+        justify-content: center;
+    }
+    
+    /* (كانت .date-selector) */
+    .date-time-picker {
+        padding: 0 20px 70px 20px; 
+    }
+    /* (كانت .date-selector .calendar-grid) */
+    .date-time-picker .calendar-display-grid {
+        max-width: 100%; 
+        padding: 0; 
+    }
+    /* (كانت .date-selector .calendar-header) */
+    .date-time-picker .calendar-navigation-header {
+        padding: 0; 
+    }
+
+    /* (كانت .date-selector .timezone-selection) */
+    .date-time-picker .timezone-selection-area {
+        justify-content: center;
+        position: static; 
+        box-shadow: none;
+        padding-left: 20px; 
+        padding-right: 20px;
+    }
+    /* (كانت .date-selector .timezone-selection .timezone-label) */
+    .date-time-picker .timezone-selection-area .timezone-display-label {
+        margin-right: 0;
+        text-align: center;
+        width: 100%;
+    }
+    /* (كانت .time-slot-btn) */
+    .time-slot-button {
+        width: 90%;
+    }
+}

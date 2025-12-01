@@ -714,25 +714,6 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
 }
 
 .menu-item {
-
-  padding: 12px 15px;
-  margin-bottom: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  border-radius: 10px; /* جعل حواف العناصر الداخلية منحنية أيضاً */
-  transition: color 0.3s;
-  background-color: white; /* الإبقاء على خلفية العنصر بيضاء */
-  position: relative;
-  overflow: hidden; 
-  font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
-
-}
-
-/* طبقة التأثير الزرقاء التي ستظهر عند التمرير (من اليسار لليمين) */
-.menu-item {
   margin-bottom: 5px;
   cursor: pointer;
   font-weight: 500;
@@ -807,7 +788,6 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
   color: white; 
   margin-right: 0;
 }
-
 
 
 
@@ -1453,7 +1433,15 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
 
 
 }
+.content-paragraph1 {
+    line-height: 27px;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 400 normal;
+    font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
 
+
+}
 
 /* ======================================================= */
 /* 7. تنسيق القوائم المخصصة (Custom Lists) - مُعدَّل */
