@@ -552,10 +552,134 @@ padding-top: 25px !important;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================== */
+/* 1. تنسيق القائمة الجانبية (Offcanvas) - خلفية بيضاء وعرض ثابت */
+/* ==================================================== */
+
+#offcanvasNavbar {
+    /* الخلفية بيضاء */
+    background-color: var(--light-color); 
+    /* عرض ثابت لترك فراغ من اليسار */
+    width: 300px; 
+    max-width: 90vw; 
+}
+
+/* لون رأس القائمة وزر الإغلاق */
+#offcanvasNavbar .offcanvas-header {
+    background-color: var(--light-color); 
+    border-color: var(--light-gray-background) !important;
+}
+
+/* للتأكد من موضع زر الإغلاق في أقصى اليسار */
+#offcanvasNavbar .offcanvas-header .btn-close {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+#offcanvasNavbarLabel {
+    color: var(--title-color) !important; 
+}
+
+#offcanvasNavbar .btn-close {
+    filter: none; 
+}
+
+/* ==================================================== */
+/* 2. تنسيق الروابط (لون داكن وخط فاصل خفيف) */
+/* ==================================================== */
+
+.offcanvas-body .nav-link {
+    color: grey!important; /* لون النص أسود داكن */
+    font-size: 16px !important; 
+    
+    /* الخط الفاصل الرفيع والخفيف بين الروابط */
+    border-bottom: 1px solid rgba(128, 128, 128, 0.375); 
+    
+    transition: color 0.3s, background-color 0.3s;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 1.5rem; 
+    border-radius: 0; 
+    font-weight: 400;
+}
+
+/* إزالة الخط الفاصل السفلي من آخر رابط */
+.offcanvas-body .navbar-nav li:last-child .nav-link {
+    border-bottom: none;
+}
+
+/* تنسيق الرابط النشط (الرئيسية) */
+.offcanvas-body .nav-link.active {
+    color: var(--main-color) !important; /* لون النص أزرق/رمادي */
+}
+
+/* تأثير عند المرور على الروابط */
+.offcanvas-body .nav-link:hover {
+    color: var(--main-color) !important; 
+    background-color: var(--light-gray-background);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    
 }
 
 /* =======================================
@@ -574,7 +698,7 @@ padding-top: 25px !important;
 
     /* إعداد صورة الخلفية */
     /* ⚠️ هام: استبدل هذا المسار بمسار صورتك ⚠️ */
-    background-image: url('../image/banner-Obj-3.webp'); 
+    background-image: url('../image/banner.jpg'); /* <--- هذا هو السطر الذي تمت إضافته أو تعديله */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -588,8 +712,6 @@ padding-top: 25px !important;
     right: 0;
     width: 100%;
     height: 100%;
-    /* استخدام لون رئيسي (main-color) مع تعتيم */
-    background-color: var(--main-color);
     opacity: 0.7; /* يمكنك تعديل درجة التعتيم هنا */
     z-index: 1;
 }
@@ -604,10 +726,10 @@ padding-top: 25px !important;
 /* تنسيق العنوان "من نحن" */
 .about-us-hero .hero-title {
     font-size: 4rem;
-    font-weight: bold;
     color: var(--light-color); /* اللون الأبيض */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 0;
+font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
     text-align: right;
 }
 
@@ -615,11 +737,19 @@ padding-top: 25px !important;
 
 
 
+/* =======================================
+    Media Queries (للتوافق مع الشاشات)
+    ======================================= */
 
-
-
-
-
+/* 💻 للشاشات المتوسطة والكبيرة (أكبر من 768 بكسل) */
+@media (max-width: 768px) {
+    .about-us-hero .hero-title {
+        /* زيادة حجم الخط للشاشات اللوحية والمكتبية */
+        font-size: 40px; 
+        margin-top: 90px;
+        text-align: center;
+    }
+}
 
 
 
@@ -690,6 +820,17 @@ padding-top: 25px !important;
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+
+
+
+/* 🌟🌟🌟 التعديل المطلوب: إزالة الخط تحت نص الرابط 🌟🌟🌟 */
+.contact-card a.card-link { 
+    /* 💡 تم إضافة هذه الخاصية لإزالة الخط تحت النص 💡 */
+    text-decoration: none; 
+}
+/* 🌟🌟🌟 نهاية التعديل 🌟🌟🌟 */
+
+
 
 /* حاوية الصورة فقط */
 .card-image-box {
@@ -906,8 +1047,6 @@ padding-top: 25px !important;
 
 
 
-
-
 /*
  * تم تحديث جميع أسماء الكلاسات والـ ID بالبادئة "sch_" لتجنب التعارض.
  */
@@ -939,16 +1078,37 @@ padding-top: 25px !important;
   gap: 30px;
   min-height: 100vh;
   margin-top: 90px;
+
+position: relative; /* تأكد من وجود هذه الخاصية */
+ overflow: hidden; /* لمنع ظهور أي جسيمات خارج الحدود */
+
 }
 
-#sch_particle_bg { /* كان: #particle-bg-element */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+
+/* تنسيق div الجسيمات */
+#particles-js-consultation { 
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ z-index: 1; /* يجب أن يكون z-index أقل من المحتوى */
 }
+
+/* وضع المحتوى الرئيسي (اللوحتين) فوق الخلفية */
+.sch_info_side_panel,
+.sch_main_booking_panel {
+ position: relative;
+ z-index: 2; /* يجب أن يكون z-index أكبر من الخلفية */
+}
+
+/* تعديل لون النص ليظهر بوضوح فوق الخلفية الداكنة */
+.sch_main_heading,
+.sch_paragraph_text,
+.sch_badge_label { 
+ color: #ffffff; /* لون أبيض أو فاتح */
+}
+
 
 .sch_info_side_panel { /* كان: .info-panel / .details-sidebar-block */
   flex: 1;
@@ -958,17 +1118,17 @@ padding-top: 25px !important;
 
 .sch_badge_label { /* كان: .info-icon / .sidebar-badge-text */
   display: inline-block;
-  border: 1px solid var(--title-color);
+  border: 1px solid var(--text-color);
   border-radius: 20px;
   padding: 5px 15px;
   font-size: 1rem;
-  color: var(--title-color);
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
 .sch_main_heading { /* كان: .info-title / .sidebar-main-title */
   font-size: 2.5rem;
-  color: var(--title-color);
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
@@ -976,7 +1136,7 @@ padding-top: 25px !important;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 15px;
-  color: var(--title-color);
+  color: var(--text-color);
 }
 
 
@@ -2022,7 +2182,6 @@ display: flex;
 
 
 
-
 /* Custom Modal Styles */
 
 /* ---------------------------------
@@ -2477,6 +2636,9 @@ display: flex;
 /* تنسيقات نموذج التفاصيل - (كانت .details-form) */
 .customer-details-form form {
     padding: 10px 0;
+        direction: ltr; 
+
+
 }
 /* (كانت .details-form input[type="text"], ...) */
 .customer-details-form input[type="text"],
@@ -2490,8 +2652,8 @@ display: flex;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1rem;
-    direction: rtl;
-    text-align: right;
+    direction: ltr;
+    text-align: left;
 }
 
 /* (كانت .schedule-btn) */
@@ -2526,7 +2688,7 @@ display: flex;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4); 
-    z-index: 10000; 
+    z-index: 9999; 
     display: none; 
     justify-content: center;
     align-items: center;
@@ -2542,6 +2704,7 @@ display: flex;
     max-height: 80vh;
     overflow: hidden;
     direction: ltr; 
+
 }
 
 /* (كانت .timezone-search-container) */
@@ -2920,3 +3083,12 @@ display: flex;
         width: 90%;
     }
 }
+
+
+
+
+
+
+
+
+

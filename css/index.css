@@ -677,6 +677,163 @@ padding-top: 25px !important;
 
 
 
+/* ==================================================== */
+/* 1. تنسيق القائمة الجانبية (Offcanvas) - خلفية بيضاء وعرض ثابت */
+/* ==================================================== */
+
+#offcanvasNavbar {
+    /* الخلفية بيضاء */
+    background-color: var(--light-color); 
+    /* عرض ثابت لترك فراغ من اليسار */
+    width: 300px; 
+    max-width: 90vw; 
+}
+
+/* لون رأس القائمة وزر الإغلاق */
+#offcanvasNavbar .offcanvas-header {
+    background-color: var(--light-color); 
+    border-color: var(--light-gray-background) !important;
+}
+
+/* للتأكد من موضع زر الإغلاق في أقصى اليسار */
+#offcanvasNavbar .offcanvas-header .btn-close {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+#offcanvasNavbarLabel {
+    color: var(--title-color) !important; 
+}
+
+#offcanvasNavbar .btn-close {
+    filter: none; 
+}
+
+/* ==================================================== */
+/* 2. تنسيق الروابط (لون داكن وخط فاصل خفيف) */
+/* ==================================================== */
+
+.offcanvas-body .nav-link {
+    color: grey!important; /* لون النص أسود داكن */
+    font-size: 16px !important; 
+    
+    /* الخط الفاصل الرفيع والخفيف بين الروابط */
+    border-bottom: 1px solid rgba(128, 128, 128, 0.375); 
+    
+    transition: color 0.3s, background-color 0.3s;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 1.5rem; 
+    border-radius: 0; 
+    font-weight: 400;
+}
+
+/* إزالة الخط الفاصل السفلي من آخر رابط */
+.offcanvas-body .navbar-nav li:last-child .nav-link {
+    border-bottom: none;
+}
+
+/* تنسيق الرابط النشط (الرئيسية) */
+.offcanvas-body .nav-link.active {
+    color: var(--main-color) !important; /* لون النص أزرق/رمادي */
+}
+
+/* تأثير عند المرور على الروابط */
+.offcanvas-body .nav-link:hover {
+    color: var(--main-color) !important; 
+    background-color: var(--light-gray-background);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2383,7 +2540,7 @@ display: flex;
 }
 
 .main-question {
-    font-size: 2.2rem;
+    font-size: 24px;
     font-weight: bold;
     color: var(--light-color); 
     line-height: 1.4;
@@ -2407,6 +2564,8 @@ display: flex;
     cursor: pointer;
     width: fit-content;
     transition: opacity 0.3s;
+    /* هذا هو التعديل لإزالة الخط السفلي */
+    text-decoration: none; 
 }
 
 .contact-btn:hover {
@@ -3275,6 +3434,9 @@ display: flex;
 /* تنسيقات نموذج التفاصيل - (كانت .details-form) */
 .customer-details-form form {
     padding: 10px 0;
+        direction: ltr; 
+
+
 }
 /* (كانت .details-form input[type="text"], ...) */
 .customer-details-form input[type="text"],
@@ -3288,8 +3450,8 @@ display: flex;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1rem;
-    direction: rtl;
-    text-align: right;
+    direction: ltr;
+    text-align: left;
 }
 
 /* (كانت .schedule-btn) */
@@ -3324,7 +3486,7 @@ display: flex;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4); 
-    z-index: 1000; 
+    z-index: 9999; 
     display: none; 
     justify-content: center;
     align-items: center;
@@ -3340,6 +3502,7 @@ display: flex;
     max-height: 80vh;
     overflow: hidden;
     direction: ltr; 
+
 }
 
 /* (كانت .timezone-search-container) */

@@ -554,6 +554,94 @@ padding-top: 25px !important;
 
 
 
+/* ==================================================== */
+/* 1. تنسيق القائمة الجانبية (Offcanvas) - خلفية بيضاء وعرض ثابت */
+/* ==================================================== */
+
+#offcanvasNavbar {
+    /* الخلفية بيضاء */
+    background-color: var(--light-color); 
+    /* عرض ثابت لترك فراغ من اليسار */
+    width: 300px; 
+    max-width: 90vw; 
+}
+
+/* لون رأس القائمة وزر الإغلاق */
+#offcanvasNavbar .offcanvas-header {
+    background-color: var(--light-color); 
+    border-color: var(--light-gray-background) !important;
+}
+
+/* للتأكد من موضع زر الإغلاق في أقصى اليسار */
+#offcanvasNavbar .offcanvas-header .btn-close {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+#offcanvasNavbarLabel {
+    color: var(--title-color) !important; 
+}
+
+#offcanvasNavbar .btn-close {
+    filter: none; 
+}
+
+/* ==================================================== */
+/* 2. تنسيق الروابط (لون داكن وخط فاصل خفيف) */
+/* ==================================================== */
+
+.offcanvas-body .nav-link {
+    color: grey!important; /* لون النص أسود داكن */
+    font-size: 16px !important; 
+    
+    /* الخط الفاصل الرفيع والخفيف بين الروابط */
+    border-bottom: 1px solid rgba(128, 128, 128, 0.375); 
+    
+    transition: color 0.3s, background-color 0.3s;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 1.5rem; 
+    border-radius: 0; 
+    font-weight: 400;
+}
+
+/* إزالة الخط الفاصل السفلي من آخر رابط */
+.offcanvas-body .navbar-nav li:last-child .nav-link {
+    border-bottom: none;
+}
+
+/* تنسيق الرابط النشط (الرئيسية) */
+.offcanvas-body .nav-link.active {
+    color: var(--main-color) !important; /* لون النص أزرق/رمادي */
+}
+
+/* تأثير عند المرور على الروابط */
+.offcanvas-body .nav-link:hover {
+    color: var(--main-color) !important; 
+    background-color: var(--light-gray-background);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -593,7 +681,7 @@ padding-top: 25px !important;
 
     /* إعداد صورة الخلفية */
     /* ⚠️ هام: استبدل هذا المسار بمسار صورتك ⚠️ */
-    background-image: url('../image/banner-Obj-3.webp'); 
+    background-image: url('../image/banner.jpg'); /* <--- هذا هو السطر الذي تمت إضافته أو تعديله */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -607,8 +695,6 @@ padding-top: 25px !important;
     right: 0;
     width: 100%;
     height: 100%;
-    /* استخدام لون رئيسي (main-color) مع تعتيم */
-    background-color: var(--main-color);
     opacity: 0.7; /* يمكنك تعديل درجة التعتيم هنا */
     z-index: 1;
 }
@@ -647,14 +733,6 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
         text-align: center;
     }
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -868,463 +946,6 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
 
 
 
-/* =========================================
- التنسيق العام والحاوية الرئيسية
- ========================================= */
-.booking-section-container {
-    /* 💡 التعديل: تنسيق الحاوية لتكون جزءًا من الشريط الجانبي الثابت */
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    direction: rtl; 
-    background: transparent;
-    padding: 0;
-    margin-top: 20px; 
-}
-
-
-/* =========================================
- بطاقة الحجز (Booking Card)
- ========================================= */
-.booking-card {
-  background-color: #fff;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 600px; 
-  height: 500px; 
-  overflow-y: auto; 
-  overflow-x: hidden; 
-  position: relative;
-  direction: ltr; 
-  margin-top: 0; /* إزالة الـ margin-top: 40px لتكون قريبة من القائمة */
-}
-
-/* ---------------------------------
- رأس البطاقة وتفاصيل الاجتماع
- --------------------------------- */
-.card-header {
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  padding: 20px;
-  border-bottom: 1px solid var(--border-color);
-  font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
-
-}
-
-.logo {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 5px;
-}
-
-.service-name {
-  font-size: 1rem;
-  color: gray;
-  text-align: center; 
-}
-
-.meeting-details {
-  padding: 20px;
-  border-bottom: 1px solid var(--border-color);
-  text-align: center;
-}
-
-.meeting-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--text-color);
-  margin-bottom: 10px;
-  font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
-
-}
-
-.duration {
-  display: flex;
-  color: gray;
-  font-size: 0.9rem;
-  justify-content: center;
-}
-
-.duration svg {
-  margin-inline-end: 5px;
-  stroke: gray; 
-}
-
-
-/* ---------------------------------
- محدد التاريخ (التقويم)
- --------------------------------- */
-.date-selector {
-  padding: 20px;
-  padding-bottom: 70px; 
-}
-
-.selector-title {
-  font-size: 1.1rem;
-  color: var(--text-color);
-  text-align: center;
-  margin-bottom: 15px;
-  font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
-
-}
-
-.calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  padding: 0 15px; 
-  font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
-
-}
-
-.calendar-header .nav-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--primary-color);
-  padding: 5px 10px;
-}
-
-.calendar-header .current-month {
-  font-weight: bold;
-  color: var(--text-color);
-  text-align: center; 
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  gap: 5px;
-  padding: 0 10px; 
-  max-width: 400px; 
-  margin: 0 auto; 
-}
-
-.day-label {
-  font-size: 0.9rem; 
-  font-weight: bold;
-  color: var(--header-color); 
-  padding: 5px 0;
-  border: none;
-}
-
-.day-cell {
-  display: flex;
-  justify-content: center; 
-  align-items: center;   
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  transition: all 0.2s;
-  margin: 2px auto; 
-}
-
-.day-cell.date.available {
-  color: var(--text-color);
-  border: 1px solid #ccc;
-}
-
-.day-cell.date.selected {
-  background-color: var(--selected-color);
-  color: #fff;
-  border: 1px solid var(--selected-color);
-  font-weight: bold;
-}
-
-.day-cell.date.disabled {
-  color: #ccc;
-  cursor: default;
-}
-
-
-/* ---------------------------------
- تثبيت المنطقة الزمنية (Position Sticky) - مُعدَّل
- --------------------------------- */
-.timezone-selection {
-  padding: 10px 20px 20px;
-  border-top: 1px solid var(--border-color);
-  position: sticky;
-  top: 0; 
-  background-color: #fff; 
-  z-index: 10; 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
-}
-
-.timezone-label {
-  display: block;
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 5px;
-}
-
-.timezone-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: var(--light-gray-background); 
-  cursor: pointer;
-  font-size: 0.95rem;
-  color: var(--text-color);
-  text-align: right;
-  direction: rtl; 
-}
-
-
-/* ---------------------------------
- تنسيقات واجهات الوقت والتفاصيل
- --------------------------------- */
-.time-selector, .details-form {
-  padding: 20px;
-  padding-top: 70px; 
-  padding-bottom: 70px; 
-}
-
-.back-link-container {
-  position: relative;
-  text-align: center; 
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 20px;
-}
-
-.back-btn {
-  position: absolute; 
-  top: 50%;
-  right: 0; 
-  transform: translateY(-50%); 
-  font-size: 1rem;
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  cursor: pointer;
-  padding: 0;
-  height: 100%; 
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-#selected-date-display, #selected-time-display {
-  display: block; 
-  font-size: 1rem;
-  color: #555;
-  font-weight: bold;
-  margin-right: 40px; 
-}
-
-.duration-text {
-  font-size: 0.9rem;
-  color: #777;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.time-slots-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  max-height: 250px; 
-  overflow-y: auto;
-  padding-bottom: 10px;
-}
-
-.time-slot-btn {
-  width: 80%;
-  padding: 12px;
-  border: 1px solid var(--primary-color);
-  background-color: #fff;
-  color: var(--primary-color);
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
-}
-
-.time-slot-btn:hover:not(.selected-time) {
-  background-color: var(--light-primary);
-  color: white;
-}
-
-.time-slot-btn.selected-time {
-  background-color: var(--primary-color);
-  color: #fff;
-  font-weight: bold;
-}
-
-/* تنسيقات نموذج التفاصيل */
-.details-form form {
-  padding: 10px 0;
-}
-.details-form input[type="text"],
-.details-form input[type="email"],
-.details-form input[type="tel"],
-.details-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  direction: rtl;
-  text-align: right;
-}
-
-.schedule-btn {
-  width: 100%;
-  padding: 15px;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: background-color 0.3s;
-  margin-top: 10px;
-}
-
-.schedule-btn:hover {
-  background-color: var(--dark-primary);
-}
-
-
-/* ---------------------------------
- القائمة المنبثقة للمناطق الزمنية
- --------------------------------- */
-.timezone-dropdown-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
-  z-index: 1000;
-  display: none; 
-  justify-content: center;
-  align-items: center;
-}
-
-.timezone-dropdown {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 90%;
-  max-width: 400px;
-  max-height: 80vh;
-  overflow: hidden;
-  direction: ltr; 
-}
-
-.timezone-search-container {
-  padding: 15px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.timezone-search-container input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  text-align: left;
-  direction: ltr;
-}
-
-.timezone-list-container {
-  max-height: 350px; 
-  overflow-y: auto;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.timezone-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 15px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  font-size: 0.95rem;
-  color: var(--text-color);
-}
-
-.timezone-list-item:hover, .timezone-list-item.selected {
-  background-color: var(--light-gray-background);
-  font-weight: bold;
-}
-
-.timezone-list-item .time-24h {
-  color: gray;
-  font-weight: normal;
-}
-
-.dropdown-footer {
-  padding: 15px;
-  text-align: center;
-  border-top: 1px solid var(--border-color);
-}
-
-.dropdown-footer button {
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-
-/* ---------------------------------
- استجابة التصميم للشاشات الصغيرة
- --------------------------------- */
-@media (max-width: 992px) {
-  .booking-section-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 15px;
-  }
-  
-  .booking-card {
-    max-width: 100%;
-    margin-bottom: 30px;
-    height: 600px; 
-  }
-  .info-panel {
-    order: -1; 
-    padding: 20px;
-  }
-  .calendar-grid .day-cell {
-    width: 35px;
-    height: 35px;
-  }
-  .back-btn {
-    right: 15px; 
-  }
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -1454,7 +1075,15 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
 
 }
 
+.content-paragraph1 {
+    line-height: 27px;
+    color: rgb(68, 113, 147);
+    font-size: 18px;
+    font-weight: 400 normal;
+    font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعديل هنا */
 
+
+}
 /* ======================================================= */
 /* 7. تنسيق القوائم المخصصة (Custom Lists) - مُعدَّل */
 /* ======================================================= */
@@ -1573,6 +1202,50 @@ font-family: 'Baloo Bhaijaan 2', sans-serif !important; /* <== تم التعدي
     border-radius: 50%; /* لجعلها دائرة */
     background-color: white; /* اللون الأزرق */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2495,6 +2168,828 @@ font-size: 22px;
 
 
 
+/*
+ * تم تحديث جميع أسماء الكلاسات والـ ID بالبادئة "sch_" لتجنب التعارض.
+ */
+
+:root {
+  --primary-color: #4b6cb7; /* اللون الأزرق الأساسي */
+  --light-primary: #6c8cdb;
+  --dark-primary: #3a5390;
+  --selected-color: #4b6cb7;
+  --border-color: #eee;
+  --text-color: #333;
+  --header-color: #888;
+  --light-color: #f7f7f7; 
+  --title-color: #333; 
+  --light-gray-background: #f6f7f9; 
+}
+
+
+/* =========================================
+ التنسيق العام والحاوية الرئيسية
+ ========================================= */
+.sch_scheduler_container { /* كان: .booking-section-container / .consultation-scheduler-wrap */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  direction: rtl; 
+  gap: 30px;
+  min-height: 100vh;
+  margin-top: 90px;
+
+position: relative; /* تأكد من وجود هذه الخاصية */
+ overflow: hidden; /* لمنع ظهور أي جسيمات خارج الحدود */
+
+}
+
+
+/* تنسيق div الجسيمات */
+#particles-js-consultation { 
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ z-index: 1; /* يجب أن يكون z-index أقل من المحتوى */
+}
+
+/* وضع المحتوى الرئيسي (اللوحتين) فوق الخلفية */
+.sch_info_side_panel,
+.sch_main_booking_panel {
+ position: relative;
+ z-index: 2; /* يجب أن يكون z-index أكبر من الخلفية */
+}
+
+/* تعديل لون النص ليظهر بوضوح فوق الخلفية الداكنة */
+.sch_main_heading,
+.sch_paragraph_text,
+.sch_badge_label { 
+ color: #ffffff; /* لون أبيض أو فاتح */
+}
+
+
+.sch_info_side_panel { /* كان: .info-panel / .details-sidebar-block */
+  flex: 1;
+  max-width: 600px;
+  padding: 40px;
+  
+}
+
+.sch_badge_label { /* كان: .info-icon / .sidebar-badge-text */
+  display: inline-block;
+  border: 1px solid var(--light-color);
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 1rem;
+  color: var(--light-color);
+  margin-bottom: 20px;
+  
+}
+
+.sch_main_heading { /* كان: .info-title / .sidebar-main-title */
+  font-size: 2.5rem;
+  color: var(--light-color);
+  margin-bottom: 20px;
+}
+
+.sch_paragraph_text { /* كان: .info-text / .sidebar-desc-text */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: var(--light-color);
+}
+
+
+/* =========================================
+ بطاقة الحجز (Booking Card)
+ ========================================= */
+.sch_main_booking_panel { /* كان: .booking-card / .scheduler-main-panel */
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  
+  max-width: 600px; 
+  
+  height: 750px; 
+  
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  
+  position: relative;
+  direction: ltr; /* اتجاه التقويم */
+}
+
+/* ---------------------------------
+ رأس البطاقة وتفاصيل الاجتماع
+ --------------------------------- */
+.sch_header_area { /* كان: .card-header / .panel-header-section */
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sch_brand_logo { /* كان: .logo / .company-logo-image */
+  width: 60px;
+  height: 60px;
+  margin-bottom: 5px;
+}
+
+.sch_provider_name { /* كان: .service-name / .service-provider-label */
+  font-size: 1rem;
+  color: gray;
+  text-align: center; 
+}
+
+.sch_event_details_block { /* كان: .meeting-details / .event-info-block */
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.sch_event_title { /* كان: .meeting-title / .event-type-headline */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.sch_duration_text { /* كان: .duration / .event-duration-time */
+  display: flex;
+  color: gray;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+
+.sch_duration_text svg {
+  margin-inline-end: 5px;
+  stroke: gray; 
+}
+
+
+/* ---------------------------------
+ محدد التاريخ (التقويم)
+ --------------------------------- */
+.sch_step_one_dates { /* كان: .date-selector / .step-one-date-selection */
+  padding: 20px;
+  padding-bottom: 70px; 
+}
+
+.sch_step_heading { /* كان: .selector-title / .step-title-heading */
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.sch_calendar_controls { /* كان: .calendar-header / .calendar-navigation-bar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.sch_calendar_controls .sch_nav_button { /* كان: .calendar-header .nav-btn / .calendar-navigation-bar .calendar-nav-button */
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--primary-color);
+  padding: 5px 10px;
+}
+
+.sch_calendar_controls .sch_month_year_display { /* كان: .calendar-header .current-month / .calendar-navigation-bar .month-year-display */
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: center; 
+}
+
+.sch_calendar_grid_area { /* كان: .calendar-grid / .calendar-days-grid */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  gap: 5px;
+  padding: 0 10px; 
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+
+.day-label {
+  font-size: 0.9rem; 
+  font-weight: bold;
+  color: var(--header-color); 
+  padding: 5px 0;
+  border: none;
+}
+
+.day-cell {
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  transition: all 0.2s;
+  margin: 2px auto; 
+}
+
+.day-cell.date.available {
+  color: var(--text-color);
+  border: 1px solid #ccc;
+}
+
+.day-cell.date.selected {
+  background-color: var(--selected-color);
+  color: #fff;
+  border: 1px solid var(--selected-color);
+  font-weight: bold;
+}
+
+.day-cell.date.disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+
+/* ---------------------------------
+ تثبيت المنطقة الزمنية
+ --------------------------------- */
+.sch_timezone_setting_section { /* كان: .timezone-selection / .timezone-setting-area */
+  padding: 10px 20px 20px;
+  border-top: 1px solid var(--border-color);
+  
+  position: sticky;
+  top: 0; 
+  
+  background-color: #fff; 
+  z-index: 10; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+}
+
+.sch_timezone_label { /* كان: .timezone-label / .timezone-text-label */
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.sch_timezone_toggle_btn { /* كان: .timezone-button / .timezone-toggle-button */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--light-gray-background); 
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: right;
+  direction: rtl; 
+}
+
+
+/* ---------------------------------
+ تنسيقات واجهات الوقت والتفاصيل
+ --------------------------------- */
+.sch_step_two_times, .sch_step_three_details { /* كان: .time-selector, .details-form / .step-two-time-selection, .step-three-form-submission */
+  padding: 20px;
+  padding-top: 70px; 
+  padding-bottom: 70px; 
+}
+
+.sch_navigation_back_area { /* كان: .back-link-container / .navigation-back-area */
+  position: relative;
+  text-align: center; 
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.sch_back_step_btn { /* كان: .back-btn / .step-back-button */
+  position: absolute; 
+  top: 50%;
+  right: 0; 
+  transform: translateY(-50%); 
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0;
+  height: 100%; 
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#sch_chosen_date_label, #sch_chosen_time_label { /* كان: #selected-date-display, #selected-time-display / #chosen-date-label, #chosen-time-label */
+  display: block; 
+  font-size: 1rem;
+  color: #555;
+  font-weight: bold;
+  margin-right: 40px; 
+}
+
+.sch_slot_duration_note { /* كان: .duration-text / .slot-duration-note */
+  font-size: 0.9rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.sch_available_slots_list { /* كان: .time-slots-container / .available-slots-list */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-height: 250px; 
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+
+.sch_available_slots_list .sch_time_slot_btn { /* تم دمج التنسيق في كلاس واحد جديد */
+  width: 80%;
+  padding: 12px;
+  border: 1px solid var(--primary-color);
+  background-color: #fff;
+  color: var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.sch_available_slots_list .sch_time_slot_btn:hover:not(.sch_selected_time) {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.sch_available_slots_list .sch_time_slot_btn.sch_selected_time {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* تنسيقات نموذج التفاصيل */
+.sch_step_three_details form { 
+  padding: 10px 0;
+}
+.sch_step_three_details input[type="text"],
+.sch_step_three_details input[type="email"],
+.sch_step_three_details input[type="tel"],
+.sch_step_three_details textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.sch_submit_schedule_btn { /* كان: .schedule-btn / .finalize-schedule-button */
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.sch_submit_schedule_btn:hover {
+  background-color: var(--dark-primary);
+}
+
+
+/* ---------------------------------
+ القائمة المنبثقة للمناطق الزمنية
+ --------------------------------- */
+.sch_timezone_modal_overlay { /* كان: .timezone-dropdown-overlay / .timezone-modal-backdrop */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 1000;
+  display: none; 
+  justify-content: center;
+  align-items: center;
+}
+
+.sch_timezone_popup_content { /* كان: .timezone-dropdown / .timezone-popup-content */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow: hidden;
+  direction: ltr; 
+}
+
+.sch_timezone_search_wrapper { /* كان: .timezone-search-container / .timezone-search-wrapper */
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sch_timezone_search_wrapper input { /* كان: .timezone-search-container input / #search-input-field */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  text-align: left;
+  direction: ltr;
+}
+
+.sch_timezone_options_list { /* كان: .timezone-list-container / .timezone-options-list */
+  max-height: 350px; 
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sch_timezone_list_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.sch_timezone_list_item:hover, .sch_timezone_list_item.selected {
+  background-color: var(--light-gray-background);
+  font-weight: bold;
+}
+
+.sch_timezone_list_item .time-24h {
+  color: gray;
+  font-weight: normal;
+}
+
+.sch_popup_footer_bar { /* كان: .dropdown-footer / .popup-footer-bar */
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.sch_popup_footer_bar button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* ---------------------------------
+ استجابة التصميم للشاشات الصغيرة
+ --------------------------------- */
+@media (max-width: 992px) {
+  .sch_scheduler_container {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+  }
+  
+  .sch_main_booking_panel {
+    max-width: 100%;
+    margin-bottom: 30px;
+    height: 600px; 
+  }
+  .sch_info_side_panel {
+    order: -1; 
+    padding: 20px;
+  }
+  .sch_calendar_grid_area .day-cell {
+    width: 35px;
+    height: 35px;
+  }
+  .sch_back_step_btn {
+    right: 15px; 
+  }
+}
+
+
+
+
+
+
+/* =========================================
+   تنسيقات إضافية لنموذج التفاصيل (المطلوب في الصور)
+   ========================================= */
+
+.sch_step_three_details form {
+    /* ضبط اتجاه جميع العناصر داخل النموذج ليناسب المحتوى المختلط */
+    direction: ltr; 
+}
+
+.sch_form_label {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 500;
+    /* 🌟 تأكيد المحاذاة إلى اليسار (لحل مشكلة "كم عدد الشركاء") */
+    direction: ltr; 
+    text-align: left; 
+}
+.sch_question_text {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    /* 🌟 توحيد الاتجاه ليكون النص على اليسار */
+    direction: ltr; 
+    text-align: left;
+}
+
+/* ---------------------------------
+   1. زر إضافة ضيوف (Add Guests)
+   --------------------------------- */
+.sch_add_guests_btn {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    transition: background-color 0.2s;
+    /* 🆕 توحيد اتجاه النص */
+    direction: ltr; 
+}
+
+.sch_add_guests_btn:hover {
+    background-color: var(--light-gray-background);
+}
+
+/* ---------------------------------
+   2. مجموعة اختيار نوع المقابلة
+   --------------------------------- */
+.sch_radio_group {
+    margin-bottom: 15px;
+    /* 🌟 توحيد الاتجاه لضمان تنسيق الخيارات من اليسار لليمين */
+    direction: ltr; 
+    text-align: left;
+}
+
+.sch_radio_label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    /* 🆕 توحيد اتجاه النص داخل البطاقة */
+    direction: ltr; 
+}
+
+.sch_radio_label:hover {
+    border-color: var(--primary-color);
+}
+
+.sch_radio_label input[type="radio"] {
+    /* تم عكس الهامش ليتناسب مع LTR */
+    margin-right: 10px; 
+    margin-left: 0;
+}
+
+.sch_app_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px; /* 🆕 إبقاء الأيقونة على يسار النص */
+    margin-left: 0;
+    vertical-align: middle;
+}
+
+.sch_location_icon {
+    font-size: 1.2rem;
+    margin-right: 8px; /* 🆕 إبقاء الأيقونة على يسار النص */
+    margin-left: 0;
+}
+
+/* ---------------------------------
+   3. حقل الهاتف
+   --------------------------------- */
+.sch_phone_input_wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    /* 🆕 توحيد الاتجاه لضمان بدء العلم من اليسار */
+    direction: ltr;
+}
+
+.sch_phone_input_wrapper input {
+    /* إلغاء تنسيق الحدود الافتراضي */
+    border: none; 
+    margin-bottom: 0;
+    /* 🆕 التأكد من أن كتابة الرقم من اليسار لليمين */
+    direction: ltr;
+    text-align: left;
+}
+
+.sch_country_code_btn {
+    /* توحيد استخدام margin-right بدلًا من margin-inline-end */
+    border-right: 1px solid #eee;
+    border-left: none;
+}
+
+#sch_selected_flag {
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+/* ---------------------------------
+   4. مجموعة Yes/No (نعم/لا)
+   --------------------------------- */
+.sch_yes_no_group {
+    /* 🌟 توحيد الاتجاه إلى LTR */
+    direction: ltr; 
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+    justify-content: flex-start; /* لضمان البدء من اليسار */
+}
+
+.sch_radio_label_small {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+    /* ❗ تغيير direction: rtl إلى ltr داخل العنصر لتبدأ كلمة "Yes" أو "No" من اليسار */
+    direction: ltr; 
+}
+
+.sch_radio_label_small input[type="radio"] {
+    /* 🆕 عكس الهامش ليأتي زر الراديو أولاً على اليسار */
+    margin-right: 5px; 
+    margin-left: 0;
+}
+
+/* ---------------------------------
+   5. تنسيق الشروط
+   --------------------------------- */
+.sch_terms_text {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-align: left; /* 🆕 المحاذاة إلى اليسار */
+    direction: ltr;
+}
+
+
+/* =========================================
+   تنسيقات قائمة اختيار الدولة (Country Selector)
+   ========================================= */
+
+/* تم التأكد من أن جميع التنسيقات هنا تستخدم الاتجاه LTR بشكل افتراضي، لكن سيتم مراجعة الهوامش للتأكد */
+
+.sch_country_code_btn {
+    /* 🆕 استخدام border-right بدلاً من border-inline-end لتوحيد الاتجاه */
+    border-right: 1px solid #eee;
+    border-left: none;
+}
+
+.sch_country_selector_content {
+    /* 🆕 التأكد من أن القائمة المنبثقة LTR */
+    direction: ltr; 
+}
+
+.sch_country_flag_small {
+    /* 🆕 استخدام الهامش الأيمن لترك مسافة بعد العلم */
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.sch_country_code_text {
+    color: gray;
+    font-weight: bold;
+    /* 🆕 استخدام margin-left: auto لدفعه إلى أقصى اليمين */
+    margin-left: auto;
+    margin-right: 0;
+}
+
+
+
+/* 2. تنسيق زر الإرسال (Schedule Event) */
+.sch_submit_schedule_btn {
+    /* 🆕 تنسيق جديد ومطلوب */
+    display: block; /* لضمان أخذ العرض بالكامل */
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 20px; /* تباعد عن الشروط */
+    
+    /* اللون والتصميم */
+    background-color: var(--primary-color); /* اللون الأزرق (يفترض أنه var(--primary-color)) */
+    color: white; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center; /* 🌟 محاذاة النص إلى المنتصف */
+    
+    transition: background-color 0.3s;
+}
+
+.sch_submit_schedule_btn:hover {
+    background-color: var(--dark-blue-hover); /* استخدام لون أزرق أغمق عند التمرير */
+}
+
+
+
+/* 3. تنسيق حقول الإدخال الأساسية */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    /* 🆕 توحيد الاتجاه */
+    direction: ltr; 
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2716,5 +3211,981 @@ font-size: 22px;
         text-align: right;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Custom Modal Styles */
+
+/* ---------------------------------
+    تعريف متغيرات CSS
+    --------------------------------- */
+:root {
+    --primary-color: #007bff; /* مثال: الأزرق الأساسي */
+    --dark-primary: #0056b3; /* مثال: أزرق غامق للـ hover */
+    --light-primary: #007bff; /* تم استخدام نفس الأساسي لعدم توفر قيمة في الكود المُرسَل */
+    --text-color: #333;  /* مثال: لون النص العام */
+    --header-color: #555;  /* مثال: لون لرؤوس الأيام */
+    --border-color: #eee;  /* مثال: لون الحدود */
+    --selected-color: #007bff; /* مثال: لون العنصر المحدد */
+    --light-gray-background: #f8f8f8; /* مثال: خلفية رمادية فاتحة */
+}
+
+/* الخلفية المظلمة للنافذة المنبثقة - (كانت .pxl-modal) */
+.main-dialog-wrapper {
+    display: none; 
+    position: fixed;
+    z-index: 9991;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* محتوى النافذة المنبثقة الرئيسي - (كانت .pxl-modal-content) */
+.main-dialog-content {
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; 
+    max-width: 900px; 
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    padding: 0;
+    overflow: hidden; 
+    min-height: 500px;
+}
+
+/* عند إظهار النافذة - (كانت .pxl-modal.active) */
+.main-dialog-wrapper.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* عند إظهار النافذة - (كانت .pxl-modal.active .pxl-modal-content) */
+.main-dialog-wrapper.active .main-dialog-content {
+    transform: translateY(0);
+}
+
+/* زر الإغلاق - (كانت .pxl-close-button) */
+.close-btn-main {
+    color: #888;
+    position: absolute;
+    top: 15px;
+    left: 15px; 
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.close-btn-main:hover,
+.close-btn-main:focus {
+    color: #555;
+    text-decoration: none;
+}
+
+/* أنماط تقسيم النافذة إلى عمودين - (كانت .pxl-modal-two-columns) */
+.dialog-layout-columns {
+    display: flex;
+    height: 100%;
+    min-height: 500px;
+    flex-direction: row-reverse; 
+}
+
+/* الجزء الأيسر (تفاصيل الاجتماع) - (كانت .pxl-modal-left-pane) */
+.dialog-column-left {
+    width: 35%; 
+    background-color: #f8f9fa;
+    padding: 90px 30px 30px 30px; 
+    border-left: 1px solid #eee; 
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    text-align: center; 
+}
+
+/* الجزء الأيمن (المنتقي) - (كانت .pxl-modal-right-pane) */
+.dialog-column-right {
+    width: 65%; 
+    padding: 0; 
+    position: relative;
+    overflow-y: auto;
+    height: 500px; 
+}
+
+/* أنماط الشعار وتفاصيل الاجتماع (على اليمين) - (كانت .card-header) */
+.dialog-column-left .header-info-card {
+    text-align: center;
+    margin-bottom: 30px; 
+}
+/* (كانت .card-header .logo) */
+.dialog-column-left .header-info-card .business-logo-image {
+    width: 80px; 
+    height: auto;
+    margin-bottom: 10px;
+}
+/* (كانت .service-name) */
+.dialog-column-left .service-title-text {
+    font-size: 1.1rem;
+    color: #555;
+    display: block; 
+}
+
+/* (كانت .meeting-details) */
+.dialog-column-left .event-time-details {
+    margin-bottom: auto; 
+    text-align: center; 
+    width: 100%;
+}
+/* (كانت .meeting-title) */
+.dialog-column-left .event-heading-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+/* (كانت .duration) */
+.dialog-column-left .meeting-duration-display {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 1rem;
+    justify-content: center; 
+}
+/* (كانت .duration svg) */
+.dialog-column-left .meeting-duration-display svg {
+    margin-right: 8px;
+    margin-left: 0; 
+    transform: none; 
+}
+/* (كانت .pxl-modal-cookie-settings) */
+.dialog-link-privacy {
+    margin-top: 20px;
+    text-align: center; 
+    width: 100%;
+}
+.dialog-link-privacy a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.dialog-link-privacy a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ---------------------------------
+    محدد التاريخ (التقويم) - التنسيقات الجديدة
+    (كانت .date-selector)
+    --------------------------------- */
+.date-time-picker {
+    padding: 20px;
+    /* لترك مساحة للشريط الثابت حتى لا يغطي المحتوى */
+    padding-bottom: 70px; 
+}
+
+
+/* (كانت .selector-title) */
+.picker-section-title{
+    text-align: center;
+
+}
+
+
+/* (كانت .date-selector .selector-title) */
+.date-time-picker .picker-section-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* (كانت .date-selector .calendar-header) */
+.date-time-picker .calendar-navigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    /* إضافة مسافة جانبية لتقليل العرض الداخلي */
+    padding: 0 15px; 
+    direction: ltr; 
+}
+
+/* (كانت .date-selector .calendar-header .nav-btn) */
+.date-time-picker .calendar-navigation-header .nav-button-cal {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--primary-color); 
+    padding: 5px 10px;
+}
+
+/* (كانت .date-selector .calendar-header .current-month) */
+.date-time-picker .calendar-navigation-header .month-year-label {
+    font-weight: bold;
+    color: var(--text-color); 
+    text-align: center; 
+}
+
+/* (كانت .date-selector .calendar-grid) */
+.date-time-picker .calendar-display-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+    
+    /* تطبيق نفس المسافة الجانبية وضبط العرض */
+    padding: 0 10px; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    direction: rtl; 
+}
+
+/* تنسيق رؤوس الأيام (كانت .day-name) */
+.date-time-picker .calendar-display-grid .day-label-name {
+    font-size: 0.9rem; 
+    font-weight: bold;
+    color: var(--header-color); 
+    padding: 5px 0;
+    border: none;
+    direction: ltr; 
+}
+
+/* تنسيق خلايا الأيام (كانت .day) */
+.date-time-picker .calendar-display-grid .calendar-date-cell {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+    width: 35px;
+    height: 35px;
+    
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s;
+    margin: 2px auto; 
+}
+
+/* (كانت .empty-day) */
+.date-time-picker .calendar-display-grid .grid-empty-cell {
+    /* نفس أنماط .calendar-date-cell ولكن بدون المؤثرات أو اللون */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 35px;
+    height: 35px;
+    visibility: hidden; /* إخفاء العنصر */
+}
+
+/* ملاحظة: التنسيقات التالية تفترض أنك ستضيف كلاسات مثل .available, .selected, .disabled بواسطة JS */
+
+/* (كانت .date-selector .calendar-grid .day-cell.date.available) */
+.date-time-picker .calendar-display-grid .calendar-date-cell.date.available {
+    color: var(--text-color);
+    border: 1px solid #ccc;
+}
+
+/* (كانت .date-selector .calendar-grid .day-cell.date.selected) */
+.date-time-picker .calendar-display-grid .calendar-date-cell.date.selected,
+.date-time-picker .calendar-display-grid .active-selection { /* ليتطابق مع الكود المُرسَل */
+    background-color: var(--selected-color);
+    color: #fff;
+    border: 1px solid var(--selected-color);
+    font-weight: bold;
+}
+
+/* (كانت .date-selector .calendar-grid .day-cell.date.disabled) */
+.date-time-picker .calendar-display-grid .calendar-date-cell.date.disabled {
+    color: #ccc;
+    cursor: default;
+    border: none !important; 
+    background-color: transparent !important;
+}
+
+/* ---------------------------------
+    تثبيت المنطقة الزمنية (Position Sticky)
+    (كانت .date-selector .timezone-selection)
+    --------------------------------- */
+.date-time-picker .timezone-selection-area {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: flex-end; 
+    
+    padding: 10px 20px 20px;
+    border-top: 1px solid var(--border-color);
+    
+    position: sticky;
+    top: 0; 
+    
+    background-color: #fff; 
+    z-index: 9995; 
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+}
+
+/* (كانت .date-selector .timezone-label) */
+.date-time-picker .timezone-display-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: auto; 
+    font-weight: normal;
+}
+
+/* (كانت .date-selector .timezone-button) */
+.date-time-picker .timezone-select-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-gray-background); 
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-align: right;
+    direction: rtl; 
+}
+/* (كانت .date-selector .timezone-selection svg) */
+.date-time-picker .timezone-selection-area svg { 
+    color: #666;
+    margin: 0;
+}
+
+
+/* ---------------------------------
+    تنسيقات واجهات الوقت والتفاصيل
+    (كانت .time-selector, .details-form)
+    --------------------------------- */
+.time-slots-view, .customer-details-form {
+    padding: 20px;
+    padding-top: 70px; 
+    padding-bottom: 70px; 
+}
+
+/* (كانت .back-link-container) */
+.back-navigation-header {
+    position: relative;
+    text-align: center; 
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+/* (كانت .back-btn) */
+.back-to-date-btn, .back-to-time-btn {
+    position: absolute; 
+    top: 50%;
+    right: 0; 
+    transform: translateY(-50%); 
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* (كانت #selected-date-display, #selected-time-display) */
+#selectedDateLabel, #selectedTimeLabel {
+    display: block; 
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin-right: 40px; 
+}
+
+/* (كانت .duration-text) */
+.duration-small-text {
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* (كانت .time-slots-container) */
+.available-slots-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-height: 250px; 
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+/* (كانت .time-slot-btn) */
+.time-slot-button {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+/* (كانت .time-slot-btn:hover:not(.selected-time)) */
+.time-slot-button:hover:not(.selected-slot) {
+    background-color: var(--light-primary);
+    color: white;
+}
+
+/* (كانت .time-slot-btn.selected-time) */
+.time-slot-button.selected-slot {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* تنسيقات نموذج التفاصيل - (كانت .details-form) */
+.customer-details-form form {
+    padding: 10px 0;
+        direction: ltr; 
+
+
+}
+/* (كانت .details-form input[type="text"], ...) */
+.customer-details-form input[type="text"],
+.customer-details-form input[type="email"],
+.customer-details-form input[type="tel"],
+.customer-details-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    direction: ltr;
+    text-align: left;
+}
+
+/* (كانت .schedule-btn) */
+.confirm-schedule-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+/* (كانت .schedule-btn:hover) */
+.confirm-schedule-button:hover {
+    background-color: var(--dark-primary);
+}
+
+
+/* ---------------------------------
+    القائمة المنبثقة للمناطق الزمنية
+    (كانت .timezone-dropdown-overlay)
+    --------------------------------- */
+.timezone-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 9999; 
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* (كانت .timezone-dropdown) */
+.timezone-popup-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow: hidden;
+    direction: ltr; 
+
+}
+
+/* (كانت .timezone-search-container) */
+.timezone-search-field {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* (كانت .timezone-search-container input) */
+.timezone-search-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: left;
+    direction: ltr;
+}
+
+/* (كانت .timezone-list-container) */
+.timezone-list-scroll {
+    max-height: 350px; 
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* (كانت .timezone-list-item) - هذا الكلاس غير موجود في HTML لكن يُضاف عبر JS، تم الاحتفاظ به كـ 'مثال' */
+.timezone-list-item { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* (كانت .timezone-list-item:hover, .timezone-list-item.selected) */
+.timezone-list-item:hover, .timezone-list-item.selected {
+    background-color: var(--light-gray-background);
+    font-weight: bold;
+}
+
+/* (كانت .timezone-list-item .time-24h) */
+.timezone-list-item .time-24h {
+    color: gray;
+    font-weight: normal;
+}
+
+/* (كانت .dropdown-footer) */
+.popup-footer-actions {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+/* (كانت .dropdown-footer button) */
+.popup-footer-actions button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* ----------------------------------------------------
+    🔥 تنسيقات نافذة إعدادات الكوكيز (Cookie Modal) 🔥
+    (كانت .pxl-modal-overlay.cookie-modal-overlay)
+    ---------------------------------------------------- */
+.privacy-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: none; 
+    z-index: 10001; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+/* (كانت .cookie-modal-overlay.active) */
+.privacy-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* (كانت .cookie-modal-content) */
+.cookie-modal-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 900px; 
+    height: 90%;
+    max-height: 600px; 
+    position: relative;
+    display: flex;
+    overflow: hidden; 
+    direction: ltr; 
+}
+
+/* (كانت .cookie-close-button) */
+.cookie-close-btn {
+    color: #000;
+    position: absolute;
+    top: 10px;
+    right: 15px; 
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* (كانت .cookie-preferences-container) */
+.preferences-content-area {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* (كانت .cookie-title) */
+.privacy-pref-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* (كانت .cookie-description) */
+.cookie-text-description {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    padding-right: 20px;
+}
+
+/* (كانت .cookie-management-title) */
+.consent-management-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/* (كانت .cookie-groups-list) */
+.cookie-category-groups {
+    margin-bottom: 30px;
+}
+
+/* (كانت .cookie-group) */
+.cookie-group-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* (كانت .cookie-group .group-header) */
+.cookie-group-item .category-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+}
+
+/* (كانت .cookie-group .group-header span:first-child) */
+.cookie-group-item .category-header-row span:first-child {
+    font-weight: bold;
+}
+
+/* (كانت .always-active-label) */
+.always-active-badge {
+    background-color: #008000; 
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+/* تنسيقات الـ Switch (Toggle) - (كانت .switch) */
+.toggle-switch-control {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 24px;
+}
+
+/* (كانت .switch input) */
+.toggle-switch-control input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* (كانت .slider) */
+.slider-toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+/* (كانت .slider:before) */
+.slider-toggle:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+/* (كانت input:checked + .slider) */
+.toggle-switch-control input:checked + .slider-toggle {
+    background-color: #008000;
+}
+
+/* (كانت input:checked + .slider:before) */
+.toggle-switch-control input:checked + .slider-toggle:before {
+    transform: translateX(20px);
+}
+
+/* (كانت .slider.round) */
+.slider-toggle.round-shape {
+    border-radius: 24px;
+}
+
+/* (كانت .slider.round:before) */
+.slider-toggle.round-shape:before {
+    border-radius: 50%;
+}
+
+/* الأزرار في الأسفل - (كانت .cookie-actions) */
+.modal-action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* (كانت .reject-all-btn, .confirm-choices-btn) */
+.action-btn-reject, .action-btn-confirm {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* (كانت .reject-all-btn) */
+.action-btn-reject {
+    background-color: #007bff; 
+    color: white;
+    width: 48%;
+}
+
+/* (كانت .confirm-choices-btn) */
+.action-btn-confirm {
+    background-color: #0056b3; 
+    color: white;
+    width: 48%;
+}
+
+/* (كانت .powered-by-footer) */
+.branding-footer-text {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 20px;
+}
+/* ---------------------------------
+    استجابة التصميم للشاشات الصغيرة
+    (كانت @media (max-width: 767.98px))
+    --------------------------------- */
+@media (max-width: 767.98px) {
+    /* (كانت .pxl-modal-content) */
+    .main-dialog-content {
+        width: 90%;
+        height: 90%;
+        overflow-y: auto; 
+        max-width: unset; 
+        min-height: auto;
+    }
+    /* (كانت .pxl-modal-two-columns) */
+    .dialog-layout-columns {
+        flex-direction: column; 
+        min-height: auto;
+    }
+    /* (كانت .pxl-modal-left-pane, .pxl-modal-right-pane) */
+    .dialog-column-left,
+    .dialog-column-right {
+        width: 100%; 
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #eee; 
+        padding: 20px;
+    }
+    /* (كانت .pxl-modal-right-pane) */
+    .dialog-column-right {
+        height: auto; 
+        overflow-y: visible; 
+        padding: 20px 0; 
+    }
+    /* (كانت .pxl-close-button) */
+    .close-btn-main {
+        top: 10px;
+        right: 10px;
+        left: auto;
+    }
+    
+    /* (كانت .pxl-modal-left-pane .card-header, ...) */
+    .dialog-column-left .header-info-card,
+    .dialog-column-left .event-time-details,
+    .dialog-link-privacy {
+        text-align: center;
+    }
+    /* (كانت .pxl-modal-left-pane .duration) */
+    .dialog-column-left .meeting-duration-display {
+        justify-content: center;
+    }
+    
+    /* (كانت .date-selector) */
+    .date-time-picker {
+        padding: 0 20px 70px 20px; 
+    }
+    /* (كانت .date-selector .calendar-grid) */
+    .date-time-picker .calendar-display-grid {
+        max-width: 100%; 
+        padding: 0; 
+    }
+    /* (كانت .date-selector .calendar-header) */
+    .date-time-picker .calendar-navigation-header {
+        padding: 0; 
+    }
+
+    /* (كانت .date-selector .timezone-selection) */
+    .date-time-picker .timezone-selection-area {
+        justify-content: center;
+        position: static; 
+        box-shadow: none;
+        padding-left: 20px; 
+        padding-right: 20px;
+    }
+    /* (كانت .date-selector .timezone-selection .timezone-label) */
+    .date-time-picker .timezone-selection-area .timezone-display-label {
+        margin-right: 0;
+        text-align: center;
+        width: 100%;
+    }
+    /* (كانت .time-slot-btn) */
+    .time-slot-button {
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+
 
 

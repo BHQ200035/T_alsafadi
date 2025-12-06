@@ -41,30 +41,29 @@ let sch_selectedTime = null;
 const sch_meetingDuration = 30; // مدة الاجتماع بالدقائق
 
 const sch_availableTimes = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
-const sch_weekdayLabels = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']; 
-
+const sch_weekdayLabels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const SCH_TIMEZONES_LIST = [
-  { name: "توقيت بيروت", id: "Asia/Beirut" },
-  { name: "توقيت سوريا", id: "Asia/Damascus" },
-  { name: "توقيت غزة", id: "Asia/Gaza" },
-  { name: "توقيت الكويت", id: "Asia/Kuwait" },
-  { name: "توقيت دبي", id: "Asia/Dubai" },
-  { name: "توقيت لندن", id: "Europe/London" },
-  { name: "توقيت نيويورك", id: "America/New_York" },
+    { name: "Beirut Time", id: "Asia/Beirut" },
+    { name: "Syria Time", id: "Asia/Damascus" },
+    { name: "Gaza Time", id: "Asia/Gaza" },
+    { name: "Kuwait Time", id: "Asia/Kuwait" },
+    { name: "Dubai Time", id: "Asia/Dubai" },
+    { name: "London Time", id: "Europe/London" },
+    { name: "New York Time", id: "America/New_York" }
 ];
 let sch_currentSelectedTimezone = SCH_TIMEZONES_LIST.find(tz => tz.id === 'Asia/Gaza');
 
 // قائمة الدول ومفاتيحها
 const SCH_COUNTRIES_LIST = [
-    { name: "السعودية", code: "+966", flag: "🇸🇦" },
-    { name: "الإمارات", code: "+971", flag: "🇦🇪" },
-    { name: "مصر", code: "+20", flag: "🇪🇬" },
-    { name: "فلسطين (غزة)", code: "+970", flag: "🇵🇸" },
-    { name: "الأردن", code: "+962", flag: "🇯🇴" },
-    { name: "المغرب", code: "+212", flag: "🇲🇦" },
-    { name: "الولايات المتحدة", code: "+1", flag: "🇺🇸" },
-    { name: "المملكة المتحدة", code: "+44", flag: "🇬🇧" },
-    { name: "لبنان", code: "+961", flag: "🇱🇧" },
+    { name: "Saudi Arabia", code: "+966", flag: "🇸🇦" },
+    { name: "UAE", code: "+971", flag: "🇦🇪" },
+    { name: "Egypt", code: "+20", flag: "🇪🇬" },
+    { name: "Palestine (Gaza)", code: "+970", flag: "🇵🇸" },
+    { name: "Jordan", code: "+962", flag: "🇯🇴" },
+    { name: "Morocco", code: "+212", flag: "🇲🇦" },
+    { name: "United States", code: "+1", flag: "🇺🇸" },
+    { name: "United Kingdom", code: "+44", flag: "🇬🇧" },
+    { name: "Lebanon", code: "+961", flag: "🇱🇧" }
 ];
 
 
@@ -73,36 +72,36 @@ const SCH_COUNTRIES_LIST = [
 // =================================
 
 function sch_showTimeView() {
-  if (!sch_timeSlotsView || !sch_clientDetailsFormView || !sch_datePickerView) return;
-  
-  sch_datePickerView.style.display = 'none';
-  sch_clientDetailsFormView.style.display = 'none';
-  sch_timeSlotsView.style.display = 'block';
+    if (!sch_timeSlotsView || !sch_clientDetailsFormView || !sch_datePickerView) return;
+    
+    sch_datePickerView.style.display = 'none';
+    sch_clientDetailsFormView.style.display = 'none';
+    sch_timeSlotsView.style.display = 'block';
 
-  sch_updateDateDisplay();
-  sch_renderTimeSlots();
+    sch_updateDateDisplay();
+    sch_renderTimeSlots();
 }
 
 function sch_showDateView() {
-  if (!sch_timeSlotsView || !sch_clientDetailsFormView || !sch_datePickerView) return;
-  
-  sch_timeSlotsView.style.display = 'none';
-  sch_clientDetailsFormView.style.display = 'none';
-  sch_datePickerView.style.display = 'block';
-  
-  sch_selectedTime = null;
-  document.querySelectorAll('.sch_time_slot_btn').forEach(btn => btn.classList.remove('sch_selected_time'));
-  sch_renderCalendar();
+    if (!sch_timeSlotsView || !sch_clientDetailsFormView || !sch_datePickerView) return;
+    
+    sch_timeSlotsView.style.display = 'none';
+    sch_clientDetailsFormView.style.display = 'none';
+    sch_datePickerView.style.display = 'block';
+    
+    sch_selectedTime = null;
+    document.querySelectorAll('.sch_time_slot_btn').forEach(btn => btn.classList.remove('sch_selected_time'));
+    sch_renderCalendar();
 }
 
 function sch_showDetailsView() {
-  if (!sch_timeSlotsView || !sch_clientDetailsFormView || !sch_datePickerView) return;
-  
-  sch_datePickerView.style.display = 'none';
-  sch_timeSlotsView.style.display = 'none';
-  sch_clientDetailsFormView.style.display = 'block';
+    if (!sch_timeSlotsView || !sch_clientDetailsFormView || !sch_datePickerView) return;
+    
+    sch_datePickerView.style.display = 'none';
+    sch_timeSlotsView.style.display = 'none';
+    sch_clientDetailsFormView.style.display = 'block';
 
-  sch_updateTimeDisplay();
+    sch_updateTimeDisplay();
 }
 
 
@@ -111,88 +110,88 @@ function sch_showDetailsView() {
 // =================================
 
 function sch_renderCalendar() {
-  if (!sch_calendarGridContainer || !sch_currentMonthLabel) return;
-  
-  sch_calendarGridContainer.innerHTML = '';
-  const date = new Date(sch_currentYear, sch_currentMonth);
-
-  // تحديث عرض الشهر والسنة
-  const monthName = date.toLocaleDateString('ar-EG', { month: 'long', year: 'numeric' });
-  sch_currentMonthLabel.textContent = monthName;
-
-  // 1. إضافة أسماء الأيام (رؤوس الجدول)
-  sch_weekdayLabels.forEach(label => {
-    const span = document.createElement('span');
-    span.className = 'day-label'; 
-    span.textContent = label.slice(0, 3); 
-    sch_calendarGridContainer.appendChild(span);
-  });
-
-  // 2. حساب اليوم الأول في الشهر ومكانه
-  const firstDayIndex = new Date(sch_currentYear, sch_currentMonth, 1).getDay();
-  const daysInMonth = new Date(sch_currentYear, sch_currentMonth + 1, 0).getDate();
-
-  // 3. إضافة خلايا فارغة
-  for (let i = 0; i < firstDayIndex; i++) {
-    const emptyCell = document.createElement('span');
-    emptyCell.className = 'day-cell empty'; 
-    sch_calendarGridContainer.appendChild(emptyCell);
-  }
-
-  // 4. ملء أيام الشهر
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); 
-
-  for (let day = 1; day <= daysInMonth; day++) {
-    const cell = document.createElement('button');
-    const fullDate = `${sch_currentYear}-${(sch_currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-    const currentDate = new Date(sch_currentYear, sch_currentMonth, day);
-    currentDate.setHours(0, 0, 0, 0);
-
-    cell.className = 'day-cell date'; 
-    cell.textContent = day.toLocaleString('ar-EG'); 
-    cell.setAttribute('data-date', fullDate);
+    if (!sch_calendarGridContainer || !sch_currentMonthLabel) return;
     
-    if (currentDate < today) {
-      cell.classList.add('disabled');
-    } else {
-      cell.classList.add('available');
-      cell.onclick = () => sch_selectDay(cell, fullDate);
+    sch_calendarGridContainer.innerHTML = '';
+    const date = new Date(sch_currentYear, sch_currentMonth);
+
+    // تحديث عرض الشهر والسنة
+    const monthName = date.toLocaleDateString('EG-ar', { month: 'long', year: 'numeric' });
+    sch_currentMonthLabel.textContent = monthName;
+
+    // 1. إضافة أسماء الأيام (رؤوس الجدول)
+    sch_weekdayLabels.forEach(label => {
+        const span = document.createElement('span');
+        span.className = 'day-label'; 
+        span.textContent = label.slice(0, 3); 
+        sch_calendarGridContainer.appendChild(span);
+    });
+
+    // 2. حساب اليوم الأول في الشهر ومكانه
+    const firstDayIndex = new Date(sch_currentYear, sch_currentMonth, 1).getDay();
+    const daysInMonth = new Date(sch_currentYear, sch_currentMonth + 1, 0).getDate();
+
+    // 3. إضافة خلايا فارغة
+    for (let i = 0; i < firstDayIndex; i++) {
+        const emptyCell = document.createElement('span');
+        emptyCell.className = 'day-cell empty'; 
+        sch_calendarGridContainer.appendChild(emptyCell);
     }
 
-    if (sch_selectedDate === fullDate) {
-      cell.classList.add('selected');
-    }
+    // 4. ملء أيام الشهر
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); 
 
-    sch_calendarGridContainer.appendChild(cell);
-  }
+    for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement('button');
+        const fullDate = `${sch_currentYear}-${(sch_currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const currentDate = new Date(sch_currentYear, sch_currentMonth, day);
+        currentDate.setHours(0, 0, 0, 0);
+
+        cell.className = 'day-cell date'; 
+        cell.textContent = day.toLocaleString('EG-ar'); 
+        cell.setAttribute('data-date', fullDate);
+        
+        if (currentDate < today) {
+            cell.classList.add('disabled');
+        } else {
+            cell.classList.add('available');
+            cell.onclick = () => sch_selectDay(cell, fullDate);
+        }
+
+        if (sch_selectedDate === fullDate) {
+            cell.classList.add('selected');
+        }
+
+        sch_calendarGridContainer.appendChild(cell);
+    }
 }
 
 function sch_selectDay(cell, fullDate) {
-  document.querySelector('.day-cell.date.selected')?.classList.remove('selected');
-  cell.classList.add('selected');
-  sch_selectedDate = fullDate; 
-  sch_showTimeView();
+    document.querySelector('.day-cell.date.selected')?.classList.remove('selected');
+    cell.classList.add('selected');
+    sch_selectedDate = fullDate; 
+    sch_showTimeView();
 }
 
 function sch_prevMonth() {
-  sch_currentMonth--;
-  if (sch_currentMonth < 0) {
-    sch_currentMonth = 11;
-    sch_currentYear--;
-  }
-  sch_selectedDate = null; 
-  sch_renderCalendar();
+    sch_currentMonth--;
+    if (sch_currentMonth < 0) {
+        sch_currentMonth = 11;
+        sch_currentYear--;
+    }
+    sch_selectedDate = null; 
+    sch_renderCalendar();
 }
 
 function sch_nextMonth() {
-  sch_currentMonth++;
-  if (sch_currentMonth > 11) {
-    sch_currentMonth = 0;
-    sch_currentYear++;
-  }
-  sch_selectedDate = null; 
-  sch_renderCalendar();
+    sch_currentMonth++;
+    if (sch_currentMonth > 11) {
+        sch_currentMonth = 0;
+        sch_currentYear++;
+    }
+    sch_selectedDate = null; 
+    sch_renderCalendar();
 }
 
 
@@ -201,55 +200,55 @@ function sch_nextMonth() {
 // =================================
 
 function sch_calculateEndTime(startTime, duration) {
-  const [hours, minutes] = startTime.split(':').map(Number);
-  const date = new Date(1970, 0, 1, hours, minutes); 
-  date.setMinutes(date.getMinutes() + duration);
-  
-  const endHours = date.getHours().toString().padStart(2, '0');
-  const endMinutes = date.getMinutes().toString().padStart(2, '0');
-  return `${endHours}:${endMinutes}`;
+    const [hours, minutes] = startTime.split(':').map(Number);
+    const date = new Date(1970, 0, 1, hours, minutes); 
+    date.setMinutes(date.getMinutes() + duration);
+    
+    const endHours = date.getHours().toString().padStart(2, '0');
+    const endMinutes = date.getMinutes().toString().padStart(2, '0');
+    return `${endHours}:${endMinutes}`;
 }
 
 function sch_renderTimeSlots() {
-  if (!sch_availableSlotsContainer) return;
-  sch_availableSlotsContainer.innerHTML = '';
+    if (!sch_availableSlotsContainer) return;
+    sch_availableSlotsContainer.innerHTML = '';
 
-  sch_availableTimes.forEach(time => {
-    const button = document.createElement('button');
-    button.className = 'sch_time_slot_btn'; 
-    button.textContent = time;
-    button.onclick = () => sch_selectTime(time, button);
-    sch_availableSlotsContainer.appendChild(button);
-  });
+    sch_availableTimes.forEach(time => {
+        const button = document.createElement('button');
+        button.className = 'sch_time_slot_btn'; 
+        button.textContent = time;
+        button.onclick = () => sch_selectTime(time, button);
+        sch_availableSlotsContainer.appendChild(button);
+    });
 }
 
 function sch_selectTime(time, button) {
-  sch_selectedTime = time;
-  
-  document.querySelectorAll('.sch_time_slot_btn').forEach(btn => {
-    btn.classList.remove('sch_selected_time');
-  });
-  
-  button.classList.add('sch_selected_time');
-  
-  setTimeout(sch_showDetailsView, 300);
+    sch_selectedTime = time;
+    
+    document.querySelectorAll('.sch_time_slot_btn').forEach(btn => {
+        btn.classList.remove('sch_selected_time');
+    });
+    
+    button.classList.add('sch_selected_time');
+    
+    setTimeout(sch_showDetailsView, 300);
 }
 
 function sch_updateDateDisplay() {
-  if (!sch_selectedDate || !sch_chosenDateLabel) return;
-  const dateObj = new Date(sch_selectedDate);
-  
-  const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-  const formattedDate = dateObj.toLocaleDateString('ar-EG', options);
-  
-  sch_chosenDateLabel.textContent = formattedDate;
+    if (!sch_selectedDate || !sch_chosenDateLabel) return;
+    const dateObj = new Date(sch_selectedDate);
+    
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    const formattedDate = dateObj.toLocaleDateString('EG-ar', options);
+    
+    sch_chosenDateLabel.textContent = formattedDate;
 }
 
 function sch_updateTimeDisplay() {
-  if (!sch_selectedTime || !sch_chosenTimeLabel || !sch_chosenDateLabel) return;
-  const endTime = sch_calculateEndTime(sch_selectedTime, sch_meetingDuration);
-  const datePart = sch_chosenDateLabel.textContent;
-  sch_chosenTimeLabel.textContent = `${sch_selectedTime} - ${endTime}, ${datePart}`;
+    if (!sch_selectedTime || !sch_chosenTimeLabel || !sch_chosenDateLabel) return;
+    const endTime = sch_calculateEndTime(sch_selectedTime, sch_meetingDuration);
+    const datePart = sch_chosenDateLabel.textContent;
+    sch_chosenTimeLabel.textContent = `${sch_selectedTime} - ${endTime}, ${datePart}`;
 }
 
 
@@ -258,75 +257,81 @@ function sch_updateTimeDisplay() {
 // =================================
 
 function sch_formatTime(timezoneId) {
-  const now = new Date();
-  return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: timezoneId, hour12: false });
+    const now = new Date();
+    return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: timezoneId, hour12: false });
 }
 
 function sch_renderTimezoneDisplay() {
-  if (sch_currentNameDisplay) sch_currentNameDisplay.textContent = sch_currentSelectedTimezone.name;
-  if (sch_currentTimeDisplay) sch_currentTimeDisplay.textContent = sch_formatTime(sch_currentSelectedTimezone.id);
+    if (sch_currentNameDisplay) sch_currentNameDisplay.textContent = sch_currentSelectedTimezone.name;
+    if (sch_currentTimeDisplay) sch_currentTimeDisplay.textContent = sch_formatTime(sch_currentSelectedTimezone.id);
 }
 
 function sch_openTimezoneDropdown() {
-  if (sch_timezoneOverlay) sch_timezoneOverlay.style.display = 'flex';
-  sch_renderTimezoneList(SCH_TIMEZONES_LIST);
-  if (sch_searchInput) {
-    sch_searchInput.value = ''; 
-    sch_searchInput.focus();
-  }
+    if (sch_timezoneOverlay) sch_timezoneOverlay.style.display = 'flex';
+    sch_renderTimezoneList(SCH_TIMEZONES_LIST);
+    if (sch_searchInput) {
+        sch_searchInput.value = ''; 
+        sch_searchInput.focus();
+    }
+    // **[تعديل جديد]**: إضافة حالة للسجل عند فتح القائمة الفرعية
+    history.pushState({ modalSubOpen: 'timezone' }, '', '#sch-tz-open');
 }
 
 function sch_closeTimezoneDropdown() {
-  if (sch_timezoneOverlay) sch_timezoneOverlay.style.display = 'none';
+    if (sch_timezoneOverlay) sch_timezoneOverlay.style.display = 'none';
+    // **[تعديل جديد]**: الرجوع خطوة للخلف عند إغلاق القائمة الفرعية
+    if (history.state && history.state.modalSubOpen === 'timezone') {
+        history.back();
+    }
 }
 
 function sch_renderTimezoneList(zones) {
-  if (!sch_timezoneListElement) return;
-  sch_timezoneListElement.innerHTML = '';
+    if (!sch_timezoneListElement) return;
+    sch_timezoneListElement.innerHTML = '';
 
-  zones.forEach(zone => {
-    const li = document.createElement('li');
-    li.className = 'sch_timezone_list_item'; 
-    if (zone.id === sch_currentSelectedTimezone.id) {
-      li.classList.add('selected');
-    }
+    zones.forEach(zone => {
+        const li = document.createElement('li');
+        li.className = 'sch_timezone_list_item'; 
+        if (zone.id === sch_currentSelectedTimezone.id) {
+            li.classList.add('selected');
+        }
 
-    const time = sch_formatTime(zone.id);
-    const [hour, minute] = time.split(':');
-    
-    const nameSpan = document.createElement('span');
-    nameSpan.textContent = zone.name;
+        const time = sch_formatTime(zone.id);
+        const [hour, minute] = time.split(':');
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = zone.name;
 
-    const timeSpan = document.createElement('span');
-    timeSpan.className = 'time-24h';
-    timeSpan.textContent = `${hour}:${minute}`;
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'time-24h';
+        timeSpan.textContent = `${hour}:${minute}`;
 
-    li.appendChild(nameSpan);
-    li.appendChild(timeSpan);
-    li.onclick = () => sch_selectTimezone(zone);
-    
-    sch_timezoneListElement.appendChild(li);
-  });
+        li.appendChild(nameSpan);
+        li.appendChild(timeSpan);
+        li.onclick = () => sch_selectTimezone(zone);
+        
+        sch_timezoneListElement.appendChild(li);
+    });
 }
 
 function sch_filterTimezones() {
-  if (!sch_searchInput) return;
-  const searchTerm = sch_searchInput.value.toLowerCase();
-  const filteredZones = SCH_TIMEZONES_LIST.filter(zone => 
-    zone.name.toLowerCase().includes(searchTerm) || 
-    zone.id.toLowerCase().includes(searchTerm)
-  );
-  sch_renderTimezoneList(filteredZones);
+    if (!sch_searchInput) return;
+    const searchTerm = sch_searchInput.value.toLowerCase();
+    const filteredZones = SCH_TIMEZONES_LIST.filter(zone => 
+        zone.name.toLowerCase().includes(searchTerm) || 
+        zone.id.toLowerCase().includes(searchTerm)
+    );
+    sch_renderTimezoneList(filteredZones);
 }
 
 function sch_selectTimezone(zone) {
-  sch_currentSelectedTimezone = zone;
-  sch_renderTimezoneDisplay();
-  sch_closeTimezoneDropdown();
+    sch_currentSelectedTimezone = zone;
+    sch_renderTimezoneDisplay();
+    sch_closeTimezoneDropdown();
 }
 
 if (sch_searchInput) {
-  sch_searchInput.addEventListener('input', sch_filterTimezones);
+    sch_searchInput.addEventListener('input', sch_filterTimezones);
 }
 
 
@@ -367,10 +372,16 @@ function sch_toggleCountryList() {
         sch_countrySearchInput.value = '';
         sch_countrySearchInput.focus();
     }
+    // **[تعديل جديد]**: إضافة حالة للسجل عند فتح القائمة الفرعية
+    history.pushState({ modalSubOpen: 'country' }, '', '#sch-country-open');
 }
 
 function sch_closeCountryList() {
     if (sch_countryCodeModal) sch_countryCodeModal.style.display = 'none';
+    // **[تعديل جديد]**: الرجوع خطوة للخلف عند إغلاق القائمة الفرعية
+    if (history.state && history.state.modalSubOpen === 'country') {
+        history.back();
+    }
 }
 
 function sch_filterCountries() {
@@ -394,26 +405,43 @@ if (sch_countrySearchInput) {
 
 // عند تحميل الصفحة، يتم تهيئة التقويم وعرض واجهة التاريخ الافتراضية
 window.onload = () => {
-  const today = new Date();
-  
-  sch_currentYear = today.getFullYear();
-  sch_currentMonth = today.getMonth();
-  
-  sch_renderCalendar();
-  sch_showDateView();
-  sch_renderTimezoneDisplay();
+    const today = new Date();
+    
+    sch_currentYear = today.getFullYear();
+    sch_currentMonth = today.getMonth();
+    
+    sch_renderCalendar();
+    sch_showDateView();
+    sch_renderTimezoneDisplay();
 };
 
-// إغلاق النوافذ عند النقر خارجها
-window.onclick = function(event) {
-  // في هذا الكود لا يوجد mainModal مفتوح كنظام نافذة منبثقة، 
-  // لكن للتأكد من إغلاق النوافذ الفرعية:
-  
-  if (event.target == sch_timezoneOverlay) { 
-    sch_closeTimezoneDropdown();
-  }
-  
-  if (event.target == sch_countryCodeModal) { 
-    sch_closeCountryList();
-  }
-}
+// **التعديل الهام**: استخدام addEventListener لتجنب تضارب window.onclick مع ملف JS آخر
+// هذا المُستمع أيضاً يدعم إغلاق النوافذ الفرعية عند النقر خارجها
+window.addEventListener('click', function(event) {
+    // إغلاق نافذة المنطقة الزمنية للكود الثاني
+    if (sch_timezoneOverlay && event.target === sch_timezoneOverlay) { 
+        sch_closeTimezoneDropdown();
+    }
+    
+    // إغلاق نافذة قائمة الدول للكود الثاني
+    if (sch_countryCodeModal && event.target === sch_countryCodeModal) { 
+        sch_closeCountryList();
+    }
+});
+
+// **[تعديل جديد]**: وظيفة الاستجابة لزر الرجوع في الجوال (Popstate)
+window.addEventListener('popstate', function(event) {
+    // الأولوية لإغلاق النوافذ الفرعية لهذا الكود
+    if (sch_timezoneOverlay && sch_timezoneOverlay.style.display === 'flex') {
+        sch_closeTimezoneDropdown();
+        // نمنع العودة خطوتين إذا كان زر الرجوع قد نقر بالفعل
+        history.pushState({ modalSubOpen: 'timezone' }, '', '#sch-tz-open'); 
+        return;
+    }
+    
+    if (sch_countryCodeModal && sch_countryCodeModal.style.display === 'flex') {
+        sch_closeCountryList();
+        history.pushState({ modalSubOpen: 'country' }, '', '#sch-country-open'); 
+        return;
+    }
+});

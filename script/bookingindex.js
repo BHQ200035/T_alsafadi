@@ -43,16 +43,15 @@ const meetingDuration = 30; // مدة الاجتماع بالدقائق
 
 // **الأوقات المتاحة لهذا اليوم (مثال ثابت)**
 const availableTimes = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
-const weekdayLabels = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']; // رؤوس الأيام باللغة العربية
-
+const weekdayLabels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; // Day headers in English
 const TIMEZONES_LIST = [
-    { name: "توقيت بيروت", id: "Asia/Beirut" },
-    { name: "توقيت سوريا", id: "Asia/Damascus" },
-    { name: "توقيت غزة", id: "Asia/Gaza" },
-    { name: "توقيت الكويت", id: "Asia/Kuwait" },
-    { name: "توقيت دبي", id: "Asia/Dubai" },
-    { name: "توقيت لندن", id: "Europe/London" },
-    { name: "توقيت نيويورك", id: "America/New_York" },
+{ name: "Beirut Time", id: "Asia/Beirut" },
+    { name: "Syria Time", id: "Asia/Damascus" },
+    { name: "Gaza Time", id: "Asia/Gaza" },
+    { name: "Kuwait Time", id: "Asia/Kuwait" },
+    { name: "Dubai Time", id: "Asia/Dubai" },
+    { name: "London Time", id: "Europe/London" },
+    { name: "New York Time", id: "America/New_York" }
 ];
 let currentSelectedTimezone = TIMEZONES_LIST.find(tz => tz.id === 'Asia/Gaza');
 
@@ -184,7 +183,7 @@ function renderCalendar() {
     const date = new Date(currentYear, currentMonth);
 
     // تحديث عرض الشهر والسنة باستخدام التنسيق العربي
-    const monthName = date.toLocaleDateString('ar-EG', { month: 'long', year: 'numeric' });
+    const monthName = date.toLocaleDateString('EG-ar', { month: 'long', year: 'numeric' });
     currentMonthDisplay.textContent = monthName;
 
     // 1. إضافة أسماء الأيام (رؤوس الجدول)
@@ -218,7 +217,7 @@ function renderCalendar() {
         currentDate.setHours(0, 0, 0, 0);
 
         cell.className = 'calendar-date-cell date';
-        cell.textContent = day.toLocaleString('ar-EG'); 
+        cell.textContent = day.toLocaleString('EG-ar'); 
         cell.setAttribute('data-date', fullDate);
         
         if (currentDate < today) {
@@ -308,7 +307,7 @@ function updateDateDisplay() {
     const dateObj = new Date(selectedDate);
     
     const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-    const formattedDate = dateObj.toLocaleDateString('ar-EG', options);
+    const formattedDate = dateObj.toLocaleDateString('EG-ar', options);
     
     dateDisplayLabel.textContent = formattedDate;
 }
@@ -414,15 +413,6 @@ window.onload = () => {
     showDateView();
     renderTimezoneDisplay(); // عرض المنطقة الزمنية الافتراضية
 };
-
-
-
-
-
-
-
-
-
 
 
 
